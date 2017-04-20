@@ -48,6 +48,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="最高温度"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
 

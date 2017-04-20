@@ -28,8 +28,8 @@
     <string name="devcie_detail_history_alarm_select_tip">提示：设备报警历史查询最多只能查询到之前7天的数据。</string>
     <string name="devcie_detail_btn_label_del">删除设备</string>
 
-    <string name="devcie_setup_update_distance_time_tip">提示：单位秒(s)。设备上传间隔最大不超过5分钟，即300秒</string>
-    <string name="devcie_setup_update_extend_tip">提示：温度设置范围(-100℃ ~ +100℃)，湿度设置范围(0~100%)，回差暂不支持修改。</string>
+    <string name="devcie_setup_update_distance_time_tip">提示：单位秒(s)。设备上传间隔最大不超过5分钟，即300秒，最小为10秒</string>
+    <string name="devcie_setup_update_extend_tip">提示：温度设置范围(-200℃ ~ +500℃)，湿度设置范围(0~99.99%)，回差暂不支持修改。</string>
 
 
     <string name="app_opt_success">操作成功</string>
