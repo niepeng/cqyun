@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+		
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+
+		<!-- 标题 -->
+		<TextView android:id="@+id/more_about_title" android:text="@string/setup_user_manage" style="@style/app_title_wrap"
+			android:layout_centerInParent="true" />
+
+	</RelativeLayout>
+
+	<include layout="@layout/title_line_bottom" />
+
+	
+	
+     <LinearLayout
+            style="@style/app_corner_wrap"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="20dip" >
+            
+            <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handleBindMail"
+                android:text="@string/setup_user_manage_bind_mail" />
+
+            <include layout="@drawable/line_split" />
+            
+             <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handleUpdatePsw"
+                android:text="@string/setup_user_manage_update_psw" />
+
+            <include layout="@drawable/line_split" />
+            
+            
+            <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handeExit"
+                android:text="@string/setup_user_manage_exit" />
+
+
+        </LinearLayout>
+        
+
+
+</LinearLayout>

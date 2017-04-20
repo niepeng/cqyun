@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- android:angle ="270.0"代表角度为270，由上到下的渐变，如果我改变成0那么就变成了从左到右的渐变，如果改变90.0那么渐变会从下边往上渐变，  -->
+    <gradient
+        android:angle="270"
+        android:centerColor="#00FFFF"
+        android:centerX="2"
+        android:centerY="2"
+        android:endColor="@color/white"
+        android:startColor="@color/blue_main" />
+    <padding
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp" />
+    <corners android:radius="0dp" />
+</shape>

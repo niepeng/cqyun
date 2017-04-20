@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dip"
+    android:background="@drawable/border_corner"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp" >
+
+    <TextView
+        android:id="@+id/sift_item_name"
+        style="@style/item_name" />
+
+    <ImageView
+        android:id="@+id/sift_item_img"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <!--
+    <ImageView
+        android:id="@+id/sift_item_img"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dip"
+        android:scaleType="fitXY" />
+    -->
+
+    <LinearLayout
+        style="@style/fw"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <LinearLayout
+            style="@style/fw"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <ImageView
+                style="@style/ww"
+                android:paddingTop="6dip"
+                android:src="@drawable/icon_date" />
+
+            <TextView
+                android:id="@+id/sift_item_times"
+                style="@style/item_small_info"
+                android:textSize="14dip" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:text="推荐理由："
+            android:textColor="@color/red"
+            android:textSize="16dip" />
+
+        <TextView
+            android:id="@+id/sift_item_reason"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:textColor="@color/black"
+            android:textSize="16dip" />
+    </LinearLayout>
+
+</LinearLayout>

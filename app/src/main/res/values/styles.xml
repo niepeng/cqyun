@@ -1,0 +1,89 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<style name="AppTheme" parent="android:Theme.Light" />-->
+
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+	</style>
+    
+    <style name="input_btn">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:textSize">15dip</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:layout_marginLeft">20dip</item>
+		<item name="android:layout_marginRight">20dip</item>
+		<item name="android:paddingLeft">20dip</item>
+		<item name="android:paddingRight">20dip</item>
+		<item name="android:background">@drawable/btn_submit_background</item>
+	</style>
+	
+    <style name="login_username_style">
+        <item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textSize">16dip</item>
+		<item name="android:layout_marginBottom">10dip</item>
+    </style>
+    
+    <style name="login_btn_submit_fill">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:textSize">18dip</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:background">@drawable/btn_submit_background</item>
+	</style>
+	
+     <style name="down_list_btn">
+    	<item name="android:layout_width">fill_parent</item>
+    	<item name="android:layout_height">fill_parent</item>
+    	<item name="android:gravity">center_vertical|left</item>
+    	<item name="android:layout_weight">1</item>
+    	<item name="android:src">@drawable/text_background</item>
+    	<item name="android:background">@drawable/down_list_button_background</item>
+    	<item name="android:textSize">14dip</item>
+    	<item name="android:textColor">@color/white</item>
+    	<item name="android:paddingLeft">10dip</item>
+    	<item name="android:paddingRight">10dip</item>
+    </style>
+
+
+
+	<style name="AppTheme.NoActionBar">
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+	</style>
+
+
+	<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+	<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+	<style name="device_item_wrap">
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:paddingRight">5dp</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">36dp</item>
+		<item name="android:orientation">horizontal</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+
+	<style name="device_item_title_wrap" parent="device_item_wrap">
+		<item name="android:background">@color/yun_title</item>
+	</style>
+
+	<style name="device_item_title">
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:ellipsize">end</item>
+		<item name="android:maxLines">1</item>
+		<item name="android:singleLine">true</item>
+	</style>
+
+</resources>

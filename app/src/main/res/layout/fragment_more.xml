@@ -1,0 +1,75 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.baibutao.app.waibao.yun.android.fragments.MoreFragment">
+
+    <LinearLayout
+        style="@style/app_main"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/app_title_main"
+            android:layout_height="100dip"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/app_title_wrap"
+                android:layout_width="fill_parent"
+                android:layout_height="70dip"
+                android:layout_marginTop="5dip"
+                android:src="@drawable/head_icon" />
+
+            <TextView
+                android:id="@+id/setup_username"
+                style="@style/app_title_wrap"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dip"
+                android:textSize="15dip" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/app_corner_wrap"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="20dip">
+
+            <Button
+                android:id="@+id/account_setup"
+                style="@style/app_row_with_arrow"
+                android:text="@string/setup_user_manage" />
+
+            <include layout="@drawable/line_split" />
+
+            <Button
+                android:id="@+id/about_us"
+                style="@style/app_row_with_arrow"
+                android:text="@string/setup_about_us" />
+
+            <include layout="@drawable/line_split" />
+
+
+            <Button
+                android:id="@+id/more_product"
+                style="@style/app_row_with_arrow"
+                android:text="@string/setup_new_products" />
+
+            <include layout="@drawable/line_split" />
+
+
+            <Button
+                android:id="@+id/check_update"
+                style="@style/app_row_with_arrow"
+                android:text="@string/setup_version_update" />
+
+            <!--   <include layout="@drawable/line_split" /> -->
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

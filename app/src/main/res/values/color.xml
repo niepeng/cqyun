@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<color name="app_main">#FFFFFF</color>
+	
+	<color name="yun_title">#52699C</color>
+	<color name="yun_title_deep">#074496</color>
+	<color name="grays">#f7f7f7</color>
+	<color name="gray">#ABABAB</color>
+
+	<color name="blue_main">#559EC6</color>
+	
+	
+	
+	<color name="red">#ff0000</color>
+	<color name="black">#000000</color>
+	<color name="white">#FFFFFF</color>
+	<color name="green">#00ff00</color>
+	<color name="green_light">#A2CE50</color>
+	
+	
+	<color name="gray_deep">#999999</color>
+	<color name="bg_gray_light">#ECECEC</color>
+	<color name="down_split">#00AAC5</color>
+	<color name="blue_deep">#005B6F</color>
+	<color name="blue_green">#78cdd1</color>
+	<color name="blue_green_light">#afdfe4</color>
+	<color name="blue_title_pressed">#006A75</color>
+	<color name="blue_light_light">#67D1DF</color>
+	
+	<color name="list_split_top">#6d6d6d</color>
+	<color name="list_split_buttom">#b7b7b7</color>
+	
+	
+	<color name="green_btn">#008300</color>
+	<color name="green_btn_pressed">#004300</color>
+	
+	
+	<color name="btn_color_start">#0EB3AF</color>
+	<color name="btn_color_end">#059193</color>
+	<color name="btn_color_border">#AAD7D5</color>
+	
+	
+	
+	<color name="main_word">#036b6a</color>
+	<color name="main_liang">#FC720C</color>
+
+
+	// lily
+	<color name="colorPrimary">#3F51B5</color>
+	<color name="colorPrimaryDark">#303F9F</color>
+	<color name="colorAccent">#FF4081</color>
+
+	<color name="yellow">#FFFF00</color>
+	
+	
+
+</resources>

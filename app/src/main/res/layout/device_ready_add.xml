@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="添加方式" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+
+    <!-- 提交按钮 -->
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:gravity="center" android:layout_marginTop="50dip" android:layout_marginBottom="50dp"
+		android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+		<Button
+		    style="@style/app_btn_submit_fill"
+		    android:layout_marginLeft="20dip"
+		    android:layout_marginRight="20dip"
+		    android:onClick="handleByOne"
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:paddingLeft="20dip"
+		    android:paddingRight="20dip"
+		    android:text="一键配置" />
+
+	</LinearLayout>
+
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:gravity="center" android:layout_marginTop="50dip"
+		android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+		<Button
+		    style="@style/app_btn_submit_fill"
+		    android:layout_marginLeft="20dip"
+		    android:layout_marginRight="20dip"
+		    android:onClick="handleBySeri"
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:paddingLeft="20dip"
+		    android:paddingRight="20dip"
+		    android:text="序列号添加" />
+
+	</LinearLayout>
+			
+     
+    
+    
+</LinearLayout>

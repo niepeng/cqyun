@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_gray_light"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            android:id="@+id/item_detail_title"
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="活动详情" />
+
+        <!-- 提交按钮 android:text="@string/item_detail_postion_title" -->
+
+        <Button
+            android:id="@+id/item_detail_location_btn"
+            style="@style/app_title_right"
+            android:background="@drawable/icon_nav_map"
+            android:onClick="handlePosition"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+
+    <include layout="@layout/loading_large" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="3dip"
+        android:paddingRight="3dip" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/item_detail_name"
+                style="@style/item_name"
+                android:textSize="20dip" />
+
+            <ImageView
+                android:id="@+id/item_detail_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="3dip" />
+
+            <LinearLayout
+                style="@style/fw"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/item_detail_icon_style"
+                    android:src="@drawable/icon_date" />
+
+                <TextView
+                    android:id="@+id/item_detail_times"
+                    style="@style/item_small_info" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/fw"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/item_detail_icon_style"
+                    android:src="@drawable/icon_spot1" />
+
+                <TextView
+                    android:id="@+id/item_detail_address"
+                    style="@style/item_small_info" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/fw"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/item_detail_icon_style"
+                    android:src="@drawable/icon_sponsor" />
+
+                <TextView
+                    android:id="@+id/item_detail_refer"
+                    style="@style/item_small_info" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/fw"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/item_detail_icon_style"
+                    android:src="@drawable/icon_catalog" />
+
+                <TextView
+                    style="@style/item_small_info"
+                    android:text="费用：" />
+
+                <TextView
+                    android:id="@+id/item_detail_price_info"
+                    style="@style/item_small_info" />
+
+                <TextView
+                    android:id="@+id/item_detail_old_price"
+                    style="@style/item_small_info" />
+
+                <TextView
+                    android:id="@+id/item_detail_new_price"
+                    style="@style/item_small_info"
+                    android:textColor="@color/main_word"
+                    android:textSize="18dip" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_detail_photo_name"
+                style="@style/item_name" />
+
+            <!-- 多个image -->
+
+            <HorizontalScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" >
+
+                <LinearLayout
+                    android:id="@+id/item_detail_photos_linearlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                style="@style/item_name"
+                android:text="活动介绍" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:src="@color/list_split_top" />
+
+            <LinearLayout
+                android:id="@+id/item_detail_content_linear"
+                style="@style/fw"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_detail_content"
+                style="@style/item_small_info"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/item_detail_content2"
+                style="@style/item_small_info"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/item_detail_content3"
+                style="@style/item_small_info"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/item_detail_content4"
+                style="@style/item_small_info"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        style="@style/fw"
+        android:background="@color/black"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/item_detail_collection_btn"
+            style="@style/item_nav_btn"
+            android:drawableTop="@drawable/foot_more_2"
+            android:onClick="handleInterest" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/split_line"
+            android:scaleType="fitXY" />
+
+        <Button
+            style="@style/item_nav_btn"
+            android:drawableTop="@drawable/foot_shopping_2"
+            android:onClick="handleShare"
+            android:text="分享" />
+
+        <!--
+        <Button
+            style="@style/item_nav_btn"
+            android:onClick="handleJoin"
+            android:drawableTop="@drawable/foot_shopping_2"
+            android:text="要参加"/>
+        -->
+    </LinearLayout>
+
+</LinearLayout>

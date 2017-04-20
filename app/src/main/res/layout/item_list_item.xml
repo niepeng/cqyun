@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dip"
+    android:background="@drawable/border_corner"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp" >
+
+    <TextView
+        android:id="@+id/item_list_item_name"
+        style="@style/item_name"
+        android:background="@color/blue_green_light" />
+
+    <ImageView
+        android:id="@+id/item_list_item_img"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        style="@style/fw"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <LinearLayout
+            style="@style/fw"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <ImageView
+                style="@style/ww"
+                android:paddingTop="6dip"
+                android:src="@drawable/icon_date" />
+
+            <TextView
+                android:id="@+id/item_list_item_times"
+                style="@style/item_small_info" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/fw"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <ImageView
+                style="@style/ww"
+                android:paddingTop="6dip"
+                android:src="@drawable/icon_spot1" />
+
+            <TextView
+                android:id="@+id/item_list_item_address"
+                style="@style/item_small_info" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/fw"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/item_small_info"
+                android:text="费用：" />
+
+            <TextView
+                android:id="@+id/item_list_item_price_info"
+                style="@style/item_small_info"
+                android:text="免费" />
+
+            <TextView
+                android:id="@+id/item_list_item_old_price"
+                style="@style/item_small_info" />
+
+            <TextView
+                android:id="@+id/item_list_item_new_price"
+                style="@style/item_small_info"
+                android:textColor="@color/main_word"
+                android:textSize="18dip" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.3dip"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="10dip"
+            android:background="@color/gray_deep" />
+
+        <LinearLayout
+            style="@style/fw"
+            android:layout_marginBottom="3dip"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                style="@style/ww"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/item_list_item_interest"
+                    style="@style/item_list_item_liang" />
+
+                <TextView
+                    style="@style/item_small_info"
+                    android:text="感兴趣" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0.3dip"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="1dip"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:src="@color/gray_deep" />
+
+            <LinearLayout
+                style="@style/ww"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/item_list_item_join"
+                    style="@style/item_list_item_liang" />
+
+                <TextView
+                    style="@style/item_small_info"
+                    android:text="参加" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

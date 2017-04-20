@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/white">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+		
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+
+		<!-- 标题 -->
+		<TextView android:id="@+id/device_history_alarm_data_title" style="@style/app_title_wrap"
+			android:layout_centerInParent="true" />
+
+	</RelativeLayout>
+
+	<include layout="@layout/title_line_bottom" />
+
+	<ListView
+        android:id="@+id/device_history_alarm_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginTop="0dip"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/app_main"
+        android:divider="@drawable/list_split2"
+        android:dividerHeight="0.2dp"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false" />
+
+</LinearLayout>

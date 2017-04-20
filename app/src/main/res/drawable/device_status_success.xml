@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners
+        android:radius="@dimen/device_item_status_image_corner" />
+
+    <solid android:color="@color/green" />
+
+    <size
+        android:width="@dimen/device_item_status_image_size"
+        android:height="@dimen/device_item_status_image_size" />
+
+</shape>

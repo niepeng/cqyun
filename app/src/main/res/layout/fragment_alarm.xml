@@ -1,0 +1,61 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.baibutao.app.waibao.yun.android.fragments.AlarmFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <!-- 标题栏 -->
+        <RelativeLayout style="@style/app_title_main">
+
+            <!-- 标题 -->
+            <TextView
+                style="@style/app_title_wrap"
+                android:layout_centerInParent="true"
+                android:text="查看报警" />
+
+            <Button
+                android:id="@+id/btn_reflush"
+                style="@style/app_title_right"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:background="@drawable/icon_refresh" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            style="@style/fw"
+            android:background="@color/gray">
+
+            <TextView
+                android:id="@+id/intime_gmtmodified_tv"
+                style="@style/ww"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="3dip"
+                android:paddingLeft="10dip"
+                android:text="只能查询到最近24小时内的报警信息"
+                android:textColor="@color/black"
+                android:textSize="16dip" />
+        </LinearLayout>
+
+
+        <include layout="@layout/loading_large" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</FrameLayout>

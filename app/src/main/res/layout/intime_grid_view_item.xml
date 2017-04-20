@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_corner"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp" >
+
+    <!-- 标题 -->
+
+    <TextView
+        android:id="@+id/intime_grid_view_item_name_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="14dip" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip" >
+        
+        <!-- android:background="@color/green_light" -->
+
+        <!-- 温度 -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/intime_grid_view_item_temp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="22dip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="˚C"
+                android:textColor="@color/black"
+                android:textSize="14dip" />
+        </LinearLayout>
+        
+        <!-- 湿度 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/intime_grid_view_item_humi_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="22dip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%RH"
+                android:textColor="@color/black"
+                android:textSize="14dip" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/intime_grid_view_item_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16dip" />
+        </LinearLayout>
+        
+        
+        <!-- 光照 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/intime_grid_view_item_shine_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="22dip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LX"
+                android:textColor="@color/white"
+                android:textSize="14dip" />
+        </LinearLayout>
+        -->
+        
+        <!-- co2 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/intime_grid_view_item_co2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="22dip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ppm"
+                android:textColor="@color/white"
+                android:textSize="14dip" />
+        </LinearLayout>
+        -->
+        
+        
+        
+    </LinearLayout>
+
+</LinearLayout>

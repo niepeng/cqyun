@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/app_main"
+    android:orientation="vertical" >
+
+    <!-- ��棰��� -->
+    <LinearLayout style="@style/app_title_main"
+        android:orientation="vertical"
+		android:layout_height="100dip">
+        
+        <ImageView  style="@style/app_title_wrap"
+            android:layout_width="fill_parent"
+			android:layout_height="70dip"
+			android:layout_marginTop="5dip"
+            android:src="@drawable/head_icon"  />
+
+        <TextView
+            android:id="@+id/setup_username"
+            style="@style/app_title_wrap"
+            android:textSize="15dip"
+             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dip"/>
+
+    </LinearLayout>
+    
+    
+     <LinearLayout
+            style="@style/app_corner_wrap"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="20dip" >
+            
+            <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handleUpdateSetup"
+                android:text="@string/setup_user_manage" />
+
+            <include layout="@drawable/line_split" />
+            
+             <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handleAbout"
+                android:text="@string/setup_about_us" />
+
+            <include layout="@drawable/line_split" />
+            
+            
+            <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handleNewProducts"
+                android:text="@string/setup_new_products" />
+
+            <include layout="@drawable/line_split" />
+            
+
+            <Button
+                style="@style/app_row_with_arrow"
+                android:onClick="handleCheckUpdate"
+                android:text="@string/setup_version_update" />
+
+           <!--   <include layout="@drawable/line_split" /> -->
+
+
+        </LinearLayout>
+        
+
+   
+    
+
+</LinearLayout>

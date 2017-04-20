@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+		<!-- 标题 -->
+		<TextView android:id="@+id/setup_title" android:text="@string/more_feedback_title"
+			style="@style/app_title_wrap" android:layout_centerInParent="true" />
+			
+		<!-- 提交按钮 -->
+		<Button android:text="@string/more_feed_back_submit_btn_label"
+			android:onClick="handleSubmit" style="@style/app_title_right" />
+
+	</RelativeLayout>
+
+	<include layout="@layout/title_line_bottom" />
+
+	<!-- 主体部分 -->
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:paddingTop="30dip"
+		android:paddingBottom="30dip">
+		<LinearLayout android:orientation="vertical"
+			android:paddingLeft="10dip" android:paddingRight="10dip"
+			android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+			<!-- 
+			<EditText android:id="@+id/feedback_email" style="@style/input_edit_text"
+			android:hint="email:" android:layout_marginTop="10dip"/>
+			
+			<EditText android:id="@+id/feedback_name" style="@style/input_edit_text"
+			android:hint="昵称:可以不填" android:layout_marginTop="10dip"/>
+			 -->
+		
+			<TextView android:id="@+id/feedback_word" android:layout_marginBottom="5dip"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="right" android:textColor="@color/black"
+				android:textSize="15dip">
+			</TextView>
+
+			<!-- 输入框 -->
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+				<EditText android:id="@+id/feedback_content"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:maxLines="10" android:minLines="7" android:gravity="top"
+					android:hint="感谢您对 周末干啥 的支持，请在此输入您的意见。便于和您交流。" />
+			</LinearLayout>
+
+
+			<!-- 提交按钮 -->
+			<LinearLayout android:orientation="horizontal"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="center" android:layout_marginTop="10dip"
+				android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+				<Button style="@style/app_btn_submit_fill"
+					android:text="@string/more_feed_back_submit_btn_label"
+					android:paddingLeft="20dip" android:paddingRight="20dip"
+					android:layout_marginLeft="20dip" android:layout_marginRight="20dip"
+					android:onClick="handleSubmit" />
+
+			</LinearLayout>
+
+
+		</LinearLayout>
+	</ScrollView>
+
+
+</LinearLayout>

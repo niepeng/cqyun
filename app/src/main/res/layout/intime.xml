@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_gray_light"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 标题 -->
+
+        <TextView
+            android:id="@+id/category_title"
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="实时数据" />
+
+        <!-- 
+        <Button
+            style="@style/app_title_right"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:background="@drawable/icon_refresh"
+            android:onClick="handleReflush" />
+         -->
+         <Button
+            style="@style/app_title_right"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:background="@drawable/set"
+            android:onClick="handleAdd" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+    
+     <include layout="@layout/loading_large" />
+     
+
+    <!-- 更新时间 -->
+
+    <LinearLayout
+        style="@style/fw"
+        android:background="@drawable/border_corner" >
+
+        <TextView
+            android:id="@+id/intime_gmtmodified_tv"
+            style="@style/ww"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="3dip"
+            android:paddingLeft="10dip"
+            android:textColor="@color/black"
+            android:textSize="16dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="32dip"
+        android:background="@color/blue_light_light"
+        android:orientation="horizontal" >
+
+        <!-- 类目 -->
+
+        <Button
+            android:id="@+id/intime_area_btn"
+            style="@style/down_list_btn"
+            android:drawableRight="@drawable/xiala"
+            android:onClick="handleChangeArea"
+            android:text="@string/intime_area_title_all" />
+
+        <Spinner
+            android:id="@+id/intime_area_spinner"
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:prompt="@string/intime_area_title"
+            android:src="@drawable/text_background" >
+        </Spinner>
+
+        <!--
+            <ImageView android:src="@color/down_split"
+				android:layout_width="0.5dip" android:layout_height="fill_parent" />
+
+			距离选择
+			<Button android:id="@+id/distanceListBtn" style="@style/down_list_btn"
+				android:onClick="handleChangeDistance" android:drawableRight="@drawable/xiala" />
+        -->
+
+    </LinearLayout>
+
+    <!-- <include layout="@layout/loading_large" /> -->
+
+
+	<GridView 
+	    android:id="@+id/intime_grid_view"  
+	    android:layout_width="fill_parent"   
+	    android:layout_height="fill_parent"  
+	    android:layout_marginTop="1dip"
+	    android:numColumns="3"  
+	    android:verticalSpacing="5dp"  
+	    android:horizontalSpacing="4dp"  
+	    android:stretchMode="columnWidth"  
+	    android:gravity="center"  
+	/> 
+	
+    <!--
+         <com.baibutao.app.waibao.yun.android.androidext.PullToRefreshListView
+        android:id="@+id/sift_list_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginTop="0dip"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/app_main"
+        android:divider="@drawable/list_split"
+        android:dividerHeight="0dp"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="true" />
+    -->
+
+</LinearLayout>

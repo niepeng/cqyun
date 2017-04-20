@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+		
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+
+		<!-- 标题 -->
+		<TextView android:id="@+id/more_about_title" android:text="@string/setup_new_products" style="@style/app_title_wrap"
+			android:layout_centerInParent="true" />
+		
+		
+<!-- 				 style="@style/app_title_right"
+ -->		
+
+		<ProgressBar
+		    android:id="@+id/setup_new_product_progress_bar"
+		    style="@android:style/Widget.ProgressBar.Inverse"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+		    android:paddingLeft="10dip"
+		    android:paddingRight="10dip"
+		    android:layout_marginRight="10dip"
+		    android:layout_marginTop="6dip"
+		    android:layout_marginBottom="6dip"
+		    
+		    >
+	</ProgressBar>
+
+	</RelativeLayout>
+
+	<include layout="@layout/title_line_bottom" />
+
+	<WebView
+        android:id="@+id/setup_new_product_webview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="center" />	
+
+</LinearLayout>

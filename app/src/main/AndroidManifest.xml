@@ -1,0 +1,105 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baibutao.app.waibao.yun.android"
+    android:versionCode="4"
+    android:versionName="1.4" >
+    
+    	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	   	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+		<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+		<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+		<uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+		<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission> 
+	 	<!-- <uses-permission android:name="android.permission.INSTALL_PACKAGES"></uses-permission> -->
+	 	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+	 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	 	<uses-permission android:name="android.permission.VIBRATE" />
+	 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	 	
+	 	<supports-screens android:largeScreens="true"
+			android:normalScreens="true" android:smallScreens="true"
+			android:resizeable="true" android:anyDensity="true"/>
+	 	
+    <application
+        android:allowBackup="true"
+        android:name=".androidext.EewebApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
+        
+       
+        <activity android:name=".activites.WelcomeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activites.NavigationActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.InTimeActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.AlarmActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.SetupActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        
+        
+        
+       <activity android:name=".activites.device.DeviceReadAddActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceAddBySeriActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+
+       <activity android:name=".activites.device.DeviceDetailActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceHistoryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceHistoryDataActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceHistoryAlarmActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceHistoryAlarmDataActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceSetupActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceSetupUpdateNameActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceSetupUpdateAreaActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceSetupUpdateDistanceTimeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceSetupUpdateExtendActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize"></activity>
+        
+                
+        
+        <activity android:name=".activites.LoginActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.UpdateClientActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.MoreAboutActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.SetupUpdateDataTimeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.SetupNewProductActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.UserManageActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.UserManageUpdatePswActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.UserManageBindMailActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+
+
+        <activity
+            android:name=".activites.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"></activity>
+
+       <!--  <activity android:name=".activites.ItemDetailActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+         -->
+         
+         
+         <receiver android:name="com.baibutao.app.waibao.yun.android.receives.ServiceSyncReceiver" >
+            <intent-filter>
+                <action android:name="com.baibutao.app.waibao.yun.android.receiver.ServiceSyncReceiver" />
+            </intent-filter>
+        </receiver>
+        
+         
+       <!--    <receiver android:name=".receives.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver> -->
+        
+          <service
+            android:name=".service.MessageService"
+            android:enabled="true" />
+          
+			    
+    </application>
+
+</manifest>

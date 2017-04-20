@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+		
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+
+		<!-- 标题 -->
+		<TextView  style="@style/app_title_wrap" android:text="@string/devcie_detail_history_alarm_select"
+			android:layout_centerInParent="true" />
+
+	</RelativeLayout>
+	
+
+	<include layout="@layout/title_line_bottom" />
+
+	
+	<!-- 主体部分 -->
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		
+		<LinearLayout style="@style/app_corner_wrap" android:layout_gravity="center" android:background="@null"
+			android:layout_marginLeft="10dip" android:layout_marginRight="10dip">
+		    
+		    <!--  开始时间  -->
+		    <RelativeLayout 
+		        android:layout_width="fill_parent" 
+		        android:layout_height="wrap_content"
+		        android:onClick="handleSelectStart"
+		        android:paddingTop="10dp"
+		        android:paddingBottom="10dp"
+		        android:orientation="horizontal" >
+		         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true"  android:textColor="@color/black"  android:text="开始时间" />
+		         <TextView android:id="@+id/device_history_alarm_start_time" android:layout_width="wrap_content" android:layout_alignParentRight="true"  android:textColor="@color/black"  android:layout_height="wrap_content" android:text="2017-03-16 11:19" />
+		    </RelativeLayout>
+		    
+		    
+		    <include layout="@drawable/line_split" />
+		    
+		      <!--  结束时间  -->
+		    <RelativeLayout 
+		        android:layout_width="fill_parent" 
+		        android:layout_height="wrap_content"
+		        android:onClick="handleSelectEnd"
+		        android:paddingTop="10dp"
+		        android:paddingBottom="10dp"
+		        android:orientation="horizontal" >
+		         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true"  android:textColor="@color/black"  android:text="结束时间" />
+		         <TextView android:id="@+id/device_history_alarm_end_time" android:layout_width="wrap_content" android:layout_alignParentRight="true"  android:textColor="@color/black"  android:layout_height="wrap_content" android:text="2017-03-17 11:19" />
+		    </RelativeLayout>
+		    
+		    <include layout="@drawable/line_split" />
+		    
+
+		<TextView  android:layout_width="fill_parent"  android:layout_height="wrap_content" android:paddingBottom="10dip" android:layout_marginTop="20dip"
+		        android:textSize="15dip" android:text="@string/devcie_detail_history_alarm_select_tip" 
+		         />
+			
+
+			<!-- 提交按钮 -->
+			<LinearLayout android:orientation="horizontal"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="center" android:layout_marginTop="10dip"
+				android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+				<Button
+				    style="@style/app_btn_submit_fill"
+				    android:layout_marginLeft="20dip"
+				    android:layout_marginRight="20dip"
+				    android:onClick="handleSubmit"
+				    android:paddingLeft="20dip"
+				    android:paddingRight="20dip"
+				    android:text="@string/app_btn_label_select" />
+
+			</LinearLayout>
+			
+
+		</LinearLayout>
+	</ScrollView>
+
+</LinearLayout>

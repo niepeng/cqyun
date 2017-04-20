@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="修改上传间隔" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+    
+    <EditText
+        android:id="@+id/device_setup_distance_time_et"
+        style="@style/login_username_style"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="5dip" />
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:paddingBottom="10dip"
+        android:text="@string/devcie_setup_update_distance_time_tip"
+        android:textSize="15dip" />
+    
+	<!-- 提交按钮 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            style="@style/app_btn_submit_fill"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:onClick="handleSubmit"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:text="@string/app_btn_label_ok" />
+    </LinearLayout>
+</LinearLayout>

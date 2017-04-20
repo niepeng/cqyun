@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="@string/devcie_detail_arg_setup" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/grays"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+
+        <!-- 标题 -->
+
+        <TextView
+            android:id="@+id/device_setup_sn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dip"
+            android:textColor="@color/black"
+            android:textSize="16dip" />
+        <!--
+     <TextView
+       android:id="@+id/alarm_list_view_item_main_snaddr_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/black"
+       android:textSize="16dip" />
+        -->
+
+    </LinearLayout>
+    
+    <!-- 设备名称配置行 -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleSetupDevName"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="设备名称"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/devcie_setup_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_deep"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+    
+    <include layout="@drawable/line_split" />
+
+    
+     <!-- 区域修改配置行 -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleSetupArea"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="区域修改"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/device_setup_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_deep"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+    <include layout="@drawable/line_split" />
+
+    
+     <!-- 阈值配置行 -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleSetupDevGap"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="阈值设置"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+
+    </RelativeLayout>
+    <include layout="@drawable/line_split" />
+
+    
+     <!-- 上传间隔配置行 -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleSetupDistanceTime"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="上传间隔"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/device_setup_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_deep"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+    
+    <include layout="@drawable/line_split" />
+    
+    <!-- 提交按钮 -->
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:gravity="center" android:layout_marginTop="50dip"
+		android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+		<Button
+		    style="@style/app_btn_submit_fill"
+		    android:background="@color/red"
+		    android:layout_marginLeft="20dip"
+		    android:layout_marginRight="20dip"
+		    android:onClick="handleSubmit"
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:paddingLeft="20dip"
+		    android:paddingRight="20dip"
+		    android:text="@string/devcie_detail_btn_label_del" />
+
+	</LinearLayout>
+			
+     
+    
+    
+</LinearLayout>

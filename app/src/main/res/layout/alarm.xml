@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/white">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+	    
+	    <!-- 
+	     <Button
+            android:id="@+id/shopping_list_edit"
+            style="@style/app_title_left"
+            android:onClick="handleDeleteAll"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:text="清空报警" />
+	     -->
+	     
+		
+		<!-- 标题 -->
+		<TextView  android:text="查看报警" style="@style/app_title_wrap"
+			android:layout_centerInParent="true" />
+		
+		<Button
+            style="@style/app_title_right"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:background="@drawable/icon_refresh"
+            android:onClick="handleReflush" />
+		
+		
+	</RelativeLayout>
+	
+
+    <LinearLayout
+        style="@style/fw"
+         android:background="@color/gray" >
+
+        <TextView
+            android:id="@+id/intime_gmtmodified_tv"
+            style="@style/ww"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="3dip"
+            android:paddingLeft="10dip"
+            android:textColor="@color/black"
+            android:text="只能查询到最近24小时内的报警信息"
+            android:textSize="16dip" />
+    </LinearLayout>
+    
+
+	<!-- <include layout="@layout/title_line_bottom" /> -->
+	
+	 <include layout="@layout/loading_large" /> 
+	 
+	
+	<ListView
+        android:id="@+id/alarm_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginTop="0dip"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/app_main"
+        android:divider="@drawable/list_split2"
+        android:dividerHeight="0.2dp"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="true" />
+		<!-- android:divider="@drawable/list_split" -->
+	
+</LinearLayout>

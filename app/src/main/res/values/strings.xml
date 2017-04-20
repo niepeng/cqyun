@@ -1,0 +1,168 @@
+<resources>
+
+    <string name="app_name">成前智联</string>
+    <string name="app_device_offline">设备离线</string>
+    <string name="app_no_data">当前条件暂无数据</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_release_label">松开可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label">加载中...</string>
+    <string name="pull_to_refresh_tap_label">...</string>
+
+    <string name="data_opt_fail">操作失败，请稍后再试</string>
+    <string name="app_exit_confirm">确认退出成前智联？</string>
+
+    <string name="devcie_detail_history">历史数据</string>
+    <string name="devcie_detail_history_alarm">历史报警</string>
+    <string name="devcie_detail_arg_setup">参数设置</string>
+
+    <string name="devcie_detail_history_select">历史数据查询</string>
+    <string name="devcie_detail_history_select_tip">提示：设备历史数据最多只能查询到之前7天的数据。</string>
+    <string name="devcie_detail_history_select_distance">查询时间间隔：</string>
+
+    <string name="devcie_detail_history_alarm_select">报警查询</string>
+    <string name="devcie_detail_history_alarm_select_tip">提示：设备报警历史查询最多只能查询到之前7天的数据。</string>
+    <string name="devcie_detail_btn_label_del">删除设备</string>
+
+    <string name="devcie_setup_update_distance_time_tip">提示：单位秒(s)。设备上传间隔最大不超过5分钟，即300秒</string>
+    <string name="devcie_setup_update_extend_tip">提示：温度设置范围(-100℃ ~ +100℃)，湿度设置范围(0~100%)，回差暂不支持修改。</string>
+
+
+    <string name="app_opt_success">操作成功</string>
+    <string name="app_btn_label_ok">确定</string>
+    <string name="app_btn_label_select">查询</string>
+    <string name="app_btn_label_canel">取消</string>
+    <string name="app_back_label"> 返回</string>
+    <string name="app_label_add">添加</string>
+    <string name="app_btn_label_update">修改</string>
+    <string name="app_btn_label_del">删除</string>
+    <string name="app_label_notify">提醒</string>
+    <string name="app_label_opt">操作</string>
+    <string name="app_msg_leave">当前数据没有保存，确定要离开？</string>
+    <string name="app_label_conect_network_fail">连接网络失败。</string>
+    <string name="app_unit_km">公里以内</string>
+    <string name="app_unit_metre">米以内</string>
+    <string name="app_unit_yuan">元</string>
+    <string name="app_label_exit">再按一次退出应用程序</string>
+    <string name="app_label_back">后退</string>
+    <string name="app_read_data">"数据读取中，请稍候..."</string>
+    <string name="app_up_data">数据处理中，请稍候...</string>
+    <string name="update_client_sd_no_space_msg">对不起，无法下载到你的SD卡，请确保SD卡有用的空间。</string>
+    <string name="app_pull_to_refresh_tap_label">刷新</string>
+    <string name="app_pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="app_pull_to_refresh_release_label">松开可以刷新</string>
+    <string name="app_pull_to_refresh_refreshing_label">加载中...</string>
+
+    <string name="login_username_empty">用户名不能为空</string>
+    <string name="login_username_length_limit">用户名长度不能操作20个字符</string>
+    <string name="login_psw_empty">密码不能为空</string>
+    <string name="login_psw_length_limit">密码长度不能操作20个字符</string>
+    <string name="login_username_psw_wrong">用户名或密码错误</string>
+
+    <string name="intime_area_title">选择区域</string>
+    <string name="intime_area_title_all">全部区域</string>
+
+    <string name="setup_title">设置</string>
+    <string name="setup_about_us">关于我们</string>
+    <string name="setup_user_manage">账户管理</string>
+    <string name="setup_user_manage_bind_mail">绑定邮箱</string>
+    <string name="setup_user_manage_update_psw">修改密码</string>
+    <string name="setup_user_manage_exit">退出</string>
+
+    <string name="usermanage_update_psw_note">提示：修改密码功能必须保证账户已经绑定邮箱。</string>
+    <string name="usermanage_update_psw_old">原密码</string>
+    <string name="usermanage_update_psw_new1">新密码</string>
+    <string name="usermanage_update_psw_new2">确认密码</string>
+
+
+    <string name="usermanage_update_psw_old_empty">原密码不能为空</string>
+    <string name="usermanage_update_psw_new1_empty">新密码不能为空</string>
+    <string name="usermanage_update_psw_new2_empty">确认密码不能为空</string>
+    <string name="usermanage_update_psw_new_not_same">新密码和确认密码不相同</string>
+    <string name="usermanage_update_psw_old_wrong">原密码错误</string>
+    <string name="usermanage_update_psw_new_length_limit">新密码和确认密码至少为6位</string>
+    <string name="usermanage_update_psw_bind_mail_first">修改失败，请先绑定邮箱才能修改密码，稍后再试</string>
+    <string name="usermanage_update_psw_success">修改成功</string>
+
+    <string name="usermanage_bind_mail_note">提示：点击确定后，请按提示前往邮箱点击激活链接，即可成功绑定邮箱。</string>
+    <string name="usermanage_bind_mail_empty">邮箱不能为空</string>
+    <string name="usermanage_bind_mail_format_fail">邮箱格式不正确</string>
+    <string name="usermanage_bind_mail_same_oldmail">请勿绑定当前邮箱</string>
+    <string name="usermanage_bind_mail_fail">绑定邮箱失败，请重试</string>
+    <string name="usermanage_bind_mail_success">已发送一条激活链接到邮箱，请进入邮箱点击激活链接才能成功绑定</string>
+
+    <!--
+    <string name="usermanage_update_psw_old_not_empty">用户名长度不能操作20个字符</string>
+    <string name="login_psw_empty">密码不能为空</string>
+    <string name="login_psw_length_limit">密码长度不能操作20个字符</string>
+    <string name="login_username_psw_wrong">用户名或密码错误</string>
+     -->
+
+
+    <string name="setup_update_time_setup">更新周期设置</string>
+    <string name="setup_new_products">更多新产品介绍</string>
+    <string name="setup_share">分享</string>
+    <string name="setup_feedback">给我留言</string>
+    <string name="setup_version_update">版本更新</string>
+
+
+    <string name="more_feedback_title">意见反馈</string>
+    <string name="more_feedback_word_tv_label">您还可以输入%s个字</string>
+    <string name="more_feed_back_submit_btn_label">提交</string>
+    <string name="more_feed_back_content_empty">反馈内容不能为空</string>
+    <string name="more_feed_back_content_range">反馈内容不能超过%s个字</string>
+
+
+    <string-array name="intime_labels">
+        <item>1分钟</item>
+        <item>2分钟</item>
+        <item>3分钟</item>
+        <item>5分钟</item>
+        <item>10分钟</item>
+        <item>半小时</item>
+        <item>1小时</item>
+        <item>2小时</item>
+    </string-array>
+
+    <string-array name="alarm_labels">
+        <item>1分钟</item>
+        <item>5分钟</item>
+        <item>10分钟</item>
+        <item>15分钟</item>
+        <item>20分钟</item>
+        <item>25分钟</item>
+        <item>30分钟</item>
+        <item>60分钟</item>
+    </string-array>
+
+
+    <string name="navigation_drawer_open">打开导航菜单</string>
+    <string name="navigation_drawer_close">关闭导航菜单</string>
+
+    <string name="menu_group_all_equipment">所有设备</string>
+    <string name="menu_item_all_equipment">所有设备</string>
+    <string name="menu_group_custom_area">自定义区域</string>
+    <string name="menu_item_num_1_warehouse">1号仓库</string>
+    <string name="menu_item_num_2_warehouse">2号仓库</string>
+    <string name="menu_item_num_1_equipment">1号机房</string>
+    <string name="menu_item_num_2_equipment">2号机房</string>
+    <string name="menu_item_num_1_cold_storage">1号冷库</string>
+    <string name="menu_item_area_manage">区域管理</string>
+
+    <string name="list_mode">列表模式</string>
+    <string name="grid_mode">宫格模式</string>
+
+    <string name="action_settings">设置</string>
+    <string name="action_add">添加</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="prefs_file_name">cqkj_prefs</string>
+    <string name="prefs_key_intime_show_type">intime_show_type</string>
+</resources>

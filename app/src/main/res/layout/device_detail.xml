@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_gray_light"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            android:id="@+id/device_detail_title"
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+
+    <!-- 主体部分 -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/device_color_from_to" >
+
+        <LinearLayout
+            style="@style/app_corner_wrap"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:background="@null" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <!-- android:layout_centerInParent="true" -->
+                
+
+				<!-- 温度部分 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/device_detail_tmp_tv"
+                        style="@style/app_title_wrap"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        style="@style/app_title_wrap"
+                        android:layout_gravity="center_horizontal"
+                        android:text="温度(˚C)"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+                
+                <View
+                     android:layout_width="1dp"
+                     android:layout_height="fill_parent"
+                     android:background="@color/white" />
+                
+                
+				<!-- 湿度部分  -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/device_detail_humi_tv"
+                        style="@style/app_title_wrap"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        style="@style/app_title_wrap"
+                        android:layout_gravity="center_horizontal"
+                        android:text="湿度(%RH)"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+                
+            </LinearLayout>
+            
+            
+              <TextView
+             	   android:id="@+id/device_detail_status_tv"
+                   style="@style/app_title_wrap"
+                   android:layout_marginTop="50dp"
+                   android:layout_gravity="center_horizontal"
+                   android:text="湿度正常，湿度正常"
+                   android:textSize="15dp" />
+            
+            <TextView
+         		android:id="@+id/device_detail_time_tv"
+                style="@style/app_title_wrap"
+                android:layout_marginTop="10dp"
+               android:layout_gravity="center_horizontal"
+               android:text="最后上传时间：17-03-03 16:13"
+               android:textSize="15dp" />
+            
+            
+            <!--  3个按钮的组件  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="100dp"
+                android:orientation="horizontal" >
+                
+                 
+                 
+                 <!-- 历史数据 -->
+                 <LinearLayout
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:orientation="vertical" >
+	                    
+	                    <Button
+	                    android:layout_width="40dp"
+	                	android:layout_height="40dp"
+	                	android:layout_gravity="center_horizontal"
+	                	android:onClick="handleHistoryData"
+	                	android:background="@drawable/history" />
+	                      
+	                    <TextView
+			                style="@style/app_title_wrap"
+			               android:text="@string/devcie_detail_history"
+			               android:layout_gravity="center_horizontal"
+			               android:textSize="10dp" />
+	                    
+	                 </LinearLayout>
+	                 
+                 
+                  <!-- 历史报警 -->
+                 <LinearLayout
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:orientation="vertical" >
+	                    
+	                    <Button
+	                    android:layout_width="40dp"
+	                	android:layout_height="40dp"
+	                	android:layout_gravity="center_horizontal"
+	                	android:onClick="handleHistoryAlarm"
+	                	android:background="@drawable/history_err" />
+	                      
+	                    <TextView
+			                style="@style/app_title_wrap"
+			               android:text="@string/devcie_detail_history_alarm"
+			               android:layout_gravity="center_horizontal"
+			               android:textSize="10dp" />
+	                    
+	                 </LinearLayout>
+	                 
+                 
+                 
+                 
+                  <!-- 参数设置 -->
+                 <LinearLayout
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:orientation="vertical" >
+	                    
+	                    <Button
+	                    android:layout_width="40dp"
+	                	android:layout_height="40dp"
+	                	android:layout_gravity="center_horizontal"
+	                	android:onClick="handleSetupInfo"
+	                	android:background="@drawable/set2" />
+	                      
+	                    <TextView
+			                style="@style/app_title_wrap"
+			               android:text="@string/devcie_detail_arg_setup"
+			               android:layout_gravity="center_horizontal"
+			               android:textSize="10dp" />
+	                    
+	                 </LinearLayout>
+	                 
+                 
+                 
+                
+                
+                 
+           </LinearLayout>
+            
+            
+            
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+		
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+
+		<!-- 标题 -->
+		<TextView android:id="@+id/more_about_title" android:text="关于我们" style="@style/app_title_wrap"
+			android:layout_centerInParent="true" />
+
+	</RelativeLayout>
+
+	<include layout="@layout/title_line_bottom" />
+
+	<!-- 主体部分 -->
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:paddingTop="20dip"
+		android:paddingBottom="30dip">
+		<LinearLayout style="@style/app_corner_wrap" android:background="@null" android:layout_gravity="center"
+			android:layout_marginLeft="10dip" android:layout_marginRight="10dip">
+
+			<LinearLayout style="@style/app_corner_wrap">
+				<TextView android:id="@+id/more_other_about_version" style="@style/app_about_content" />
+			</LinearLayout>
+			
+			<LinearLayout style="@style/app_corner_wrap" android:layout_marginTop="20dip">
+				<TextView style="@style/app_about_content" android:text="版权: 成前科技" />
+				<include layout="@drawable/line_split" />
+				<!-- <TextView style="@style/app_about_content" android:text="网址: www.91huiyi.com" /> -->
+				<include layout="@drawable/line_split" />
+				<TextView style="@style/app_about_content" android:text="电话: 0571-88192051" />
+				<!-- <include layout="@drawable/line_split" />
+				<TextView style="@style/app_about_content" android:text="传真: 0571-87015503-813" /> -->
+				<include layout="@drawable/line_split" />
+				<!-- <TextView style="@style/app_about_content" android:text="Email: service@kajiefang.com" /> -->
+			</LinearLayout>
+			
+			<!-- <LinearLayout style="@style/app_corner_wrap" android:layout_marginTop="20dip">
+				<TextView style="@style/app_about_content" android:text="微博: http://weibo.com/kajiefang" />
+			</LinearLayout> -->
+			
+
+		</LinearLayout>
+	</ScrollView>
+
+
+</LinearLayout>

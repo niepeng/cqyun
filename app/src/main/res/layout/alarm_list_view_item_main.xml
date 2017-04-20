@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/grays"
+    android:layout_marginTop="1dip"
+    android:layout_marginBottom="1dip"
+    android:paddingBottom="5dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp">
+    
+    <!-- 标题 -->
+
+    <TextView
+        android:id="@+id/alarm_list_view_item_main_name_tv"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="2dip"
+        android:textColor="@color/black"
+        android:textSize="16dip" />
+
+     <TextView
+       android:id="@+id/alarm_list_view_item_main_snaddr_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/black"
+       android:textSize="16dip" />
+
+</LinearLayout>
