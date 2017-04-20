@@ -9,3 +9,4 @@ logs/
 *.class
 .DS_Store
 app/build/*
+build/*
