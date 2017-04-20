@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,11 +65,8 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 		lowHumiEt = (EditText) findViewById(R.id.device_update_extend_low_humi_et);
 		distanceHumiTv = (TextView) findViewById(R.id.device_update_extend_distance_humi_et);
 
-//		highTempEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-//		lowTempEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-//		highHumiEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-//		lowHumiEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-
+		setEditTextInhibitInput(highTempEt);
+		setEditTextInhibitInput(lowTempEt);
 
 		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 		remoteManager.setResponseParser(new StringResponseParser());
@@ -82,6 +81,35 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 		responseFuture = eewebApplication.asyInvoke(new ThreadHelper(progressDialog, request, remoteManager));
 
 	}
+
+	/**
+	 * 只能输入一个小数点，负号只能输入到最前面
+	 *
+	 * @param editText
+	 */
+	public static void setEditTextInhibitInput(final EditText editText){
+		InputFilter filter=new InputFilter() {
+			@Override
+			public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+				if (".".equals(source)) {
+					if (editText.getText().toString().indexOf(".") >=0) {
+						return "";
+					}
+					return source;
+				}
+				if ("-".equals(source)) {
+					if (("".equals(editText.getText().toString()) || editText.getText().toString().indexOf("-") < 0) && start == 0) {
+						return source;
+					}
+					return "";
+				}
+
+				return source;
+			}
+		};
+		editText.setFilters(new InputFilter[]{filter});
+	}
+
 
 	public void handleBack(View v) {
 		this.finish();
@@ -136,7 +164,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 			return;
 		}
 
-		if (highTempDouble < lowHumiDouble) {
+		if (highHumiDouble < lowHumiDouble) {
 			toastLong("最高湿度不能小于最低湿度");
 			return;
 		}
