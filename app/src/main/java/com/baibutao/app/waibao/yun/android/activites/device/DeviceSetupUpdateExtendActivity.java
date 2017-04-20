@@ -63,6 +63,12 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 		lowHumiEt = (EditText) findViewById(R.id.device_update_extend_low_humi_et);
 		distanceHumiTv = (TextView) findViewById(R.id.device_update_extend_distance_humi_et);
 
+//		highTempEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+//		lowTempEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+//		highHumiEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+//		lowHumiEt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+
 		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 		remoteManager.setResponseParser(new StringResponseParser());
 		Request request = remoteManager.createPostRequest(Config.Values.URL);
@@ -115,6 +121,11 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 			return;
 		}
 
+		if(highTempDouble < lowTempDouble) {
+			toastLong("最高温度不能小于最低温度");
+			return;
+		}
+
 		if(highHumiDouble > 99.99) {
 			toastLong("最高湿度为99.99%");
 			return;
@@ -122,6 +133,11 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 
 		if(lowHumiDouble < 0) {
 			toastLong("最低湿度为0%");
+			return;
+		}
+
+		if (highTempDouble < lowHumiDouble) {
+			toastLong("最高湿度不能小于最低湿度");
 			return;
 		}
 

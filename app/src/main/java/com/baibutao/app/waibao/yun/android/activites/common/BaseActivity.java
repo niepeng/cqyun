@@ -11,6 +11,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -92,6 +94,19 @@ public class BaseActivity extends ActivityGroup {
         super.onPause();
 //		StatService.onPause(this);
     }
+
+    protected boolean hasNetWork() {
+        ConnectivityManager nw = (ConnectivityManager) eewebApplication.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (nw == null) {
+            return false;
+        }
+        NetworkInfo netinfo = nw.getActiveNetworkInfo();
+        if (netinfo == null) {
+            return false;
+        }
+        return netinfo.isAvailable();
+    }
+
 
     protected Drawable getDrawableByType(AlarmBean alarmBean) {
         Resources resources = this.getResources();

@@ -54,6 +54,12 @@ public class LoginActivity extends BaseActivity {
 	public void handleLogin(View v) {
 //		Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
 //		startActivity(intent);
+
+		if (!hasNetWork()) {
+			toastLong("网络异常，请检查网络");
+			return;
+		}
+
 		String username = usernameText.getText().toString();
 		String psw = pswText.getText().toString();
 

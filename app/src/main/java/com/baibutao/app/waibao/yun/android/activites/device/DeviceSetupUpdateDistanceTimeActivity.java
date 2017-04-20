@@ -67,6 +67,10 @@ public class DeviceSetupUpdateDistanceTimeActivity extends BaseActivity {
 			alert("上传间隔必须是大于0的整数");
 			return;
 		}
+
+		if (intValue < 10) {
+			alert("上传间隔最小10秒");
+		}
 		
 		if(intValue > 300) {
 			alert("上传间隔最大300秒");

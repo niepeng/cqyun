@@ -60,6 +60,11 @@ public class DeviceSetupUpdateNameActivity extends BaseActivity {
 			alert("当前设备名字不能为空");
 			return;
 		}
+
+		if(newName.length() > 12) {
+			alert("设备名称最多12个字");
+			return;
+		}
 		
 		if(deviceBean.getDevName().equals(newName)) {
 			this.finish();

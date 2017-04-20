@@ -1,7 +1,10 @@
 package com.baibutao.app.waibao.yun.android.fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -83,6 +86,7 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
             mShowType = getArguments().getInt(ARG_SHOW_TYPE);
             mArea = getArguments().getString(ARG_AREA, null);
         }
+
     }
 
     @Override
@@ -147,11 +151,28 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
         return new DevicesLoader(getActivity(), mArea);
     }
 
+    protected boolean hasNetWork() {
+        ConnectivityManager nw = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (nw == null) {
+            return false;
+        }
+        NetworkInfo netinfo = nw.getActiveNetworkInfo();
+        if (netinfo == null) {
+            return false;
+        }
+        return netinfo.isAvailable();
+    }
+
     @Override
     public void onLoadFinished(Loader<List<DeviceBean>> loader, List<DeviceBean> data) {
         mAdapter.setData(data);
+
         if (data == null || data.size() == 0) {
-            Toast.makeText(getActivity(), "暂无设备数据", Toast.LENGTH_LONG).show();
+            if (!hasNetWork()) {
+                Toast.makeText(getActivity(), "网络异常，请检查网络", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getActivity(), "暂无设备数据", Toast.LENGTH_LONG).show();
+            }
         }
         if (mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
