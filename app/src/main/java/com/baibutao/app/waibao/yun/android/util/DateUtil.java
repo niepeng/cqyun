@@ -150,4 +150,21 @@ public class DateUtil {
         return new Date(date.getTime() + flag);
     }
 
+    /**
+     *
+     * @Title: changeSecond
+     * @param date
+     * @param changeValue
+     * @return Date
+     * @throws
+     */
+    public static Date changeSecond(Date date, int changeValue) {
+        if (date == null || changeValue == 0) {
+            return date;
+        }
+        long flag = changeValue * 1000;
+        return new Date(date.getTime() + flag);
+    }
+
+
 }

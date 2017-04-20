@@ -46,18 +46,18 @@ public class NotificationTask {
 //			request.addParameter("userId", eewebApplication.getUserDO().getId());
 //			request.addParameter("psw", MD5.getMD5(eewebApplication.getUserDO().getPsw().getBytes()));
 //
-            final boolean requestAlarmFlag = eewebApplication.getLastRequestAlarmTime() != null;
-//			if (requestAlarmFlag) {
-//				request.addParameter("time", DateUtil.format(eewebApplication.getLastRequestAlarmTime(), DateUtil.DATE_FMT));
-//			}
+            if(eewebApplication.getLastAlarmTime() == null) {
+                eewebApplication.setLastAlarmTime(new Date());
+            }
 
+            final boolean requestAlarmFlag = true;
             final RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 //			remoteManager.setResponseParser(new StringResponseParser());
             final Request request = remoteManager.createQueryRequest(Config.Values.YUN_ALARM_URL);
             request.addParameter("user", eewebApplication.getUserDO().getUsername());
 //            request.addParameter("requestTime", "2017-04-19 14:13:00");
             if (requestAlarmFlag) {
-				Date requestDate = DateUtil.changeMin(eewebApplication.getLastRequestAlarmTime(), -2);
+                Date requestDate = DateUtil.changeSecond(eewebApplication.getLastAlarmTime(), 1);
 				request.addParameter("requestTime", DateUtil.format(requestDate, DateUtil.DATE_FMT));
             }
 
@@ -124,12 +124,14 @@ public class NotificationTask {
                 } catch (Exception e) {
                 }
             }
+
         }
 
-        eewebApplication.setLastRequestAlarmTime(DateUtil.parseNoException(requsetTime));
         if (CollectionUtil.isEmpty(beanList)) {
             return;
         }
+        eewebApplication.setLastAlarmTime(DateUtil.parseNoException(requsetTime));
+
         if (requestAlarmFlag) {
             notifyMsgNew(beanList);
         }

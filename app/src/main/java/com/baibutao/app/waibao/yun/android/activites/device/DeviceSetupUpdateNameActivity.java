@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.EditText;
 
@@ -47,10 +49,28 @@ public class DeviceSetupUpdateNameActivity extends BaseActivity {
 		deviceBean = (DeviceBean) bundle.get("deviceBean");
 		editText = (EditText) findViewById(R.id.device_setup_name_et);
 		editText.setText(deviceBean.getDevName());
+		setEditTextInhibitInputSpace(editText);
 	}
 
 	public void handleBack(View v) {
 		this.finish();
+	}
+
+	/**
+	 * 禁止EditText输入空格
+	 * @param editText
+	 */
+	public static void setEditTextInhibitInputSpace(EditText editText){
+		InputFilter filter=new InputFilter() {
+			@Override
+			public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+				if (" ".equals(source)) {
+					return "";
+				}
+				return source;
+			}
+		};
+		editText.setFilters(new InputFilter[]{filter});
 	}
 
 	

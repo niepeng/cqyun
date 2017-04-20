@@ -90,7 +90,13 @@ public class DeviceDetailActivity extends BaseActivity {
             tempTv.setText("--.--");
             humiTv.setText("--.--");
             statusTv.setTextColor(getResources().getColor(R.color.black));
-            statusTv.setText(getResources().getString(R.string.app_device_offline));
+//            deviceBean.getDataBean().isNotConnection()
+            if(deviceBean.getDataBean().isOffline()) {
+                statusTv.setText(getResources().getString(R.string.app_device_offline));
+            } else {
+                statusTv.setText("传感器未连接");
+            }
+//            statusTv.setText(getResources().getString(R.string.app_device_offline));
             timeTv.setText("");
         }
     }

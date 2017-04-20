@@ -158,7 +158,7 @@ public class AlarmActivityBak extends BaseActivity implements ThreadListener {
 			final List<AlarmMsgDO> currentList = result._1();
 			Date date = result._2();
 			if (date != null) {
-				eewebApplication.setLastRequestAlarmTime(date);
+//				eewebApplication.setLastRequestAlarmTime(date);
 			}
 			int currentSize = currentList.size();
 			if (currentSize == 0) {

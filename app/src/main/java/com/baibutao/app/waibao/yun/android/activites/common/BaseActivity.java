@@ -133,7 +133,7 @@ public class BaseActivity extends ActivityGroup {
             return resources.getDrawable(R.drawable.off2);
         }
 
-        if ("7".equals(type)) {
+        if ("7".equals(type) || "8".equals(type)) {
             if ("0".equals(alarmBean.getBeginEndMark())) {
                 return resources.getDrawable(R.drawable.nosensor);
             }

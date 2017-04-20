@@ -55,7 +55,9 @@ public class EewebApplication extends Application {
 	
 	private double latitude;
 	
-	private Date lastRequestAlarmTime;
+//	private Date lastRequestAlarmTime;
+
+	private Date lastAlarmTime;
 	
 	private boolean reflushAlarmActivity;
 	
@@ -186,12 +188,21 @@ public class EewebApplication extends Application {
 		this.latitude = latitude;
 	}
 
-	public Date getLastRequestAlarmTime() {
-		return lastRequestAlarmTime;
+//	public Date getLastRequestAlarmTime() {
+//		return lastRequestAlarmTime;
+//	}
+//
+//	public void setLastRequestAlarmTime(Date lastRequestAlarmTime) {
+//		this.lastRequestAlarmTime = lastRequestAlarmTime;
+//	}
+
+
+	public Date getLastAlarmTime() {
+		return lastAlarmTime;
 	}
 
-	public void setLastRequestAlarmTime(Date lastRequestAlarmTime) {
-		this.lastRequestAlarmTime = lastRequestAlarmTime;
+	public void setLastAlarmTime(Date lastAlarmTime) {
+		this.lastAlarmTime = lastAlarmTime;
 	}
 
 	public boolean isReflushAlarmActivity() {
