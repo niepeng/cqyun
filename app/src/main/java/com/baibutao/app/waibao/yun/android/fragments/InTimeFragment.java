@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 
 import com.baibutao.app.waibao.yun.android.R;
 import com.baibutao.app.waibao.yun.android.activites.common.DevicesLoader;
@@ -53,6 +54,7 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
     private RecyclerView.LayoutManager mLayoutManager;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private ProgressDialog mProgress;
 
     private Timer mTimer;
 
@@ -98,6 +100,11 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        mProgress = new ProgressDialog(getActivity());
+        mProgress.setMessage("数据加载中...");
+        mProgress.show();
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_in_time, container, false);
 
@@ -176,6 +183,11 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
         }
         if (mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
+        }
+
+        // To dismiss the dialog
+        if (mProgress != null && mProgress.isShowing()) {
+            mProgress.dismiss();
         }
     }
 

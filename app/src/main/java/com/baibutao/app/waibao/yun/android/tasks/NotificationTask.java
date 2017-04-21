@@ -56,7 +56,7 @@ public class NotificationTask {
 //			remoteManager.setResponseParser(new StringResponseParser());
             final Request request = remoteManager.createQueryRequest(Config.Values.YUN_ALARM_URL);
             request.addParameter("user", eewebApplication.getUserDO().getUsername());
-//            request.addParameter("requestTime", "2017-04-19 14:13:00");
+//            request.addParameter("requestTime", "2017-04-21 15:55:00");
             if (requestAlarmFlag) {
                 Date requestDate = DateUtil.changeSecond(eewebApplication.getLastAlarmTime(), 1);
 				request.addParameter("requestTime", DateUtil.format(requestDate, DateUtil.DATE_FMT));

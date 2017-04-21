@@ -133,7 +133,7 @@ public class LoginActivity extends BaseActivity {
 				UserDO userDO = new UserDO();
 				userDO.setUsername(usernameText.getText().toString());
 				userDO.setPsw(pswText.getText().toString());
-				toastLong("登录成功,加载数据中...");
+				toastShort("登录成功");
 				eewebApplication.setUserDO(userDO);
 				
 //				UserInfoHolder.saveUser(LoginActivity.this, userDO);
@@ -141,6 +141,7 @@ public class LoginActivity extends BaseActivity {
 //				Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
+				LoginActivity.this.finish();
 
 			} catch (Exception e) {
 				LoginActivity.this.logError(e.getMessage(), e);

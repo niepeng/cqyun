@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity
         setAccountView();
 
         getSupportLoaderManager().initLoader(0, null, this);
+
+        setContentMain(mShowType, mSelectedArea);
+        onTabSelected(mSelectedTabPosition);
     }
 
     @Override
@@ -103,10 +106,10 @@ public class MainActivity extends AppCompatActivity
             int position = getIntent().getIntExtra(Constant.ARG_SELECTED_POSITION, -1);
             if (position > -1) {
                 mSelectedTabPosition = position;
+                setContentMain(mShowType, mSelectedArea);
+                onTabSelected(mSelectedTabPosition);
             }
         }
-        setContentMain(mShowType, mSelectedArea);
-        onTabSelected(mSelectedTabPosition);
     }
 
     private void setFirstItemNavigationView() {
