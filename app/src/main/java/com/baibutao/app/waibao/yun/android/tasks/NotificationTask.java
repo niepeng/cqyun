@@ -1,5 +1,6 @@
 package com.baibutao.app.waibao.yun.android.tasks;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -195,7 +196,9 @@ public class NotificationTask {
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(995, mBuilder.build());
+        Notification notification = mBuilder.build();
+        notification.defaults = Notification.DEFAULT_SOUND;
+        mNotificationManager.notify(eewebApplication.notifyIdIncrementAndGet(), notification);
     }
 
 

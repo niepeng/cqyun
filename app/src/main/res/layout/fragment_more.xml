@@ -51,12 +51,14 @@
             <include layout="@drawable/line_split" />
 
 
+           <!--
             <Button
                 android:id="@+id/more_product"
                 style="@style/app_row_with_arrow"
                 android:text="@string/setup_new_products" />
 
             <include layout="@drawable/line_split" />
+           -->
 
 
             <Button

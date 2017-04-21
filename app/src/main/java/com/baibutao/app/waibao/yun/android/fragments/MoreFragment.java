@@ -77,12 +77,12 @@ public class MoreFragment extends BaseFragment {
             }
         });
 
-        root.findViewById(R.id.more_product).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                handleNewProducts(v);
-            }
-        });
+//        root.findViewById(R.id.more_product).setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                handleNewProducts(v);
+//            }
+//        });
 
         root.findViewById(R.id.check_update).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -108,10 +108,10 @@ public class MoreFragment extends BaseFragment {
 
     }
 
-    public void handleNewProducts(View v) {
-        Intent intent = new Intent(getActivity(), SetupNewProductActivity.class);
-        startActivity(intent);
-    }
+//    public void handleNewProducts(View v) {
+//        Intent intent = new Intent(getActivity(), SetupNewProductActivity.class);
+//        startActivity(intent);
+//    }
 
     public void handleCheckUpdate(View v) {
 

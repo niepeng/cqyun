@@ -31,6 +31,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author niepeng
@@ -64,6 +65,8 @@ public class EewebApplication extends Application {
 	private UserDO userDO;
 
 	private List<DeviceDataBean> tmpList;
+
+	private AtomicInteger notifyId =  null;
 
 	@Override
 	public void onCreate() {
@@ -140,6 +143,19 @@ public class EewebApplication extends Application {
 			activities.clear();
 		}
 	}
+
+	public int notifyIdIncrementAndGet() {
+		if(notifyId == null) {
+			notifyId =  new AtomicInteger(randomInt(1, 1000000));
+		}
+		return notifyId.incrementAndGet();
+	}
+
+	public int randomInt(int start, int end) {
+		int value = (int) (Math.random() * (end - start)) + start;
+		return value;
+	}
+
 	
 
 	public void addActivity(Activity activity) {

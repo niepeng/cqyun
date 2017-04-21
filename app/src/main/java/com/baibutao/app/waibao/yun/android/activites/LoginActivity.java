@@ -49,6 +49,11 @@ public class LoginActivity extends BaseActivity {
 			usernameText.setText(userDO.getUsername());
 			pswText.setText(userDO.getPsw());
 		}
+
+		if(userDO!=null && !StringUtil.isBlank(userDO.getPsw())) {
+			handleLogin(null);
+		}
+
 	}
 	
 	public void handleLogin(View v) {

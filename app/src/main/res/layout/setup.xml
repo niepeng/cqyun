@@ -45,12 +45,14 @@
             <include layout="@drawable/line_split" />
             
             
+            <!--
             <Button
                 style="@style/app_row_with_arrow"
                 android:onClick="handleNewProducts"
                 android:text="@string/setup_new_products" />
 
             <include layout="@drawable/line_split" />
+            -->
             
 
             <Button

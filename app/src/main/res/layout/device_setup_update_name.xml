@@ -28,6 +28,8 @@
     <EditText
         android:id="@+id/device_setup_name_et"
         style="@style/login_username_style"
+        android:maxLines="1"
+        android:singleLine="true"
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip"
         android:layout_marginTop="10dip"

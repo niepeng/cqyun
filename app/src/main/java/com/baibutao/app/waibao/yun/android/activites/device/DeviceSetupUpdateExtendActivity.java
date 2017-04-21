@@ -149,7 +149,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 			return;
 		}
 
-		if(highTempDouble < lowTempDouble) {
+		if(highTempDouble <= lowTempDouble) {
 			toastLong("最高温度不能小于最低温度");
 			return;
 		}
@@ -164,7 +164,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 			return;
 		}
 
-		if (highHumiDouble < lowHumiDouble) {
+		if (highHumiDouble <= lowHumiDouble) {
 			toastLong("最高湿度不能小于最低湿度");
 			return;
 		}
