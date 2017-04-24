@@ -23,8 +23,6 @@ public class MessageService extends Service {
 	// Binding details
 	private final IBinder mBinder = new LocalBinder();
 
-	private PendingIntent pi;
-
 	private EewebApplication eewebApplication;
 
 	private int currentRepeatTime;
@@ -44,30 +42,26 @@ public class MessageService extends Service {
 //		if(currentRepeatTime == 0) {
 //			currentRepeatTime = ActionConstant.TIMES;
 //		}
+
+		if(eewebApplication == null) {
+			eewebApplication = (EewebApplication)getApplication();
+		}
+
 		currentRepeatTime = ActionConstant.TIMES;
-		startSystemAlarm(System.currentTimeMillis() + 60 * 1000, currentRepeatTime);
+		startSystemAlarm(System.currentTimeMillis() + 1 * 1000, currentRepeatTime);
 	}
 
 	private  synchronized void  startSystemAlarm(long startTime, int repeatTime) {
-		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		if(pi != null) {
-			alarmManager.cancel(pi);
+		int flag = eewebApplication.getPrefs(EewebApplication.setAlarmOnOffKey, 1);
+		if (flag == 1) {
+			eewebApplication.startNotification(startTime, repeatTime);
 		}
-
-		Intent intent = new Intent(ServiceSyncReceiver.ACTION);
-//		intent.putExtra(HomeActivity.SYNCING, BG_SYNC);
-		pi = PendingIntent.getBroadcast(getApplicationContext(), ActionConstant.REQUEST_CODE_FLAG_VALUE, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startTime,  repeatTime , pi);
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		super.onStartCommand(intent, flags, startId);
 		int result = START_REDELIVER_INTENT;
-
-		if(eewebApplication == null) {
-			eewebApplication = (EewebApplication)getApplication();
-		}
 		if(eewebApplication == null) {
 			return result;
 		}

@@ -13,6 +13,6 @@ public interface ActionConstant {
 
 	// 重复时间: 2分钟
 //	public static final int TIMES = 2 * 60 * 1000;
-	public static final int TIMES = 1 * 60 * 1000;
+	public static final int TIMES = 1 * 30 * 1000;
 
 }

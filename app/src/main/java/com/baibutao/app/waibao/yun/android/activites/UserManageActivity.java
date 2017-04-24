@@ -41,7 +41,12 @@ public class UserManageActivity extends BaseActivity {
 		Intent intent = new Intent(this, UserManageUpdatePswActivity.class);
 		startActivity(intent);
 	}
-	
+
+	public void handleSetAlarm(View v) {
+		Intent intent = new Intent(this, UserManagerSetAlarmInfoActivity.class);
+		startActivity(intent);
+	}
+
 	public void handeExit(View v) {
 		exit();
 	}

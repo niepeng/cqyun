@@ -4,8 +4,11 @@
 package com.baibutao.app.waibao.yun.android.androidext;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -23,7 +26,9 @@ import com.baibutao.app.waibao.yun.android.common.UserInfoHolder;
 import com.baibutao.app.waibao.yun.android.config.Config;
 import com.baibutao.app.waibao.yun.android.localcache.FileCache;
 import com.baibutao.app.waibao.yun.android.localcache.ImageCache;
+import com.baibutao.app.waibao.yun.android.receives.ServiceSyncReceiver;
 import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
+import com.baibutao.app.waibao.yun.android.util.ActionConstant;
 import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
 import com.baidu.location.LocationClient;
 
@@ -68,6 +73,10 @@ public class EewebApplication extends Application {
 
 	private AtomicInteger notifyId =  null;
 
+	private int clearStartNotifyId = 1;
+
+	public static final String setAlarmOnOffKey = "setAlarmOnOff";
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -75,6 +84,8 @@ public class EewebApplication extends Application {
 	}
 	
 	private void init() {
+
+		createSharedPrefs();
 		
 		Config config = Config.getConfig();
 		config.init(this);
@@ -93,6 +104,14 @@ public class EewebApplication extends Application {
 		
 		// 删除本地图片
 //		ImageCache.getLocalCacheManager().clearLocalCache();
+	}
+
+	private void createSharedPrefs() {
+		try{
+			Context context = createPackageContext(getString(R.string.prefs_file_name),  Context.CONTEXT_IGNORE_SECURITY);
+		} catch (PackageManager.NameNotFoundException e){
+			e.printStackTrace();
+		}
 	}
 	
 
@@ -147,6 +166,7 @@ public class EewebApplication extends Application {
 	public int notifyIdIncrementAndGet() {
 		if(notifyId == null) {
 			notifyId =  new AtomicInteger(randomInt(1, 1000000));
+			clearStartNotifyId = notifyId.get();
 		}
 		return notifyId.incrementAndGet();
 	}
@@ -241,6 +261,37 @@ public class EewebApplication extends Application {
 		this.userDO = userDO;
 	}
 
+	PendingIntent pi = null;
+	public void startNotification(long startTime, int repeatTime) {
+
+		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+		if (pi != null) {
+			alarmManager.cancel(pi);
+		}
+		Intent intent = new Intent(ServiceSyncReceiver.ACTION);
+		pi = PendingIntent.getBroadcast(getApplicationContext(), ActionConstant.REQUEST_CODE_FLAG_VALUE, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startTime, repeatTime, pi);
+	}
+
+
+	public void cancelNotificationAlarm() {
+		try {
+			AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+			if (pi != null) {
+				am.cancel(pi);
+			}
+			Intent intent = new Intent(ServiceSyncReceiver.ACTION);
+			PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_NO_CREATE);
+			am.cancel(sender);
+
+		} catch(Exception e) {
+
+		}
+	}
+
+
+
+
 	public void savePrefs(String key, int value) {
 		SharedPreferences sharedPref = getSharedPreferences(getString(R.string.prefs_file_name), Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPref.edit();
@@ -261,4 +312,11 @@ public class EewebApplication extends Application {
 		this.tmpList = tmpList;
 	}
 
+	public int getClearStartNotifyId() {
+		return clearStartNotifyId;
+	}
+
+	public void setClearStartNotifyId(int clearStartNotifyId) {
+		this.clearStartNotifyId = clearStartNotifyId;
+	}
 }

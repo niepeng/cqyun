@@ -1,5 +1,7 @@
 package com.baibutao.app.waibao.yun.android.activites;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -97,6 +99,13 @@ public class MainActivity extends AppCompatActivity
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        if (intent != null) {
+            int position = intent.getIntExtra(Constant.ARG_SELECTED_POSITION, -1);
+            if (position > -1) {
+                NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                nMgr.cancelAll();
+            }
+        }
     }
 
     @Override

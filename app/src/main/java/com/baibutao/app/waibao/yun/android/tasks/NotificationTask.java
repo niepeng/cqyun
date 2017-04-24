@@ -58,7 +58,8 @@ public class NotificationTask {
             request.addParameter("user", eewebApplication.getUserDO().getUsername());
 //            request.addParameter("requestTime", "2017-04-21 15:55:00");
             if (requestAlarmFlag) {
-                Date requestDate = DateUtil.changeSecond(eewebApplication.getLastAlarmTime(), 1);
+                Date requestDate = DateUtil.parse("2017-04-24 08:07:00", "yyyy-MM-dd HH:mm:ss");
+//                Date requestDate = DateUtil.changeSecond(eewebApplication.getLastAlarmTime(), 1);
 				request.addParameter("requestTime", DateUtil.format(requestDate, DateUtil.DATE_FMT));
             }
 
@@ -172,7 +173,7 @@ public class NotificationTask {
         int icon = R.drawable.ic_launcher;
         CharSequence tickerText = "监控平台通知";
         Context context = eewebApplication.getApplicationContext();
-        CharSequence contentTitle = "监控云平台-您的设备出现报警";
+        CharSequence contentTitle = "监控云平台-您的设备有新的报警信息";
         String content = "";
         for (int i = 0; i < 3 && i < list.size(); i++) {
             DeviceBean tmp = list.get(i);

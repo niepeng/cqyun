@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity {
 		}
 
 		if(userDO!=null && !StringUtil.isBlank(userDO.getPsw())) {
-			handleLogin(null);
+			 handleLogin(null);
 		}
 
 	}
