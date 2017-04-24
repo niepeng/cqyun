@@ -55,11 +55,15 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, MessageService.class);
-        startService(intent);
 
         eewebApplication = (EewebApplication) getApplication();
         eewebApplication.addActivity(this);
+
+        if(!eewebApplication.startNotification) {
+            Intent intent = new Intent(this, MessageService.class);
+            startService(intent);
+            eewebApplication.startNotification = true;
+        }
 
         setContentView(R.layout.activity_main);
 

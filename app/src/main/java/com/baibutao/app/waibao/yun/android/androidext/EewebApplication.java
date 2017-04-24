@@ -78,6 +78,9 @@ public class EewebApplication extends Application {
 
 	public static final String setAlarmOnOffKey = "setAlarmOnOff";
 
+
+	public boolean startNotification;
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
