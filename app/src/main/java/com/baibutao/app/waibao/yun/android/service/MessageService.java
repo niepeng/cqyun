@@ -48,7 +48,7 @@ public class MessageService extends Service {
 		}
 
 		currentRepeatTime = ActionConstant.TIMES;
-		startSystemAlarm(System.currentTimeMillis() + 1 * 1000, currentRepeatTime);
+		startSystemAlarm(System.currentTimeMillis() + ActionConstant.TIMES, currentRepeatTime);
 	}
 
 	private  synchronized void  startSystemAlarm(long startTime, int repeatTime) {

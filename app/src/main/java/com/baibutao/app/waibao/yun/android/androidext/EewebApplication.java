@@ -6,6 +6,7 @@ package com.baibutao.app.waibao.yun.android.androidext;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Application;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -263,7 +264,6 @@ public class EewebApplication extends Application {
 
 	PendingIntent pi = null;
 	public void startNotification(long startTime, int repeatTime) {
-
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 		if (pi != null) {
 			alarmManager.cancel(pi);
@@ -279,10 +279,14 @@ public class EewebApplication extends Application {
 			AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 			if (pi != null) {
 				am.cancel(pi);
+				NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+				nMgr.cancelAll();
 			}
 			Intent intent = new Intent(ServiceSyncReceiver.ACTION);
 			PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_NO_CREATE);
 			am.cancel(sender);
+			NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+			nMgr.cancelAll();
 
 		} catch(Exception e) {
 
@@ -318,5 +322,9 @@ public class EewebApplication extends Application {
 
 	public void setClearStartNotifyId(int clearStartNotifyId) {
 		this.clearStartNotifyId = clearStartNotifyId;
+	}
+
+	public AtomicInteger getNotifyId() {
+		return notifyId;
 	}
 }

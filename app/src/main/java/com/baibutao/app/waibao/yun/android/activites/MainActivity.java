@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity
     protected static final int ACTIVITY_RESULT_CODE = 1;
     protected static final int ACTIVITY_DEL_RESULT_CODE = 2;
 
+    private EewebApplication eewebApplication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, MessageService.class);
         startService(intent);
 
-        EewebApplication eewebApplication = (EewebApplication) getApplication();
+        eewebApplication = (EewebApplication) getApplication();
         eewebApplication.addActivity(this);
 
         setContentView(R.layout.activity_main);
@@ -117,6 +120,13 @@ public class MainActivity extends AppCompatActivity
                 mSelectedTabPosition = position;
                 setContentMain(mShowType, mSelectedArea);
                 onTabSelected(mSelectedTabPosition);
+                NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                nMgr.cancelAll();
+//                for (int s = eewebApplication.getClearStartNotifyId();s<=eewebApplication.getNotifyId().get();s++) {
+//                    nMgr.cancel(s);
+//                    eewebApplication.setClearStartNotifyId(s);
+//                }
+//
             }
         }
     }

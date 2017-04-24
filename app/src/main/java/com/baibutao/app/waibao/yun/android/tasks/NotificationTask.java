@@ -172,8 +172,9 @@ public class NotificationTask {
         long when = System.currentTimeMillis() + 2000;
         int icon = R.drawable.ic_launcher;
         CharSequence tickerText = "监控平台通知";
+        int idd = eewebApplication.notifyIdIncrementAndGet();
         Context context = eewebApplication.getApplicationContext();
-        CharSequence contentTitle = "监控云平台-您的设备有新的报警信息";
+        CharSequence contentTitle = idd + "监控云平台-您的设备有新的报警信息";
         String content = "";
         for (int i = 0; i < 3 && i < list.size(); i++) {
             DeviceBean tmp = list.get(i);
@@ -199,7 +200,7 @@ public class NotificationTask {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = mBuilder.build();
         notification.defaults = Notification.DEFAULT_SOUND;
-        mNotificationManager.notify(eewebApplication.notifyIdIncrementAndGet(), notification);
+        mNotificationManager.notify(idd, notification);
     }
 
 
