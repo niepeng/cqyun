@@ -44,7 +44,7 @@
 		 <Button
 			 style="@style/app_row_with_arrow"
 			 android:onClick="handleSetAlarm"
-			 android:text="报警设置" />
+			 android:text="推送设置" />
 
 		 <include layout="@drawable/line_split" />
             

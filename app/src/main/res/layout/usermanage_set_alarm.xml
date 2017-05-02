@@ -12,7 +12,7 @@
 
 
 		<!-- 标题 -->
-		<TextView android:id="@+id/more_about_title" android:text="设置报警开关" style="@style/app_title_wrap"
+		<TextView android:id="@+id/more_about_title" android:text="设置推送开关" style="@style/app_title_wrap"
 			android:layout_centerInParent="true" />
 
 	</RelativeLayout>
@@ -39,7 +39,7 @@
 					android:layout_marginTop="10dip"
 					android:textSize="18dip"
 					android:paddingRight="10dip"
-					android:text="报警开关设置：" />
+					android:text="推送开关设置：" />
 
 				<ToggleButton
 					android:id="@+id/usermanage_set_alarm"

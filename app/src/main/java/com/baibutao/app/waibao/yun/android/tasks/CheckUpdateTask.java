@@ -2,6 +2,7 @@ package com.baibutao.app.waibao.yun.android.tasks;
 
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -33,11 +34,11 @@ public class CheckUpdateTask implements Runnable {
 	
 	private EewebApplication cardApplication;
 	
-	private BaseActivity baseActivity;
+	private Activity baseActivity;
 	
 	private MessageHelper messageHelper;
 	
-	public CheckUpdateTask(EewebApplication cardApplication, BaseActivity baseActivity, Handler handler, MessageHelper messageHelper) {
+	public CheckUpdateTask(EewebApplication cardApplication, Activity baseActivity, Handler handler, MessageHelper messageHelper) {
 		super();
 		this.cardApplication = cardApplication;
 		this.baseActivity = baseActivity;
@@ -48,6 +49,7 @@ public class CheckUpdateTask implements Runnable {
 	@Override
 	public void run() {
 		try {
+			Thread.sleep(10 * 1000);
 			final RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 			final Request request = remoteManager.createQueryRequest(Config.Values.YUN_CHECK_VERSION_URL);
 			request.addParameter("user", cardApplication.getUserDO().getUsername());
@@ -141,9 +143,9 @@ public class CheckUpdateTask implements Runnable {
 		public void onClick(DialogInterface dialog, int which) {
 			Intent intent = new Intent();
 //			intent.setClass(baseActivity, NavigationActivity.class);
-			intent.setClass(baseActivity, LoginActivity.class);
-			baseActivity.startActivity(intent);
-			baseActivity.finish();
+//			intent.setClass(baseActivity, LoginActivity.class);
+//			baseActivity.startActivity(intent);
+//			baseActivity.finish();
 		}
 		
 	};

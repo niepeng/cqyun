@@ -26,10 +26,13 @@
         </menu>
     </item>
 
-    <item
-        android:id="@+id/menu_area_manage"
-        app:actionLayout="@layout/layout_menu_item_area_manage"
-        app:showAsAction="always"
-        android:orderInCategory="100"/>
+    <!--
+    区域管理暂时不处理
+    <item-->
+        <!--android:id="@+id/menu_area_manage"-->
+        <!--app:actionLayout="@layout/layout_menu_item_area_manage"-->
+        <!--app:showAsAction="always"-->
+        <!--android:orderInCategory="100"-->
+        <!--/>-->
 
 </menu>

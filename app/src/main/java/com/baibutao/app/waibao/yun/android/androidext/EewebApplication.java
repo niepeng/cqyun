@@ -13,9 +13,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.TabHost;
 
 import com.baibutao.app.waibao.yun.android.R;
+import com.baibutao.app.waibao.yun.android.activites.common.BaseActivity;
 import com.baibutao.app.waibao.yun.android.activites.common.TabFlushEnum;
 import com.baibutao.app.waibao.yun.android.as.AsynchronizedInvoke;
 import com.baibutao.app.waibao.yun.android.biz.LoadImgDO;
@@ -29,8 +33,12 @@ import com.baibutao.app.waibao.yun.android.localcache.FileCache;
 import com.baibutao.app.waibao.yun.android.localcache.ImageCache;
 import com.baibutao.app.waibao.yun.android.receives.ServiceSyncReceiver;
 import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
+import com.baibutao.app.waibao.yun.android.tasks.CheckUpdateTask;
+import com.baibutao.app.waibao.yun.android.tasks.message.MessageHelper;
+import com.baibutao.app.waibao.yun.android.tasks.taskgroup.TaskGroup;
 import com.baibutao.app.waibao.yun.android.util.ActionConstant;
 import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
+import com.baibutao.app.waibao.yun.android.util.DateUtil;
 import com.baidu.location.LocationClient;
 
 import java.util.Date;
@@ -268,13 +276,26 @@ public class EewebApplication extends Application {
 	PendingIntent pi = null;
 	public void startNotification(long startTime, int repeatTime) {
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+		long now = new Date().getTime();
+
+//		Log.e("eewebApplication", "startNotification11111111");
+		Log.e("eewebApplication", "now=" + now +",s=" + startTime + "("+(startTime-now)+")" +  ",r=" + repeatTime + ",d=" + DateUtil.format(new Date()));
 		if (pi != null) {
+//			Log.e("eewebApplication", "startNotification22222222");
 			alarmManager.cancel(pi);
 		}
+//		Log.e("eewebApplication", "startNotification333333333333");
 		Intent intent = new Intent(ServiceSyncReceiver.ACTION);
 		pi = PendingIntent.getBroadcast(getApplicationContext(), ActionConstant.REQUEST_CODE_FLAG_VALUE, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startTime, repeatTime, pi);
+//		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startTime, repeatTime, pi);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + repeatTime, pi);
+		} else {
+			alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startTime, repeatTime, pi);
+		}
+
 	}
+
 
 
 	public void cancelNotificationAlarm() {
@@ -294,6 +315,13 @@ public class EewebApplication extends Application {
 		} catch(Exception e) {
 
 		}
+	}
+
+	public void checkUpdateApp(final Activity baseActivity, Handler handler) {
+		final MessageHelper messageHelper = new MessageHelper(false);
+		final TaskGroup taskGroup = new TaskGroup();
+		taskGroup.addMust(new CheckUpdateTask(this, baseActivity, handler, messageHelper));
+		asyCall(taskGroup);
 	}
 
 

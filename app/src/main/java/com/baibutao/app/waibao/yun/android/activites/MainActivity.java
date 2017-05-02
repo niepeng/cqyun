@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -95,6 +96,8 @@ public class MainActivity extends AppCompatActivity
 
         setContentMain(mShowType, mSelectedArea);
         onTabSelected(mSelectedTabPosition);
+
+        eewebApplication.checkUpdateApp(this, new Handler());
     }
 
     @Override

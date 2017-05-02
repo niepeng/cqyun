@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.baibutao.app.waibao.yun.android.R;
 import com.baibutao.app.waibao.yun.android.activites.common.BaseActivity;
+import com.baibutao.app.waibao.yun.android.androidext.YunMulticastSmartLinkerActivity;
+import com.hiflying.smartlink.v7.MulticastSmartLinkerActivity;
 
 /**
  * <p>标题: </p>
@@ -33,7 +35,10 @@ public class DeviceReadAddActivity extends BaseActivity {
 	}
 	
 	public void handleByOne(View v) {
-		alert("功能开发中...");
+//		MulticastSmartLinkerActivity
+//		MulticastSmartLinkerActivity
+//		startActivity(new Intent(this, MulticastSmartLinkerActivity.class));
+		startActivity(new Intent(this, YunMulticastSmartLinkerActivity.class));
 	}
 
 	public void handleBySeri(View v) {

@@ -103,12 +103,12 @@ public class LoginActivity extends BaseActivity {
 		request.addHeader("type", "login");
 		
 		
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				
-			}
-		}).start();
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//
+//			}
+//		}).start();
 		
 		ProgressDialog progressDialog = showProgressDialog(R.string.app_read_data);
 		progressDialog.setOnDismissListener(new Login());

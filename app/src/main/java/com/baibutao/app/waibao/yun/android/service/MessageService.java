@@ -5,8 +5,10 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.util.Log;
 
 import com.baibutao.app.waibao.yun.android.androidext.EewebApplication;
 import com.baibutao.app.waibao.yun.android.biz.dataobject.SetupDO;
@@ -48,6 +50,7 @@ public class MessageService extends Service {
 		}
 
 		currentRepeatTime = ActionConstant.TIMES;
+		Log.e("notificationAlarm", "onCreateonCreateonCreate");
 		startSystemAlarm(System.currentTimeMillis() + ActionConstant.TIMES, currentRepeatTime);
 	}
 
@@ -61,19 +64,28 @@ public class MessageService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		super.onStartCommand(intent, flags, startId);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//			Log.e("notificationAlarm", "rrrrrrrrrrrrrrrrr");
+			eewebApplication.startNotification(System.currentTimeMillis(), currentRepeatTime);
+		}
+
+//		Log.e("notificationAlarm", "111111111111");
 		int result = START_REDELIVER_INTENT;
 		if(eewebApplication == null) {
 			return result;
 		}
+//		Log.e("notificationAlarm", "2222222222");
 		if(flag.get()) {
 			return result;
 		}
-
+//		Log.e("notificationAlarm", "3333333333333");
 		// 报警更新时间周期有用，默认是1分钟
 		SetupDO setup = new SetupDO();
 //		SetupDO setup = SetupInfoHolder.getDO(this);
 		// 实现业务
 		if(isNeedNotification()) {
+//			Log.e("notificationAlarm", "4444444444444");
 			flag.set(true);
 			NotificationTask task = new NotificationTask(eewebApplication);
 			task.execute();
@@ -81,10 +93,16 @@ public class MessageService extends Service {
 		}
 		flag.set(false);
 		// 更新轮询时间
+//		Log.e("notificationAlarm", "5555555555555555");
 		if(currentRepeatTime != setup.getAlarmtime() * 1000) {
+//			Log.e("notificationAlarm", "ffffffffffffffffffffff");
 			currentRepeatTime = setup.getAlarmtime() * 1000;
 			startSystemAlarm(System.currentTimeMillis() + ActionConstant.TIMES, currentRepeatTime);
 		}
+//		Log.e("notificationAlarm", "666666666666666");
+
+
+
 		return result;
 	}
 

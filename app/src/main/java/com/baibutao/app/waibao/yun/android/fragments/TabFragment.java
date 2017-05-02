@@ -82,6 +82,9 @@ public class TabFragment extends Fragment {
             @Override
             public void run() {
                 tabLayout.setupWithViewPager(viewPager);
+                tabLayout.getTabAt(0).setIcon(R.drawable.icon_tab_intime);
+                tabLayout.getTabAt(1).setIcon(R.drawable.icon_tab_alarm);
+                tabLayout.getTabAt(2).setIcon(R.drawable.icon_tab_more);
             }
         });
 
