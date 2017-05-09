@@ -57,6 +57,7 @@
         
        <activity android:name=".activites.device.DeviceReadAddActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceAddBySeriActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceAddResultListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
 
        <activity android:name=".activites.device.DeviceDetailActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceHistoryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
@@ -68,7 +69,8 @@
        <activity android:name=".activites.device.DeviceSetupUpdateAreaActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceSetupUpdateDistanceTimeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceSetupUpdateExtendActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize"></activity>
-        
+       <activity android:name=".activites.device.ProcessActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize"></activity>
+
                 
         <!--
          <activity android:name=".activites.LoginActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>

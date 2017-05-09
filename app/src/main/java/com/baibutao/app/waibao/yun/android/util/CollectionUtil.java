@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -69,6 +70,24 @@ public class CollectionUtil {
 			sb.append(en.getKey());
 			sb.append(sepKV);
 			sb.append(en.getValue());
+		}
+		return sb.toString();
+	}
+
+	public static <T> String join(List<T> list, String sep) {
+		if (list == null) {
+			return StringUtil.EMPTY_STRING;
+		}
+
+		StringBuilder sb = new StringBuilder();
+		boolean first = true;
+		for (T t : list) {
+			if (first) {
+				first = false;
+			} else {
+				sb.append(sep);
+			}
+			sb.append(t);
 		}
 		return sb.toString();
 	}

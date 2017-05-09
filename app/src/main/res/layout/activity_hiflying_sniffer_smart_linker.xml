@@ -31,6 +31,20 @@
     <ScrollView android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:paddingTop="20dip"
         android:paddingBottom="30dip">
+
+        <!--<LinearLayout android:orientation="horizontal" android:id="@+id/circleProgressbarLayout" android:visibility="gone"-->
+            <!--android:layout_width="fill_parent" android:layout_height="fill_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginLeft="20dip" android:layout_marginRight="20dip">-->
+
+            <!--<com.baibutao.app.waibao.yun.android.androidext.CircleProgressView-->
+                <!--android:id="@+id/circleProgressbar"-->
+                <!--android:layout_width="74dp"-->
+                <!--android:layout_height="74dp"-->
+                <!--android:layout_centerInParent="true" />-->
+
+        <!--</LinearLayout>-->
+
         <LinearLayout style="@style/app_corner_wrap" android:background="@null" android:layout_gravity="center"
             android:layout_marginLeft="10dip" android:layout_marginRight="10dip">
 

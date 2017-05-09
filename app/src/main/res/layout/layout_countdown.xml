@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent" android:layout_height="fill_parent"
+android:gravity="center"
+android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+<com.baibutao.app.waibao.yun.android.androidext.CircleProgressView
+    android:id="@+id/circleProgressbar"
+    android:layout_width="74dp"
+    android:layout_height="74dp"
+    android:layout_centerInParent="true" />
+
+</LinearLayout>

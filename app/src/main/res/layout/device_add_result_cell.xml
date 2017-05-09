@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 创建存放一行数据的组件 -->
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TableRow>
+
+
+        <TextView
+            android:id="@+id/device_add_result_cell_tv"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="20dip"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:text="2222"
+            ></TextView>
+
+
+    </TableRow>
+</TableLayout>
