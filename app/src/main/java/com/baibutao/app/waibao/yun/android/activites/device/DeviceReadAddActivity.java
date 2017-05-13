@@ -59,22 +59,22 @@ public class DeviceReadAddActivity extends BaseActivity {
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
 	}
 
-	public void handleByProcess(View v) {
-		Intent intent = new Intent(this, ProcessActivity.class);
-		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
-	}
-
-
-	public void handleByTest(View v) {
-		Intent intent = new Intent(this, DeviceAddResultListActivity.class);
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("test1");
-		list.add("test2");
-		list.add("test3");
-		list.add("test4");
-		intent.putStringArrayListExtra("snList", list);
-		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
-	}
+//	public void handleByProcess(View v) {
+//		Intent intent = new Intent(this, ProcessActivity.class);
+//		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
+//	}
+//
+//
+//	public void handleByTest(View v) {
+//		Intent intent = new Intent(this, DeviceAddResultListActivity.class);
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("test1");
+//		list.add("test2");
+//		list.add("test3");
+//		list.add("test4");
+//		intent.putStringArrayListExtra("snList", list);
+//		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
+//	}
 
 
 	

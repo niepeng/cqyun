@@ -169,7 +169,8 @@ public class NotificationTask {
 
         // TODO lily 更新到新版代码，还未测试
         long when = System.currentTimeMillis() + 2000;
-        int icon = R.drawable.ic_launcher;
+//        int icon = R.drawable.ic_launcher;
+        int icon = R.mipmap.ic_launcher;
         CharSequence tickerText = "监控平台通知";
         int idd = eewebApplication.notifyIdIncrementAndGet();
         Context context = eewebApplication.getApplicationContext();

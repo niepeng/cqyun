@@ -114,7 +114,7 @@ public static final int TIMEOUT = 5000;
 					httpPostRequest.addHeader(entry.getKey(), entry.getValue());
 				}
 			}
-			StringEntity stringEntity = new StringEntity(body);
+			StringEntity stringEntity = new StringEntity(body, DEFAULT_CHARSET);
 			httpPostRequest.setEntity(stringEntity);
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e);

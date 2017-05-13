@@ -21,6 +21,7 @@ import com.baibutao.app.waibao.yun.android.config.Config;
 import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
 import com.baibutao.app.waibao.yun.android.remote.Request;
 import com.baibutao.app.waibao.yun.android.remote.Response;
+import com.baibutao.app.waibao.yun.android.remote.http.HttpClientUtil;
 import com.baibutao.app.waibao.yun.android.remote.parser.StringResponseParser;
 import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
 import com.baibutao.app.waibao.yun.android.util.JsonUtil;
@@ -90,7 +91,13 @@ public class DeviceSetupUpdateNameActivity extends BaseActivity {
 			this.finish();
 			return;
 		}
-		
+
+//		try {
+//			newName = new String(newName.getBytes(), "utf-8");
+//		} catch(Exception e) {
+//
+//		}
+
 		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 		remoteManager.setResponseParser(new StringResponseParser());
 		Request request = remoteManager.createPostRequest(Config.Values.URL);
@@ -99,6 +106,8 @@ public class DeviceSetupUpdateNameActivity extends BaseActivity {
 		map.put("devName", newName);
 		request.setBody(JsonUtil.mapToJson(map));
 		request.addHeader("type", "setDevName");
+
+//		HttpClientUtil.
 		
 		ProgressDialog progressDialog = showProgressDialog(R.string.app_up_data);
 		progressDialog.setOnDismissListener(new LoadData());
