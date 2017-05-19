@@ -236,11 +236,12 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
                     holder.mHumidityStatusView.setVisibility(View.GONE);
                     holder.mTimeView.setText("");
                 }else if (device.getDataBean().isNotConnection()) {
-                    holder.mTemperatureView.setText("-- ");
+                    holder.mTemperatureView.setText("传感器未连接");
                     holder.mTemperatureStatusView.setVisibility(View.GONE);
-                    holder.mHumidityView.setText("-- ");
+                    holder.mHumidityView.setText("传感器未连接");
                     holder.mHumidityStatusView.setVisibility(View.GONE);
-                    holder.mTimeView.setText("传感器未连接");
+//                    holder.mTimeView.setText("传感器未连接");
+                    holder.mTimeView.setText("-- ");
                 } else {
                     setTemperature(holder, device);
                     setHumidity(holder, device);

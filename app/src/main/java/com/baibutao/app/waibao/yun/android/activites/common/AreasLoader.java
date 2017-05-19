@@ -11,6 +11,7 @@ import com.baibutao.app.waibao.yun.android.util.JsonUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +38,9 @@ public class AreasLoader extends AsyncTaskLoader<List<String>> {
         final Map<String, Object> bodyMap = CollectionUtil.newHashMap();
         bodyMap.put("user", eewebApplication.getUserDO().getUsername());
         String content = Httpclient.subPostForBody(Config.Values.URL, JsonUtil.mapToJson(bodyMap), Httpclient.DEFAULT_CHARSET, headerMap);
-        JSONArray array = JsonUtil.getJsonArray(content);
+        JSONObject mainJson =  JsonUtil.getJsonObject(content);
+        JSONArray array = JsonUtil.getJsonArray(mainJson, "array");
+//        JSONArray array = JsonUtil.getJsonArray(content);
         try {
             if (array != null) {
                 for (int i = 0, size = array.length(); i < size; i++) {

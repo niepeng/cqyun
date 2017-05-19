@@ -24,6 +24,8 @@ import com.baibutao.app.waibao.yun.android.util.ChangeUtil;
 import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
 import com.baibutao.app.waibao.yun.android.util.JsonUtil;
 
+import org.json.JSONObject;
+
 import java.util.Map;
 import java.util.concurrent.Future;
 
@@ -73,6 +75,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 		Request request = remoteManager.createPostRequest(Config.Values.URL);
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", deviceBean.getSnaddr());
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		request.setBody(JsonUtil.mapToJson(map));
 		request.addHeader("type", "getThreshold");
 
@@ -181,6 +184,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 		Request request = remoteManager.createPostRequest(Config.Values.URL);
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", tmpBean.getSnaddr());
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		map.put("maxTemp", tmpBean.getMaxTemp());
 		map.put("minTemp", tmpBean.getMinTemp());
 		map.put("tempHC", tmpBean.getTempHC());
@@ -222,7 +226,13 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 			try {
 
 				Response response = responseFuture.get();
-				DeviceExtendBean extendBean = JsonUtil.jsonToBean((String) response.getModel(), DeviceExtendBean.class);
+				JSONObject jsonObject = JsonUtil.getJsonObject(response.getModel());
+				JSONObject json = JsonUtil.getJSONObject(jsonObject, "array");
+				if(json == null) {
+					toastLong(R.string.data_opt_fail);
+					return;
+				}
+				DeviceExtendBean extendBean = JsonUtil.jsonToBean(json.toString() , DeviceExtendBean.class);
 				if (extendBean == null || !deviceBean.getSnaddr().equals(extendBean.getSnaddr())) {
 					toastLong(R.string.data_opt_fail);
 					return;

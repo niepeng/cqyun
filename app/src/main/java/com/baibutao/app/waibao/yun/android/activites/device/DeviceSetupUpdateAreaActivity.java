@@ -6,6 +6,7 @@ import java.util.concurrent.Future;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -90,6 +91,7 @@ public class DeviceSetupUpdateAreaActivity extends BaseActivity {
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", deviceBean.getSnaddr());
 		map.put("area", newValue);
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		request.setBody(JsonUtil.mapToJson(map));
 		request.addHeader("type", "setDevArea");
 		
@@ -108,7 +110,10 @@ public class DeviceSetupUpdateAreaActivity extends BaseActivity {
 
 			try {
 				Response response = responseFuture.get();
-				JSONArray array = JsonUtil.getJsonArray(response.getModel());
+//				JSONArray array = JsonUtil.getJsonArray(response.getModel());
+				JSONObject mainJson =  JsonUtil.getJsonObject(response.getModel());
+				JSONArray array = JsonUtil.getJsonArray(mainJson, "array");
+
 				final List<String> result = CollectionUtil.newArrayList();
 				try {
 					if (array != null) {

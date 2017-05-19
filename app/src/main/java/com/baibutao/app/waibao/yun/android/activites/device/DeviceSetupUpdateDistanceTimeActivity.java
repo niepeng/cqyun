@@ -88,6 +88,7 @@ public class DeviceSetupUpdateDistanceTimeActivity extends BaseActivity {
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", deviceBean.getSnaddr());
 		map.put("devGap", newValue);
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		request.setBody(JsonUtil.mapToJson(map));
 		request.addHeader("type", "modifyDeviceGap");
 		

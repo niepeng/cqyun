@@ -185,7 +185,8 @@ public class NotificationTask {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(icon)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
-                        R.drawable.ic_launcher))
+//                        R.drawable.ic_launcher))
+                        icon))
                 .setTicker(tickerText)
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)

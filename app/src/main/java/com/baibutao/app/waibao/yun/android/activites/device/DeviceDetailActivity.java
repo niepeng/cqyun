@@ -169,13 +169,15 @@ public class DeviceDetailActivity extends BaseActivity {
         headerMap.put("TYPE", "getRTData");
         Map<String, String> bodyMap = new HashMap<String, String>();
         bodyMap.put("snaddr", bean.getSnaddr());
+        bodyMap.put("user", eewebApplication.getUserDO().getUsername());
         bodyMap.put("curve", bean.getCurve());
         String content = Httpclient.subPostForBody(Config.Values.URL, JsonUtil.mapToJson(bodyMap), Httpclient.DEFAULT_CHARSET, headerMap);
 
-        JSONObject json = JsonUtil.getJsonObject(content);
-        if (json == null) {
+        JSONObject json1 = JsonUtil.getJsonObject(content);
+        if (json1 == null || JsonUtil.getInt(json1,"code", -1) !=0) {
             return null;
         }
+        JSONObject json = JsonUtil.getJSONObject(json1, "array");
         DeviceDataBean dataBean = new DeviceDataBean();
         dataBean.setAbnormal(JsonUtil.getString(json, "abnormal", null));
         dataBean.setTime(JsonUtil.getString(json, "time", null));

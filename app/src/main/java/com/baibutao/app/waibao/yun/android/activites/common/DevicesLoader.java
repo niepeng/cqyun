@@ -2,6 +2,7 @@ package com.baibutao.app.waibao.yun.android.activites.common;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import com.baibutao.app.waibao.yun.android.androidext.EewebApplication;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceBean;
@@ -57,7 +58,9 @@ public class DevicesLoader extends AsyncTaskLoader<List<DeviceBean>> {
             return null;
         }
 
-        JSONArray array = JsonUtil.getJsonArray(response.getModel());
+//        JSONArray array = JsonUtil.getJsonArray(response.getModel());
+        JSONObject mainJson =  JsonUtil.getJsonObject(response.getModel());
+        JSONArray array = JsonUtil.getJsonArray(mainJson, "array");
 
         if (array == null) {
             return null;
@@ -88,7 +91,7 @@ public class DevicesLoader extends AsyncTaskLoader<List<DeviceBean>> {
             DeviceDataBean dataBean = null;
             for (DeviceBean deviceBean : beanList) {
                 if (!StringUtil.isBlank(bean.getSnaddr())) {
-                    dataBean = requestDeviceDataBean(deviceBean);
+                    dataBean = requestDeviceDataBean(deviceBean, eewebApplication.getUserDO().getUsername());
                     deviceBean.setDataBean(dataBean);
                 }
             }
@@ -108,43 +111,52 @@ public class DevicesLoader extends AsyncTaskLoader<List<DeviceBean>> {
         @Override
         public int compare(DeviceBean o1, DeviceBean o2) {
 
-            if (o1.getDataBean() == null) {
-                return 1;
-            }
+           try {
+               if (o1.getDataBean() == null) {
+                   return 1;
+               }
 
-            if (o2.getDataBean() == null) {
-                return -1;
-            }
+               if (o2.getDataBean() == null) {
+                   return -1;
+               }
 
-            if (o1.getDataBean().getAbnormal().equals(o2.getDataBean().getAbnormal())) {
-                return o1.getSnaddr().compareTo(o2.getSnaddr());
-            }
+               if (o1.getDataBean().getAbnormal().equals(o2.getDataBean().getAbnormal())) {
+                   return o1.getSnaddr().compareTo(o2.getSnaddr());
+               }
 
-            if (o1.getDataBean().isSuccess()) {
-                return -1;
-            }
+               if (o1.getDataBean().isSuccess()) {
+                   return -1;
+               }
 
-            if (o2.getDataBean().isSuccess()) {
-                return 1;
-            }
-            return o1.getSnaddr().compareTo(o2.getSnaddr());
+               if (o2.getDataBean().isSuccess()) {
+                   return 1;
+               }
+               return o1.getSnaddr().compareTo(o2.getSnaddr());
 
+           }catch(Exception e) {
+               e.printStackTrace();
+               Log.e("ffffffff",e.toString());
+           }
+            return 1;
         }
 
     }
 
-    private DeviceDataBean requestDeviceDataBean(DeviceBean bean) {
+    private DeviceDataBean requestDeviceDataBean(DeviceBean bean, String user) {
         Map<String, String> headerMap = new HashMap<String, String>();
         headerMap.put("TYPE", "getRTData");
         Map<String, String> bodyMap = new HashMap<String, String>();
         bodyMap.put("snaddr", bean.getSnaddr());
+        bodyMap.put("user", user);
         bodyMap.put("curve", bean.getCurve());
         String content = Httpclient.subPostForBody(Config.Values.URL, JsonUtil.mapToJson(bodyMap), Httpclient.DEFAULT_CHARSET, headerMap);
 
-        JSONObject json = JsonUtil.getJsonObject(content);
-        if (json == null) {
+        JSONObject json1 = JsonUtil.getJsonObject(content);
+        if (json1 == null || JsonUtil.getInt(json1,"code", -1) !=0) {
             return null;
         }
+        JSONObject json = JsonUtil.getJSONObject(json1, "array");
+
         DeviceDataBean dataBean = new DeviceDataBean();
         dataBean.setAbnormal(JsonUtil.getString(json, "abnormal", null));
         dataBean.setTime(JsonUtil.getString(json, "time", null));

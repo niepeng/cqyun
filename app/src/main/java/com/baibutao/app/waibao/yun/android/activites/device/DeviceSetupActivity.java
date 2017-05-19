@@ -61,6 +61,7 @@ public class DeviceSetupActivity extends BaseActivity {
 		Request request = remoteManager.createPostRequest(Config.Values.URL);
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", deviceBean.getSnaddr());
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		request.setBody(JsonUtil.mapToJson(map));
 		request.addHeader("type", "getDevInfo");
 		
@@ -82,27 +83,50 @@ public class DeviceSetupActivity extends BaseActivity {
 		DeviceSetupActivity.this.setResult(ACTIVITY_RESULT_CODE, intent);
 		DeviceSetupActivity.this.finish();
 	}
-	
+
+	// 设置名称
 	public void handleSetupDevName(View v) {
+		if(!deviceBean.hasAuth()) {
+			alert("当前暂无权限修改设备名称");
+			return;
+		}
 		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateNameActivity.class);
 		intent.putExtra("deviceBean", deviceBean);
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
 	}
-	
+
+	// 区域修改
 	public void handleSetupArea(View v) {
+		if(!deviceBean.hasAuth()) {
+			alert("当前暂无权限区域修改");
+			return;
+		}
+
 		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateAreaActivity.class);
 		intent.putExtra("deviceBean", deviceBean);
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
 	
 	}
-	
+
+	// 阈值设置
 	public void handleSetupDevGap(View v) {
+		if(!deviceBean.hasAuth()) {
+			alert("当前暂无权限阈值设置");
+			return;
+		}
+
 		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateExtendActivity.class);
 		intent.putExtra("deviceBean", deviceBean);
 		startActivity(intent);
 	}
-	
+
+	// 上传间隔
 	public void handleSetupDistanceTime(View v) {
+		if(!deviceBean.hasAuth()) {
+			alert("当前暂无权限修改上传间隔");
+			return;
+		}
+
 		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateDistanceTimeActivity.class);
 		intent.putExtra("deviceBean", deviceBean);
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);

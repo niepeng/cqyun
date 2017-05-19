@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.baibutao.app.waibao.yun.android.R;
 import com.baibutao.app.waibao.yun.android.activites.common.BaseActivity;
 import com.baibutao.app.waibao.yun.android.activites.common.ThreadHelper;
+import com.baibutao.app.waibao.yun.android.androidext.EewebApplication;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceBean;
 import com.baibutao.app.waibao.yun.android.config.Config;
 import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
@@ -104,6 +105,7 @@ public class DeviceSetupUpdateNameActivity extends BaseActivity {
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", deviceBean.getSnaddr());
 		map.put("devName", newName);
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		request.setBody(JsonUtil.mapToJson(map));
 		request.addHeader("type", "setDevName");
 

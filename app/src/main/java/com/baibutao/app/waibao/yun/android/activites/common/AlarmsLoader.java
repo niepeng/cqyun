@@ -54,7 +54,9 @@ public class AlarmsLoader extends AsyncTaskLoader<List<DeviceBean>> {
 
         Response response = remoteManager.execute(request);
 
-        JSONArray array = JsonUtil.getJsonArray(response.getModel());
+        JSONObject mainJson = JsonUtil.getJsonObject(response.getModel());
+        JSONArray array = JsonUtil.getJsonArray(mainJson, "array");
+//        JSONArray array = JsonUtil.getJsonArray(response.getModel());
         final List<DeviceBean> currentList = CollectionUtil.newArrayList();
 
         if (array != null) {
@@ -138,31 +140,32 @@ public class AlarmsLoader extends AsyncTaskLoader<List<DeviceBean>> {
 
     }
 
-    private DeviceDataBean requestDeviceDataBean(DeviceBean bean) {
-        Map<String, String> headerMap = new HashMap<String, String>();
-        headerMap.put("TYPE", "getRTData");
-        Map<String, String> bodyMap = new HashMap<String, String>();
-        bodyMap.put("snaddr", bean.getSnaddr());
-        bodyMap.put("curve", bean.getCurve());
-        String content = Httpclient.subPostForBody(Config.Values.URL, JsonUtil.mapToJson(bodyMap), Httpclient.DEFAULT_CHARSET, headerMap);
-
-        JSONObject json = JsonUtil.getJsonObject(content);
-        if (json == null) {
-            return null;
-        }
-        DeviceDataBean dataBean = new DeviceDataBean();
-        dataBean.setAbnormal(JsonUtil.getString(json, "abnormal", null));
-        dataBean.setTime(JsonUtil.getString(json, "time", null));
-        JSONObject humiJson = JsonUtil.getJSONObject(json, "humi");
-        dataBean.setHumi(JsonUtil.getString(humiJson, "value", null));
-        dataBean.setHumiStatus(ChangeUtil.str2int(JsonUtil.getString(humiJson, "status", null)));
-
-        JSONObject tempJson = JsonUtil.getJSONObject(json, "temp");
-        dataBean.setTemp(JsonUtil.getString(tempJson, "value", null));
-        dataBean.setTempStatus(ChangeUtil.str2int(JsonUtil.getString(tempJson, "status", null)));
-
-        return dataBean;
-    }
+//    private DeviceDataBean requestDeviceDataBean(DeviceBean bean) {
+//        Map<String, String> headerMap = new HashMap<String, String>();
+//        headerMap.put("TYPE", "getRTData");
+//        Map<String, String> bodyMap = new HashMap<String, String>();
+//        bodyMap.put("snaddr", bean.getSnaddr());
+//        bodyMap.put("curve", bean.getCurve());
+//        String content = Httpclient.subPostForBody(Config.Values.URL, JsonUtil.mapToJson(bodyMap), Httpclient.DEFAULT_CHARSET, headerMap);
+//
+//        JSONObject json1 = JsonUtil.getJsonObject(content);
+//        if (json1 == null || JsonUtil.getInt(json1,"code", -1) !=0) {
+//            return null;
+//        }
+//        JSONObject json = JsonUtil.getJSONObject(json1, "array");
+//        DeviceDataBean dataBean = new DeviceDataBean();
+//        dataBean.setAbnormal(JsonUtil.getString(json, "abnormal", null));
+//        dataBean.setTime(JsonUtil.getString(json, "time", null));
+//        JSONObject humiJson = JsonUtil.getJSONObject(json, "humi");
+//        dataBean.setHumi(JsonUtil.getString(humiJson, "value", null));
+//        dataBean.setHumiStatus(ChangeUtil.str2int(JsonUtil.getString(humiJson, "status", null)));
+//
+//        JSONObject tempJson = JsonUtil.getJSONObject(json, "temp");
+//        dataBean.setTemp(JsonUtil.getString(tempJson, "value", null));
+//        dataBean.setTempStatus(ChangeUtil.str2int(JsonUtil.getString(tempJson, "status", null)));
+//
+//        return dataBean;
+//    }
 
     @Override
     public void deliverResult(List<DeviceBean> devices) {

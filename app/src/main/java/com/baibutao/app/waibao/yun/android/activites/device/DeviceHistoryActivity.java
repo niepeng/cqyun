@@ -138,7 +138,10 @@ public class DeviceHistoryActivity extends BaseActivity {
 				Response response = responseFuture.get();
 				List<DeviceDataBean> dataList = null;
 
-				JSONObject jsonObject = JsonUtil.getJsonObject(response.getModel());
+//				JSONObject jsonObject = JsonUtil.getJsonObject(response.getModel());
+				JSONObject mainJson = JsonUtil.getJsonObject(response.getModel());
+				JSONObject jsonObject = JsonUtil.getJSONObject(mainJson, "array");
+
 				JSONArray timeList = JsonUtil.getJsonArray(jsonObject, "timeList");
 				JSONArray humiList = JsonUtil.getJsonArray(jsonObject, "humiList");
 				JSONArray tempList = JsonUtil.getJsonArray(jsonObject, "tempList");

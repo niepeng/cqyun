@@ -105,6 +105,7 @@ public class DeviceHistoryAlarmActivity extends BaseActivity {
 		Request request = remoteManager.createPostRequest(Config.Values.URL);
 		final Map<String, Object> map = CollectionUtil.newHashMap();
 		map.put("snaddr", deviceBean.getSnaddr());
+		map.put("user", eewebApplication.getUserDO().getUsername());
 		map.put("startTime", DateUtil.formatDefault(startTime));
 		map.put("endTime", DateUtil.formatDefault(endTime));
 		request.setBody(JsonUtil.mapToJson(map));
@@ -129,8 +130,10 @@ public class DeviceHistoryAlarmActivity extends BaseActivity {
 				Response response = responseFuture.get();
 				List<DeviceDataBean> dataList = null;
 
-				JSONObject json = JsonUtil.getJsonObject(response.getModel());
-//				JSONObject json = JsonUtil.getJsonObject(content);
+				JSONObject mainJson = JsonUtil.getJsonObject(response.getModel());
+				JSONObject json = JsonUtil.getJSONObject(mainJson, "array");
+
+//				JSONObject json = JsonUtil.getJsonObject(response.getModel());
 
 				DeviceBean bean = null;
 				if (json != null) {

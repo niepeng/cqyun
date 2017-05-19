@@ -176,7 +176,10 @@ public class AlarmFragment extends BaseFragment implements ThreadListener {
         }
         setViewGone(loadMoreBtn, loadMoreProgressBar);
 
-        JSONArray array = JsonUtil.getJsonArray(response.getModel());
+        JSONObject mainJson = JsonUtil.getJsonObject(response.getModel());
+        JSONArray array = JsonUtil.getJsonArray(mainJson, "array");
+
+//        JSONArray array = JsonUtil.getJsonArray(response.getModel());
         final List<DeviceBean> currentList = CollectionUtil.newArrayList();
 
         if (array != null) {

@@ -64,6 +64,10 @@ public class DeviceBean implements Serializable {
 		return devName;
 	}
 
+	public boolean hasAuth() {
+		return authority == 1;
+	}
+
 	// -------------- setter/getter -----------------------
 
 	
