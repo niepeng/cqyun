@@ -11,3 +11,5 @@ logs/
 app/build/*
 build/*
 .gradle/*
+*/*.bin
+*/*.lock
