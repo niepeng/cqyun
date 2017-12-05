@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+
+
+	<!-- 标题栏 -->
+	<RelativeLayout style="@style/app_title_main">
+
+		<!-- 返回按钮 -->
+		<Button style="@style/app_title_back" android:onClick="handleBack" />
+
+
+		<!-- 标题 -->
+		<TextView android:id="@+id/more_about_title" android:text="设置蜂鸣报警开关" style="@style/app_title_wrap"
+			android:layout_centerInParent="true" />
+
+	</RelativeLayout>
+
+	<include layout="@layout/title_line_bottom" />
+
+	<!-- 主体部分 -->
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:paddingTop="20dip"
+		android:paddingBottom="30dip">
+		<LinearLayout style="@style/app_corner_wrap" android:background="@null" android:layout_gravity="center"
+			android:layout_marginLeft="10dip" android:layout_marginRight="10dip">
+
+
+			<!-- 提交按钮 -->
+			<LinearLayout android:orientation="horizontal"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="center" android:layout_marginTop="10dip"
+				android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="60dp"
+					android:layout_marginTop="10dip"
+					android:textSize="18dip"
+					android:paddingRight="10dip"
+					android:text="蜂鸣开关设置：" />
+
+				<ToggleButton
+					android:id="@+id/device_setup_beep_status_btn"
+					android:layout_width="100dp"
+					android:layout_height="60dp"
+					android:layout_gravity="center_horizontal"
+					android:background="@android:color/transparent"
+					android:button="@drawable/ios7_btn"
+					android:textOff=""
+					android:textOn=""
+					android:checked="true" />
+
+
+			</LinearLayout>
+
+
+
+
+
+			<!-- 提交按钮 -->
+			<LinearLayout android:orientation="horizontal"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="center" android:layout_marginTop="10dip"
+				android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+
+				<Button
+					style="@style/app_btn_submit_fill"
+					android:layout_marginLeft="20dip"
+					android:layout_marginRight="20dip"
+					android:onClick="handleSubmit"
+					android:paddingLeft="20dip"
+					android:paddingRight="20dip"
+					android:text="@string/app_btn_label_ok" />
+
+			</LinearLayout>
+
+
+		</LinearLayout>
+	</ScrollView>
+
+
+</LinearLayout>

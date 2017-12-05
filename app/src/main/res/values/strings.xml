@@ -19,6 +19,9 @@
     <string name="devcie_detail_history">历史数据</string>
     <string name="devcie_detail_history_alarm">历史报警</string>
     <string name="devcie_detail_arg_setup">参数设置</string>
+    <string name="devcie_detail_permission_manage">权限管理</string>
+
+    <string name="devcie_setup_alarm">报警关联</string>
 
     <string name="devcie_detail_history_select">历史数据查询</string>
     <string name="devcie_detail_history_select_tip">提示：设备历史数据最多只能查询到之前7天的数据。</string>
@@ -30,6 +33,10 @@
 
     <string name="devcie_setup_update_distance_time_tip">提示：单位秒(s)。设备上传间隔最大不超过5分钟，即300秒，最小为10秒</string>
     <string name="devcie_setup_update_extend_tip">提示：温度设置范围(-200℃ ~ +500℃)，湿度设置范围(0~99.99%)，回差暂不支持修改。</string>
+
+
+    <string name="alarm_setup_title">报警管理</string>
+
 
 
     <string name="app_opt_success">操作成功</string>
@@ -69,6 +76,7 @@
     <string name="setup_title">设置</string>
     <string name="setup_about_us">关于我们</string>
     <string name="setup_user_manage">账户管理</string>
+    <string name="setup_alarm_manage">报警管理</string>
     <string name="setup_user_manage_bind_mail">绑定邮箱</string>
     <string name="setup_user_manage_update_psw">修改密码</string>
     <string name="setup_user_manage_exit">退出</string>

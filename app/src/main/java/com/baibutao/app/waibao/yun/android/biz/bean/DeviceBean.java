@@ -33,6 +33,9 @@ public class DeviceBean implements Serializable {
 	
 	// 上传间隔时间
 	private String devGap;
+
+	// 0表示关闭实时开关蜂鸣器报警，1表示打开实时开关蜂鸣器报警
+	private String beepStatus;
 	
 	// 曲线,固定暂时没有使用
 	private String curve = "allLast";
@@ -66,6 +69,10 @@ public class DeviceBean implements Serializable {
 
 	public boolean hasAuth() {
 		return authority == 1;
+	}
+
+	public boolean isBeepOpen() {
+		return "1".equals(beepStatus);
 	}
 
 	// -------------- setter/getter -----------------------
@@ -175,5 +182,12 @@ public class DeviceBean implements Serializable {
 	public void setAlarmBean(AlarmBean alarmBean) {
 		this.alarmBean = alarmBean;
 	}
-	
+
+	public String getBeepStatus() {
+		return beepStatus;
+	}
+
+	public void setBeepStatus(String beepStatus) {
+		this.beepStatus = beepStatus;
+	}
 }

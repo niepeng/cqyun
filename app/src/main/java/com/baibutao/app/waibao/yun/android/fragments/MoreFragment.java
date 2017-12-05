@@ -2,6 +2,7 @@ package com.baibutao.app.waibao.yun.android.fragments;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.baibutao.app.waibao.yun.android.R;
+import com.baibutao.app.waibao.yun.android.activites.AlarmSetupActivity;
 import com.baibutao.app.waibao.yun.android.activites.MoreAboutActivity;
+import com.baibutao.app.waibao.yun.android.activites.SetupActivity;
 import com.baibutao.app.waibao.yun.android.activites.SetupNewProductActivity;
 import com.baibutao.app.waibao.yun.android.activites.UserManageActivity;
 import com.baibutao.app.waibao.yun.android.activites.common.BaseFragment;
@@ -20,6 +23,15 @@ import com.baibutao.app.waibao.yun.android.activites.common.ThreadHelper;
 import com.baibutao.app.waibao.yun.android.config.Config;
 import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
 import com.baibutao.app.waibao.yun.android.remote.Request;
+import com.baibutao.app.waibao.yun.android.remote.Response;
+import com.baibutao.app.waibao.yun.android.remote.parser.StringResponseParser;
+import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
+import com.baibutao.app.waibao.yun.android.util.JsonUtil;
+
+import org.json.JSONObject;
+
+import java.util.Map;
+import java.util.concurrent.Future;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +39,9 @@ import com.baibutao.app.waibao.yun.android.remote.Request;
  * create an instance of this fragment.
  */
 public class MoreFragment extends BaseFragment {
+
+    private TextView moneyTv;
+    private Future<Response> responseFuture;
 
     public MoreFragment() {
         // Required empty public constructor
@@ -61,6 +76,7 @@ public class MoreFragment extends BaseFragment {
                 inflater.inflate(R.layout.fragment_more, container, false);
 
         TextView usernameTv = (TextView) root.findViewById(R.id.setup_username);
+        moneyTv = (TextView) root.findViewById(R.id.setup_money);
         usernameTv.setText(eewebApplication.getUserDO().getUsername());
 
         root.findViewById(R.id.account_setup).setOnClickListener(new View.OnClickListener(){
@@ -68,6 +84,13 @@ public class MoreFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 handleUpdateSetup(v);
+            }
+        });
+        root.findViewById(R.id.alarm_setup).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                handleAlarmSetup(v);
             }
         });
         root.findViewById(R.id.about_us).setOnClickListener(new View.OnClickListener(){
@@ -91,7 +114,21 @@ public class MoreFragment extends BaseFragment {
             }
         });
 
+        init();
         return root;
+    }
+
+    private void init() {
+        RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
+        remoteManager.setResponseParser(new StringResponseParser());
+        Request request = remoteManager.createPostRequest(Config.Values.URL);
+        final Map<String, Object> map = CollectionUtil.newHashMap();
+        map.put("user", eewebApplication.getUserDO().getUsername());
+        request.setBody(JsonUtil.mapToJson(map));
+        request.addHeader("type", "getAlarmAccountInfo");
+        ProgressDialog progressDialog = showProgressDialog(R.string.app_read_data);
+        progressDialog.setOnDismissListener(new MoreFragment.LoadData());
+        responseFuture = eewebApplication.asyInvoke(new ThreadHelper(progressDialog, request, remoteManager));
     }
 
 
@@ -102,11 +139,24 @@ public class MoreFragment extends BaseFragment {
         startActivity(intent);
     }
 
+    /**
+     * 账户管理
+     * @param v
+     */
     public void handleUpdateSetup(View v) {
         Intent intent = new Intent(getActivity(), UserManageActivity.class);
         startActivity(intent);
-
     }
+
+    /**
+     * 报警管理
+     * @param v
+     */
+    public void handleAlarmSetup(View v) {
+        Intent intent = new Intent(getActivity(), AlarmSetupActivity.class);
+        startActivity(intent);
+    }
+
 
 //    public void handleNewProducts(View v) {
 //        Intent intent = new Intent(getActivity(), SetupNewProductActivity.class);
@@ -122,6 +172,48 @@ public class MoreFragment extends BaseFragment {
         CheckUpdateForFragment checkUpdate = new CheckUpdateForFragment(getActivity());
         progressDialog.setOnDismissListener(checkUpdate);
         checkUpdate.setResponseFuture(eewebApplication.asyInvoke(new ThreadHelper(progressDialog, request)));
+    }
+
+
+
+
+    private class LoadData implements DialogInterface.OnDismissListener {
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+            if (responseFuture == null) {
+                return;
+            }
+
+            try {
+
+                Response response = responseFuture.get();
+//                if (!response.isDataSuccess()) {
+//                    return;
+//                }
+
+                /**
+                 * ｛"code":0,"msg_remain":"剩余短信条数","msg_count":"已发短信条数","credit_money":"账户余额"｝
+                 */
+
+                JSONObject jsonObject = JsonUtil.getJsonObject(response.getModel());
+                final double money = JsonUtil.getDouble(jsonObject, "credit_money", 0.d);
+
+
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        moneyTv.setText(String.valueOf(money) + "元");
+                    }
+                });
+
+
+
+            } catch (Exception e) {
+                MoreFragment.this.logError(e.getMessage(), e);
+            }
+
+        }
+
     }
 
 }

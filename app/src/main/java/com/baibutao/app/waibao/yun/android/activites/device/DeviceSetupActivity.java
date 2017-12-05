@@ -36,7 +36,8 @@ public class DeviceSetupActivity extends BaseActivity {
 	private TextView nameTv;
 	private TextView areaTv;
 	private TextView distaceTimeTv;
-	
+	private TextView beepStatusTv;
+
 	private DeviceBean deviceBean;
 	private Future<Response> responseFuture;
 	private Future<Response> delResponseFuture;
@@ -53,7 +54,8 @@ public class DeviceSetupActivity extends BaseActivity {
 		nameTv = (TextView) findViewById(R.id.devcie_setup_name);
 		areaTv = (TextView) findViewById(R.id.device_setup_area);
 		distaceTimeTv = (TextView) findViewById(R.id.device_setup_time);
-		
+		beepStatusTv = (TextView) findViewById(R.id.device_setup_beep_status);
+
 		initData();
 		
 		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
@@ -75,6 +77,7 @@ public class DeviceSetupActivity extends BaseActivity {
 		nameTv.setText(deviceBean.getDevName());
 		areaTv.setText(deviceBean.getArea());
 		distaceTimeTv.setText(deviceBean.getDevGap());
+		beepStatusTv.setText(deviceBean.isBeepOpen() ? "   开" : "   关");
 	}
 
 	public void handleBack(View v) {
@@ -131,6 +134,25 @@ public class DeviceSetupActivity extends BaseActivity {
 		intent.putExtra("deviceBean", deviceBean);
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
 	}
+
+	// 报警关联
+	public void handleSetupAlarm(View v) {
+		if(!deviceBean.hasAuth()) {
+			alert("没有操作权限");
+			return;
+		}
+		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupAlarmActivity.class);
+		intent.putExtra("deviceBean", deviceBean);
+		startActivity(intent);
+	}
+
+	//  蜂鸣器开关
+	public void handleSetupBeepStatus(View v) {
+		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupBeepStatusActivity.class);
+		intent.putExtra("deviceBean", deviceBean);
+		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
+	}
+
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

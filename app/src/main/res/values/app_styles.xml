@@ -88,8 +88,9 @@
 		<!-- <item name="android:paddingTop">5dip</item>
 		<item name="android:paddingBottom">5dip</item> -->
 	</style>
-	
-	
+
+
+
 	
 	 <style name="app_corner_wrap">
         <item name="android:layout_width">fill_parent</item>

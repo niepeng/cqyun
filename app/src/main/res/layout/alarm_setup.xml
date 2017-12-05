@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/grays"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="@string/alarm_setup_title" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+
+    <!--
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/grays"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+
+        <TextView
+            android:id="@+id/device_setup_sn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dip"
+            android:textColor="@color/black"
+            android:textSize="16dip" />
+
+    </LinearLayout>
+-->
+    <ScrollView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <ImageView android:layout_width="fill_parent"
+                android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+    <!--  手机号管理  -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handlePhoneManage"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="手机号管理"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+            <ImageView android:layout_width="fill_parent" android:layout_marginBottom="30dp"
+                android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+
+    <!-- 报警总开关 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dip"
+            android:textColor="@color/gray_deep"
+            android:text="报警总开关"
+            android:textSize="14dip" />
+    </LinearLayout>
+
+
+
+
+
+            <ImageView android:layout_width="fill_parent"
+                android:layout_height="0.5dip" android:src="@color/gray_deep" />
+        <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="报警开关"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_total_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleTotalSwitch"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+
+            <ImageView android:layout_width="fill_parent"
+                android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+
+    <LinearLayout
+        android:id="@+id/alarm_setup_total_switch_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+    <!-- 数据异常报警 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="30dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dip"
+            android:textColor="@color/gray_deep"
+            android:text="数据异常报警"
+            android:textSize="14dip" />
+    </LinearLayout>
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="短信通知"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_exception_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleExceptionSms"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="语音电话(暂未上线)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_exception_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleExceptionPhone"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+
+    <ImageView android:layout_width="fill_parent"
+    android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="APP推送"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_exception_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleExceptionApp"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="邮件通知"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_exception_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleExceptionEmail"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+
+    <!-- 设备离线报警 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="30dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dip"
+            android:textColor="@color/gray_deep"
+            android:text="设备离线报警"
+            android:textSize="14dip" />
+    </LinearLayout>
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="短信通知"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_off_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleOffSms"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="语音电话(暂未上线)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_off_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleOffPhone"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="APP推送"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_off_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleOffApp"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="邮件通知"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/alarm_setup_off_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:button="@drawable/ios7_btn_small"
+            android:layout_marginRight="20dp"
+            android:onClick="handleOffEmail"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+</LinearLayout>
+
+</LinearLayout>
+    </ScrollView>
+    
+</LinearLayout>

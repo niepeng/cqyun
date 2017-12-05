@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout style="@style/app_title_main" >
+
+        <!-- 返回按钮 -->
+
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
+
+        <!-- 标题 -->
+
+        <TextView
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true"
+            android:text="@string/devcie_detail_permission_manage" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line_bottom" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/grays"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+
+        <!-- 标题 -->
+
+        <TextView
+            android:id="@+id/device_permission_manage_sn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dip"
+            android:textColor="@color/black"
+            android:textSize="22dip" />
+        <!--
+     <TextView
+       android:id="@+id/alarm_list_view_item_main_snaddr_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/black"
+       android:textSize="16dip" />
+        -->
+
+    </LinearLayout>
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+    <!--<ListView-->
+    <!--android:id="@+id/listView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--/>-->
+
+    <ListView
+        android:id="@+id/device_permission_manage_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginTop="0dip"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/app_main"
+        android:divider="@drawable/list_split2"
+        android:dividerHeight="0.2dp"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false" />
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="0.5dip" android:src="@color/gray_deep" />
+
+    
+
+			
+     
+    
+    
+</LinearLayout>

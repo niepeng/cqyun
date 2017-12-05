@@ -10,7 +10,7 @@
 
         <LinearLayout
             style="@style/app_title_main"
-            android:layout_height="100dip"
+            android:layout_height="130dip"
             android:orientation="vertical">
 
             <ImageView
@@ -18,9 +18,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="70dip"
                 android:layout_marginTop="5dip"
-                android:src="@android:drawable/sym_def_app_icon"
+                android:src="@drawable/head_icon"
                  />
-            <!--  android:src="@drawable/head_icon" -->
+            <!--  android:src="@android:drawable/sym_def_app_icon" -->
 
             <TextView
                 android:id="@+id/setup_username"
@@ -28,6 +28,14 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="5dip"
                 android:textSize="15dip" />
+
+            <TextView
+                android:id="@+id/setup_money"
+                style="@style/app_title_wrap"
+                android:textSize="15dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dip"/>
+
 
         </LinearLayout>
 
@@ -42,6 +50,13 @@
                 android:id="@+id/account_setup"
                 style="@style/app_row_with_arrow"
                 android:text="@string/setup_user_manage" />
+
+            <include layout="@drawable/line_split" />
+
+            <Button
+                android:id="@+id/alarm_setup"
+                style="@style/app_row_with_arrow"
+                android:text="@string/setup_alarm_manage" />
 
             <include layout="@drawable/line_split" />
 

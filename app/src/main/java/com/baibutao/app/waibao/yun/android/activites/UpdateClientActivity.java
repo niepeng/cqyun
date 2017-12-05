@@ -9,7 +9,9 @@ import java.util.Date;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -52,8 +54,17 @@ public class UpdateClientActivity extends BaseActivity {
 
 	private void startDownLoad() {
 		try {
+//			if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+//				alert("has sdcard." + Build.VERSION.SDK_INT);
+//			} else {
+//				alert("has not sdcard." + Build.VERSION.SDK_INT);
+//			}
+
 			installFile = File.createTempFile(genName(), ".apk");
-		} catch (IOException e) {
+//			toastLong(installFile.getAbsolutePath());
+//			File f = Environment.getExternalStorageDirectory();//获取SD卡目录
+//			installFile =  new File(f, genName());
+		} catch (Exception e) {
 			Log.e("update", e.getMessage(), e);
 			this.alert(getString(R.string.update_client_sd_no_space_msg));
 			return;
@@ -72,6 +83,7 @@ public class UpdateClientActivity extends BaseActivity {
 		Intent intent = new Intent();
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.setAction(android.content.Intent.ACTION_VIEW);
+		intent.addCategory(Intent.CATEGORY_DEFAULT);
 		intent.setDataAndType(Uri.fromFile(file), type);
 		startActivity(intent);
 		endMe();
@@ -148,7 +160,8 @@ public class UpdateClientActivity extends BaseActivity {
 	}
 	
 	private static String genName() {
-		return "eeweb_install_file_" + DateUtil.format(new Date(), "yyyy_MM_dd_HH_mm") + ".apk";
+//		return "eeweb_install_file_" + DateUtil.format(new Date(), "yyyy_MM_dd_HH_mm") + ".apk";
+		return "eeweb_install_file_" + DateUtil.format(new Date(), "yyyy_MM_dd_HH_mm");
 	}
 
 }

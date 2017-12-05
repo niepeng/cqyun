@@ -123,6 +123,12 @@ public class DeviceDetailActivity extends BaseActivity {
         startActivityForResult(intent, ACTIVITY_RESULT_CODE);
     }
 
+    public void handlePermissionManage(View v) {
+        Intent intent = new Intent(DeviceDetailActivity.this, DevicePermissionManageActivity.class);
+        intent.putExtra("deviceBean", deviceBean);
+        startActivityForResult(intent, ACTIVITY_RESULT_CODE);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -1,5 +1,6 @@
 package com.baibutao.app.waibao.yun.android.util;
 
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -147,7 +148,12 @@ public class JsonUtil {
 		String jsonStr = gson.toJson(map);
 		return jsonStr;
 	}
-	
+	public static <T> String listToJson(List<T> list) {
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson(list);
+		return jsonStr;
+	}
+
 	public static <T> T jsonToBean(String jsonString, Class<T> beanCalss) {
 		try {
 			Gson gson = new Gson();
