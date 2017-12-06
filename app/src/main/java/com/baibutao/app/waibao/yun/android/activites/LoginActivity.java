@@ -55,6 +55,11 @@ public class LoginActivity extends BaseActivity {
 		}
 
 	}
+
+	public void handleRegister(View v) {
+		Intent intent = new Intent(this, RegisterActivity.class);
+		startActivity(intent);
+	}
 	
 	public void handleLogin(View v) {
 //		Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
@@ -126,7 +131,7 @@ public class LoginActivity extends BaseActivity {
 			try {
 				Response response = responseFuture.get();
 				if (!response.isDataSuccess()) {
-					LoginActivity.this.toastLong(R.string.login_username_psw_wrong);
+					LoginActivity.this.toastLong("1.请检查用户名或密码是否正确\n2.请检查是否包含空格\n3.是否未区分大小写");
 					return;
 				}
 //				JSONObject jsonObject = JsonUtil.getJsonObject(response.getModel());

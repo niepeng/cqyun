@@ -29,42 +29,50 @@ public class WelcomeActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.welcome);
 		
-		LinearLayout welcomelinear = (LinearLayout) findViewById(R.id.welcomelinear);
-		welcomelinear.setBackgroundResource(getPicResourceId());
-		
-		handler = new Handler();
-		final MessageHelper messageHelper = new MessageHelper(false);
-		final TaskGroup taskGroup = new TaskGroup();
-		
-		Runnable navigationThread = new Runnable() {
-			@Override
+//		LinearLayout welcomelinear = (LinearLayout) findViewById(R.id.welcomelinear);
+//		welcomelinear.setBackgroundResource(getPicResourceId());
+//
+//		handler = new Handler();
+//		final MessageHelper messageHelper = new MessageHelper(false);
+//		final TaskGroup taskGroup = new TaskGroup();
+//
+//		Runnable navigationThread = new Runnable() {
+//			@Override
+//			public void run() {
+//				try {
+//					Thread.sleep(waitTime);
+//					// 如果已经弹出自动更新对话框，然用户选择后自己进去
+//					if (!messageHelper.set()) {
+//						startNaviagetionEventWhere();
+//					}
+//
+//				} catch (InterruptedException e) {
+//					Thread.currentThread().interrupt();
+//					logError("", e);
+//				} finally {
+//					taskGroup.shutdown();
+//				}
+//			}
+//		};
+//
+//		// 异步发送一次请求注册
+////		eewebApplication.asyInvoke(new AuthorUserTask(eewebApplication));
+//
+//		taskGroup.addMust(loadCatDataThread);
+//		taskGroup.addMust(navigationThread);
+//
+//		taskGroup.addMay(new CheckUpdateTask(eewebApplication, this, handler, messageHelper));
+//
+//		eewebApplication.asyCall(taskGroup);
+
+		new Handler().postDelayed(new Runnable() {
 			public void run() {
-				try {
-					Thread.sleep(waitTime);
-					// 如果已经弹出自动更新对话框，然用户选择后自己进去
-					if (!messageHelper.set()) {
-						startNaviagetionEventWhere();
-					}
-					
-				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
-					logError("", e);
-				} finally {
-					taskGroup.shutdown();
-				}
+				Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+				startActivity(intent);
 			}
-		};
-		
-		// 异步发送一次请求注册
-//		eewebApplication.asyInvoke(new AuthorUserTask(eewebApplication));
-		
-		taskGroup.addMust(loadCatDataThread);
-		taskGroup.addMust(navigationThread);
-		
-		taskGroup.addMay(new CheckUpdateTask(eewebApplication, this, handler, messageHelper));
-		
-		eewebApplication.asyCall(taskGroup);
-		
+		}, 3000);
+
+
 	}
 	
 	private int getPicResourceId() {

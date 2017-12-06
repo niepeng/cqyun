@@ -54,7 +54,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.device_setup_update_extend);
+		this.setContentView(R.layout.register);
 
 		Bundle bundle = this.getIntent().getExtras();
 		deviceBean = (DeviceBean) bundle.get("deviceBean");
@@ -69,6 +69,18 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 
 		setEditTextInhibitInput(highTempEt);
 		setEditTextInhibitInput(lowTempEt);
+
+
+		if(!deviceBean.hasAuth()) {
+			highTempEt.setFocusable(false);
+			highTempEt.setEnabled(false);
+			lowTempEt.setFocusable(false);
+			lowTempEt.setEnabled(false);
+			highHumiEt.setFocusable(false);
+			highHumiEt.setEnabled(false);
+			lowHumiEt.setFocusable(false);
+			lowHumiEt.setEnabled(false);
+		}
 
 		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 		remoteManager.setResponseParser(new StringResponseParser());
@@ -120,6 +132,11 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 
 
 	public void handleSubmit(View v) {
+
+		if(!deviceBean.hasAuth()) {
+			alert("当前暂无权限阈值设置");
+			return;
+		}
 
 		/**
 		 * 允许设定阈值范围：

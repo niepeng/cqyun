@@ -55,6 +55,21 @@
                 android:onClick="handleLogin"
                 android:text="登录" />
 
+            <Button
+                android:background="@null"
+                android:id="@+id/login_register"
+                android:layout_width="fill_parent"
+                android:gravity="right"
+                style="@style/login_username_style"
+                android:layout_marginBottom="20dip"
+                android:layout_marginRight="30dip"
+                android:layout_marginTop="4dip"
+                android:textSize="20dp"
+                android:textColor="@color/red"
+                android:onClick="handleRegister"
+                android:text="注册" />
+
+
 
         </LinearLayout>
     </ScrollView>

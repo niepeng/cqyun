@@ -113,10 +113,10 @@ public class DeviceSetupActivity extends BaseActivity {
 
 	// 阈值设置
 	public void handleSetupDevGap(View v) {
-		if(!deviceBean.hasAuth()) {
-			alert("当前暂无权限阈值设置");
-			return;
-		}
+//		if(!deviceBean.hasAuth()) {
+//			alert("当前暂无权限阈值设置");
+//			return;
+//		}
 
 		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateExtendActivity.class);
 		intent.putExtra("deviceBean", deviceBean);

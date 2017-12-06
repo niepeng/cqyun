@@ -77,7 +77,7 @@ public class MoreFragment extends BaseFragment {
 
         TextView usernameTv = (TextView) root.findViewById(R.id.setup_username);
         moneyTv = (TextView) root.findViewById(R.id.setup_money);
-        usernameTv.setText(eewebApplication.getUserDO().getUsername());
+        usernameTv.setText("账户："+eewebApplication.getUserDO().getUsername());
 
         root.findViewById(R.id.account_setup).setOnClickListener(new View.OnClickListener(){
 
@@ -202,7 +202,7 @@ public class MoreFragment extends BaseFragment {
 
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
-                        moneyTv.setText(String.valueOf(money) + "元");
+                        moneyTv.setText("余额：" + String.valueOf(money) + "元");
                     }
                 });
 
