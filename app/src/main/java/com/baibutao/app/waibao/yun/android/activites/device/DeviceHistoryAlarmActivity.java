@@ -109,7 +109,8 @@ public class DeviceHistoryAlarmActivity extends BaseActivity {
 		map.put("startTime", DateUtil.formatDefault(startTime));
 		map.put("endTime", DateUtil.formatDefault(endTime));
 		request.setBody(JsonUtil.mapToJson(map));
-		request.addHeader("type", "getDeviceErr");
+//		request.addHeader("type", "getDeviceErr");
+		request.addHeader("type", "getHistoryAlarm");
 
 
 		ProgressDialog progressDialog = showProgressDialog(R.string.app_read_data);
@@ -131,17 +132,16 @@ public class DeviceHistoryAlarmActivity extends BaseActivity {
 				List<DeviceDataBean> dataList = null;
 
 				JSONObject mainJson = JsonUtil.getJsonObject(response.getModel());
-				JSONObject json = JsonUtil.getJSONObject(mainJson, "array");
 
 //				JSONObject json = JsonUtil.getJsonObject(response.getModel());
 
 				DeviceBean bean = null;
-				if (json != null) {
+				if (mainJson != null && mainJson.getInt("code") == 0) {
 					bean = new DeviceBean();
-					bean.setSnaddr(JsonUtil.getString(json, "snaddr", null));
-					bean.setDevName(JsonUtil.getString(json, "devName", null));
-					bean.setArea(JsonUtil.getString(json, "area", null));
-					JSONArray alarmArray = JsonUtil.getJsonArray(json, "detail");
+					bean.setSnaddr(JsonUtil.getString(mainJson, "snaddr", null));
+					bean.setDevName(JsonUtil.getString(mainJson, "devName", null));
+					bean.setArea(JsonUtil.getString(mainJson, "area", null));
+					JSONArray alarmArray = JsonUtil.getJsonArray(mainJson, "detail");
 					List<AlarmBean> alarmBeanList = CollectionUtil.newArrayList();
 					AlarmBean alarmBean = null;
 					if (alarmArray != null) {
@@ -161,7 +161,11 @@ public class DeviceHistoryAlarmActivity extends BaseActivity {
 				// 跳转到新的页面展示数据
 				Intent intent = new Intent(DeviceHistoryAlarmActivity.this, DeviceHistoryAlarmDataActivity.class);
 				Bundle bundle = new Bundle();
-				bean.setDevName(deviceBean.getDevName());
+//				bean.setDevName(deviceBean.getDevName());
+				String startTimeStr = startTimeTv.getText().toString();
+				String endTimeStr = endTimeTv.getText().toString();
+				bundle.putString("startTimeStr", startTimeStr);
+				bundle.putString("endTimeStr", endTimeStr);
 				bundle.putSerializable("deviceBean", bean);
 				intent.putExtras(bundle);
 				startActivity(intent);

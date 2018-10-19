@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_marginTop="1dip"
+    android:layout_marginBottom="1dip"
+    android:paddingBottom="5dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView android:src="@drawable/ic_launcher"
+                android:layout_gravity="center_vertical"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+
+                <TextView
+                    android:id="@+id/alarm_list_view_item_new_alarm_id_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:padding="2dip"
+                    android:text="报警ID:000000"
+                    android:textColor="@color/black"
+                    android:textSize="18dip" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="right" >
+
+                    <TextView
+                        android:id="@+id/alarm_list_view_item_new_alarm_status_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:padding="2dip"
+                        android:text="报警结束"
+                        android:textColor="@color/red"
+                        android:textSize="18dip" />
+
+
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/alarm_list_view_item_new_alarm_device_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="AAAA(xxxx)"
+        android:textColor="@color/black"
+        android:textSize="18dip" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/alarm_list_view_item_new_alarm_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设备离线 发生报警"
+                android:textColor="@color/black"
+                android:textSize="15dip" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="right" >
+
+            <TextView
+                android:id="@+id/alarm_list_view_item_new_alarm_distance_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dip"
+                android:text="报警持续时间：51分钟"
+                android:textColor="@color/black"
+                android:textSize="15dip" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/alarm_list_view_item_new_alarm_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="开始报警：2018-10-17 22:34 结束报警：2018-10-17 22:34"
+        android:textColor="@color/black"
+        android:textSize="13dip" />
+
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:gravity="right" >
+
+            <Button
+                android:id="@+id/alarm_list_view_item_new_ignore_btn"
+                android:background="@drawable/btn_gray_background"
+                android:layout_width="70sp"
+                android:layout_height="30sp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:textColor="@color/gray_deep"
+                android:textSize="16dp"
+                android:onClick="handleIgnore"
+                android:text="忽略"/>
+
+            <Button
+                android:id="@+id/alarm_list_view_item_new_confirm_btn"
+                android:background="@drawable/btn_light_background"
+                android:layout_width="70sp"
+                android:layout_height="30sp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:textColor="@color/yun_title"
+                android:textSize="16dp"
+                android:onClick="handleConfirm"
+                android:text="确认" />
+
+        </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -24,6 +24,12 @@ public class DateUtil {
 
     public static final String DATE_HHmmss = "HH:mm:ss";
 
+    public static final long MINUTE_MILLS = 60 * 1000;
+    public static final long HOUR_MILLS = 60 * MINUTE_MILLS;
+    public static final long DAY_MILLS = 24 * HOUR_MILLS;
+
+
+
     /**
      * date1比date2更新（更迟，更晚），返回true，否则返回false
      *
@@ -166,5 +172,39 @@ public class DateUtil {
         return new Date(date.getTime() + flag);
     }
 
+    /**
+     * 12天3小时4分钟
+     * 12天4分钟
+     * 3小时23分钟
+     * 34分钟
+     * 1分钟
+     * @param date1
+     * @param date2
+     * @return
+     */
+    public static String calcTimeDistance(Date date1, Date date2) {
+        StringBuffer sb = new StringBuffer();
+        long distanceTime = Math.abs(date1.getTime() - date2.getTime());
+        long day = distanceTime / DAY_MILLS;
+        long hour = (distanceTime % DAY_MILLS) / HOUR_MILLS;
+        long minute = (distanceTime % HOUR_MILLS) / MINUTE_MILLS;
+        if (day > 0) {
+            sb.append(day);
+            sb.append("天");
+        }
+        if (hour > 0) {
+            sb.append(hour);
+            sb.append("小时");
+        }
+        if (minute > 0) {
+            sb.append(minute);
+            sb.append("分钟");
+        }
+
+        if (sb.length() == 0) {
+            return "1分钟";
+        }
+        return sb.toString();
+    }
 
 }

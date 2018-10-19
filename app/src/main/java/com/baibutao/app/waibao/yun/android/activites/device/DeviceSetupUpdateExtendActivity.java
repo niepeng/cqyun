@@ -54,7 +54,7 @@ public class DeviceSetupUpdateExtendActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.register);
+		this.setContentView(R.layout.device_setup_update_extend);
 
 		Bundle bundle = this.getIntent().getExtras();
 		deviceBean = (DeviceBean) bundle.get("deviceBean");

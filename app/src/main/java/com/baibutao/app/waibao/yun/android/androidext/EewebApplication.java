@@ -24,6 +24,7 @@ import com.baibutao.app.waibao.yun.android.activites.common.TabFlushEnum;
 import com.baibutao.app.waibao.yun.android.as.AsynchronizedInvoke;
 import com.baibutao.app.waibao.yun.android.biz.LoadImgDO;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceDataBean;
+import com.baibutao.app.waibao.yun.android.biz.bean.TmpHistoryBean;
 import com.baibutao.app.waibao.yun.android.biz.dataobject.UserDO;
 import com.baibutao.app.waibao.yun.android.common.GlobalUtil;
 import com.baibutao.app.waibao.yun.android.common.MobileUseInfo;
@@ -79,6 +80,8 @@ public class EewebApplication extends Application {
 	private UserDO userDO;
 
 	private List<DeviceDataBean> tmpList;
+
+	private TmpHistoryBean tmpHistoryBean;
 
 	private AtomicInteger notifyId =  null;
 
@@ -357,5 +360,13 @@ public class EewebApplication extends Application {
 
 	public AtomicInteger getNotifyId() {
 		return notifyId;
+	}
+
+	public TmpHistoryBean getTmpHistoryBean() {
+		return tmpHistoryBean;
+	}
+
+	public void setTmpHistoryBean(TmpHistoryBean tmpHistoryBean) {
+		this.tmpHistoryBean = tmpHistoryBean;
 	}
 }

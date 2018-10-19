@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -61,6 +62,18 @@ public class UpdateClientActivity extends BaseActivity {
 //			}
 
 			installFile = File.createTempFile(genName(), ".apk");
+
+			String folder = Environment.getExternalStorageDirectory().getAbsolutePath();
+			File f = new File(folder);
+			if (!f.exists()) {
+				f.mkdir();
+			}
+			String apkPath = folder + File.separator + genName() + ".apk";
+			installFile = new File(apkPath);
+			//创建apk文件
+			installFile.createNewFile();
+			alert("installFile=" + installFile.getAbsolutePath());
+
 //			toastLong(installFile.getAbsolutePath());
 //			File f = Environment.getExternalStorageDirectory();//获取SD卡目录
 //			installFile =  new File(f, genName());
@@ -75,18 +88,40 @@ public class UpdateClientActivity extends BaseActivity {
 	}
 
 	private void startInstall(String fileName) {
+		alert("fileName=" + fileName);
 		File file = new File(fileName);
 		if (!file.exists()) {
+			alert("文件不存在");
 			return;
 		}
-		String type = "application/vnd.android.package-archive";
-		Intent intent = new Intent();
-		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.setAction(android.content.Intent.ACTION_VIEW);
-		intent.addCategory(Intent.CATEGORY_DEFAULT);
-		intent.setDataAndType(Uri.fromFile(file), type);
+		alert("src=" + file.getAbsolutePath());
+
+
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		if (Build.VERSION.SDK_INT >= 24) {
+			//参数1 上下文；参数2 Provider主机地址 authorities 和配置文件中保持一致 ；参数3  共享的文件
+			Uri apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.baibutao.app.waibao.yun.android.ins", file);
+			intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+		} else {
+			intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+		}
+
 		startActivity(intent);
-		endMe();
+//		android.os.Process.killProcess(android.os.Process.myPid());
+
+
+
+//		String type = "application/vnd.android.package-archive";
+//		Intent intent = new Intent();
+//		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		intent.setAction(android.content.Intent.ACTION_VIEW);
+////		intent.addCategory(Intent.CATEGORY_DEFAULT);
+//		intent.setDataAndType(Uri.fromFile(file), type);
+//		startActivity(intent);
+//		android.os.Process.killProcess(android.os.Process.myPid());
+//		endMe();
 	}
 
 	private void endMe() {
@@ -108,14 +143,20 @@ public class UpdateClientActivity extends BaseActivity {
 		@Override
 		public void onFinish() {
 			final String fileName = installFile.getAbsolutePath();
-			startInstall(fileName);
-
 			/*
 			 * handler.post(new Runnable() {
 			 * 
 			 * @Override public void run() {
 			 * UpdateClientActivity.this.alert("下载成功！"); } });
 			 */
+			handler.post(new Runnable() {
+
+				@Override
+				public void run() {
+					startInstall(fileName);
+				}
+			});
+
 
 		}
 
@@ -161,7 +202,7 @@ public class UpdateClientActivity extends BaseActivity {
 	
 	private static String genName() {
 //		return "eeweb_install_file_" + DateUtil.format(new Date(), "yyyy_MM_dd_HH_mm") + ".apk";
-		return "eeweb_install_file_" + DateUtil.format(new Date(), "yyyy_MM_dd_HH_mm");
+		return "cq_" + DateUtil.format(new Date(), "MM_dd_HH_mm");
 	}
 
 }

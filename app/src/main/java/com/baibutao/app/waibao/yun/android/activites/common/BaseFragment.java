@@ -80,37 +80,38 @@ public class BaseFragment extends Fragment {
 
     protected Drawable getDrawableByType(AlarmBean alarmBean) {
         Resources resources = this.getResources();
-        String type = alarmBean.getType();
-        // 	// 1:温度过高;2:温度过低;3:湿度过高;4:湿度过低;5:开关报警;6:设备离线;7:传感器异常;8:传感器未连接
-        if ("1".equals(type) || "2".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.temp);
-            }
-            return resources.getDrawable(R.drawable.temp2);
-        }
-
-        if ("3".equals(type) || "4".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.humi);
-            }
-            return resources.getDrawable(R.drawable.humi2);
-        }
-
-        if ("6".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.off);
-            }
-            return resources.getDrawable(R.drawable.off2);
-        }
-
-        if ("7".equals(type) || "8".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.nosensor);
-            }
-            return resources.getDrawable(R.drawable.nosensor2);
-        }
-
-        return null;
+        return resources.getDrawable(R.drawable.temp2);
+//        String type = alarmBean.getType();
+//        // 	// 1:温度过高;2:温度过低;3:湿度过高;4:湿度过低;5:开关报警;6:设备离线;7:传感器异常;8:传感器未连接
+//        if ("1".equals(type) || "2".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.temp);
+//            }
+//            return resources.getDrawable(R.drawable.temp2);
+//        }
+//
+//        if ("3".equals(type) || "4".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.humi);
+//            }
+//            return resources.getDrawable(R.drawable.humi2);
+//        }
+//
+//        if ("6".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.off);
+//            }
+//            return resources.getDrawable(R.drawable.off2);
+//        }
+//
+//        if ("7".equals(type) || "8".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.nosensor);
+//            }
+//            return resources.getDrawable(R.drawable.nosensor2);
+//        }
+//
+//        return null;
     }
 
     protected ProgressDialog showProgressDialog(int message) {
@@ -231,6 +232,17 @@ public class BaseFragment extends Fragment {
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, buttonLabel, (Message) null);
         alertDialog.show();
     }
+
+    public void alert(CharSequence message, CharSequence title) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setTitle(title);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setTitle(getMessageBoxTitle());
+        alertDialog.setMessage(message);
+        String buttonLabel = getString(R.string.app_btn_label_ok);
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, buttonLabel, (Message) null);
+        alertDialog.show();
+    }
+
 
     protected void confirm(CharSequence message, OnClickListener onYesButton, OnClickListener onNoButton) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

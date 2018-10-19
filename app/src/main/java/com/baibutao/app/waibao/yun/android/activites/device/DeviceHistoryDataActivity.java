@@ -14,7 +14,10 @@ import com.baibutao.app.waibao.yun.android.activites.common.AbstractBaseAdapter;
 import com.baibutao.app.waibao.yun.android.activites.common.BaseActivity;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceBean;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceDataBean;
+import com.baibutao.app.waibao.yun.android.biz.bean.TmpHistoryBean;
 import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -27,7 +30,14 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 
 	private TextView titleTv;
 
+	private TextView startTimeTv;
+	private TextView endTimeTv;
+	private TextView maxTv;
+	private TextView minTv;
+
 	private ListView listView;
+
+	private TmpHistoryBean tmpHistoryBean;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +47,25 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 		Bundle bundle = this.getIntent().getExtras();
 
 		titleTv = (TextView) findViewById(R.id.device_history_data_title);
+		startTimeTv = (TextView) findViewById(R.id.device_history_data_start_time_tv);
+		endTimeTv = (TextView) findViewById(R.id.device_history_data_end_time_tv);
+		maxTv = (TextView) findViewById(R.id.device_history_data_max_tv);
+		minTv = (TextView) findViewById(R.id.device_history_data_min_tv);
+
 //		ArrayList dataList = bundle.getParcelableArrayList("dataList");
 		List<DeviceDataBean> dataList = eewebApplication.getTmpList();
+		tmpHistoryBean = eewebApplication.getTmpHistoryBean();
 		eewebApplication.setTmpList(null);
+		eewebApplication.setTmpHistoryBean(null);
 
 		DeviceBean deviceBean = (DeviceBean) bundle.getSerializable("deviceBean");
 
 		listView = (ListView) findViewById(R.id.device_history_listview);
 		titleTv.setText(deviceBean.getDevName() + "\n" + deviceBean.getArea());
-
+		startTimeTv.setText("开始时间：" + tmpHistoryBean.getStartTime());
+		endTimeTv.setText("结束时间：" + tmpHistoryBean.getEndTime() + "				" + "间隔：" + tmpHistoryBean.getDistance());
+		maxTv.setText("最高温度：" + tmpHistoryBean.getTempMax() + "℃		" + "最高湿度：" + tmpHistoryBean.getHumiMax() + "%");
+		minTv.setText("最低温度：" + tmpHistoryBean.getTempMin() + "℃		" + "最低湿度：" + tmpHistoryBean.getHumiMin()+ "%");
 		if (!CollectionUtil.isEmpty(dataList)) {
 			HistoryDataAdapter adDataAdapter = new HistoryDataAdapter(dataList);
 			listView.setAdapter(adDataAdapter);
@@ -74,8 +94,8 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 
 			DeviceDataBean deviceDataBean = (DeviceDataBean) getItem(position);
 			if (deviceDataBean != null) {
-				holder.tempTv.setText("温度："+deviceDataBean.getTemp() + "℃");
-				holder.humiTv.setText("湿度："+deviceDataBean.getHumi() + "%");
+				holder.tempTv.setText(deviceDataBean.getTemp() + "℃");
+				holder.humiTv.setText(deviceDataBean.getHumi() + "%");
 				holder.timeTv.setText(deviceDataBean.getTime());
 			}
 

@@ -303,8 +303,8 @@ public class AlarmActivity extends BaseActivity implements ThreadListener {
 				ViewHolderCell cell = (ViewHolderCell)holder;
 //				cell.imageView.setImageDrawable(getDrawableByType(deviceBean.getAlarmBean().getType()));
 				cell.imageView.setImageDrawable(getDrawableByType(deviceBean.getAlarmBean()));
-				cell.mainTv.setText(deviceBean.getAlarmBean().getMsg());
-				cell.timeTv.setText(deviceBean.getAlarmBean().getAlarmTime());
+//				cell.mainTv.setText(deviceBean.getAlarmBean().getMsg());
+//				cell.timeTv.setText(deviceBean.getAlarmBean().getAlarmTime());
 				return cell;
 			} else {
 				ViewHolderMain main = (ViewHolderMain)holder;
@@ -336,9 +336,9 @@ public class AlarmActivity extends BaseActivity implements ThreadListener {
 //			reasonTv = (TextView) itemWrap.findViewById(R.id.alarm_list_view_reason_tv);
 			
 			LinearLayout itemWrap = (LinearLayout) layoutInflater.inflate(R.layout.alarm_list_view_item_cell, this);
-			imageView = (ImageView) itemWrap.findViewById(R.id.alarm_list_view_item_cell_img);
-			mainTv = (TextView) itemWrap.findViewById(R.id.alarm_list_view_item_cell_name_tv);
-			timeTv = (TextView) itemWrap.findViewById(R.id.alarm_list_view_item_cell_time_tv);
+//			imageView = (ImageView) itemWrap.findViewById(R.id.alarm_list_view_item_cell_img);
+//			mainTv = (TextView) itemWrap.findViewById(R.id.alarm_list_view_item_cell_name_tv);
+//			timeTv = (TextView) itemWrap.findViewById(R.id.alarm_list_view_item_cell_time_tv);
 		}
 	}
 	

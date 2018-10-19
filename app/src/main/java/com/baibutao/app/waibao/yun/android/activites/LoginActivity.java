@@ -56,8 +56,19 @@ public class LoginActivity extends BaseActivity {
 
 	}
 
+	/**
+	 * 注册
+     */
 	public void handleRegister(View v) {
 		Intent intent = new Intent(this, RegisterActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 忘记密码
+	 */
+	public void handleForgotPsw(View v) {
+		Intent intent = new Intent(this, ForgotPswActivity.class);
 		startActivity(intent);
 	}
 	

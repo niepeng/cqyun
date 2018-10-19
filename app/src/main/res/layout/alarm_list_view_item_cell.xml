@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_marginTop="5dip"
     android:layout_marginBottom="5dip"
     android:layout_marginLeft="10dip"
@@ -11,41 +11,96 @@
     android:paddingLeft="4dp"
     android:paddingRight="4dp" >
 
-    <ImageView
-        android:id="@+id/alarm_list_view_item_cell_img"
-        android:layout_width="20dp"
-        android:layout_height="20dip"
-        android:layout_gravity="center_vertical"
-        android:src="@drawable/temp" />
-    
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="2dip"
-        android:paddingRight="2dip" >
-        
-   <TextView
-        android:id="@+id/alarm_list_view_item_cell_name_tv"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        android:padding="2dip"
-        android:textColor="@color/black"
-        android:textSize="18dip" />
-    
+
     <TextView
-        android:id="@+id/alarm_list_view_item_cell_time_tv"
+        android:id="@+id/device_history_alarm_listview_cell_aramid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dip"
         android:textColor="@color/black"
-        android:textSize="10dip" />
-    
-        
-        </LinearLayout>
+        android:text="报警ID:0000"
+        android:textSize="15dip" />
+
+    <TextView
+        android:id="@+id/device_history_alarm_listview_cell_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:textColor="@color/black"
+        android:text="报警详情：xxxx"
+        android:textSize="15dip" />
+
+    <TextView
+        android:id="@+id/device_history_alarm_listview_cell_starttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:textColor="@color/black"
+        android:text="报警开始时间：xxxxx"
+        android:textSize="15dip" />
+
+    <TextView
+        android:id="@+id/device_history_alarm_listview_cell_endtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:textColor="@color/black"
+        android:text="报警结束时间：xxxxx"
+        android:textSize="15dip" />
+
+    <TextView
+        android:id="@+id/device_history_alarm_listview_cell_handleuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:textColor="@color/black"
+        android:text="备注填写人：xxx"
+        android:textSize="15dip" />
+
+    <TextView
+        android:id="@+id/device_history_alarm_listview_cell_additioninfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:textColor="@color/black"
+        android:text="报警备注：xxxx"
+        android:textSize="15dip" />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/alarm_list_view_item_cell_img"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dip"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:src="@drawable/temp" />-->
+    <!---->
+    <!--<LinearLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingLeft="2dip"-->
+        <!--android:paddingRight="2dip" >-->
+        <!---->
+   <!--<TextView-->
+        <!--android:id="@+id/alarm_list_view_item_cell_name_tv"-->
+        <!--android:layout_width="0dip"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:padding="2dip"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="15dip" />-->
+    <!---->
+    <!--<TextView-->
+        <!--android:id="@+id/alarm_list_view_item_cell_time_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="2dip"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="10dip" />-->
+    <!---->
+        <!---->
+  <!--</LinearLayout>-->
 
    
 

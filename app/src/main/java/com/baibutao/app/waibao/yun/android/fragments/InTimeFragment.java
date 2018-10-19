@@ -26,10 +26,13 @@ import com.baibutao.app.waibao.yun.android.R;
 import com.baibutao.app.waibao.yun.android.activites.common.DevicesLoader;
 import com.baibutao.app.waibao.yun.android.activites.device.DeviceDetailActivity;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceBean;
+import com.baibutao.app.waibao.yun.android.biz.bean.DeviceDataBean;
 import com.baibutao.app.waibao.yun.android.biz.dataobject.SetupDO;
 import com.baibutao.app.waibao.yun.android.common.Constant;
 import com.baibutao.app.waibao.yun.android.common.SetupInfoHolder;
 import com.baibutao.app.waibao.yun.android.util.StringUtil;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Timer;
@@ -52,6 +55,11 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private TextView successNumTv;
+    private TextView notConnectionNumTv;
+    private TextView normalNumTv;
+    private TextView kaiguanAlarmNumTv;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressDialog mProgress;
@@ -110,6 +118,10 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        successNumTv = (TextView) view.findViewById(R.id.in_time_total_success_num_tv);
+        notConnectionNumTv = (TextView) view.findViewById(R.id.in_time_total_not_connection_num_tv);
+        normalNumTv = (TextView) view.findViewById(R.id.in_time_total_normal_tv);
+        kaiguanAlarmNumTv = (TextView) view.findViewById(R.id.in_time_total_kaiguan_alarm_num_tv);
 
         if (mShowType == SHOW_TYPE_LINEAR) {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -173,7 +185,6 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(Loader<List<DeviceBean>> loader, List<DeviceBean> data) {
         mAdapter.setData(data);
-
         if (data == null || data.size() == 0) {
             if (!hasNetWork()) {
                 Toast.makeText(getActivity(), "网络异常，请检查网络", Toast.LENGTH_LONG).show();
@@ -189,6 +200,39 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
         if (mProgress != null && mProgress.isShowing()) {
             mProgress.dismiss();
         }
+
+        // 修改统计数量
+        calcTotalNumAndShow(data);
+    }
+
+    private void calcTotalNumAndShow(List<DeviceBean> list) {
+        int successNum = 0, notConnectionNum = 0, normalNum = 0, kaiguanAlarmNum = 0;
+        if (list != null) {
+            DeviceDataBean dataBean = null;
+            for (DeviceBean tmp : list) {
+                if (tmp == null || (dataBean = tmp.getDataBean()) == null) {
+                    continue;
+                }
+                if (dataBean.isSuccess()) {
+                    successNum++;
+                    continue;
+                }
+                if (dataBean.isNotConnection()) {
+                    notConnectionNum++;
+                    continue;
+                }
+                if (dataBean.isKaiguanAlarm()) {
+                    kaiguanAlarmNum++;
+                    continue;
+                }
+                normalNum++;
+            }
+        }
+
+        successNumTv.setText(String.valueOf(successNum));
+        notConnectionNumTv.setText(String.valueOf(notConnectionNum));
+        normalNumTv.setText(String.valueOf(normalNum));
+        kaiguanAlarmNumTv.setText(String.valueOf(kaiguanAlarmNum));
     }
 
     @Override
@@ -311,6 +355,8 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
                 holder.mEquipmentStatusView.setImageResource(R.drawable.device_status_success);
             } else if (device.getDataBean().isNotConnection()) {
                 holder.mEquipmentStatusView.setImageResource(R.drawable.device_status_no_connection);
+            }  else if (device.getDataBean().isKaiguanAlarm()) {
+                holder.mEquipmentStatusView.setImageResource(R.drawable.device_status_kaiguan_alarm);
             } else {
                 holder.mEquipmentStatusView.setImageResource(R.drawable.device_status_normal);
             }

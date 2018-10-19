@@ -117,9 +117,9 @@ public class NotificationTask {
                     bean.setArea(JsonUtil.getString(aralmJson, "area", null));
 
                     alarmBean = new AlarmBean();
-                    alarmBean.setMsg(JsonUtil.getString(aralmJson, "msg", null));
-                    alarmBean.setAlarmTime(JsonUtil.getString(aralmJson, "alarmTime", null));
-                    alarmBean.setType(JsonUtil.getString(aralmJson, "type", null));
+//                    alarmBean.setMsg(JsonUtil.getString(aralmJson, "msg", null));
+                    alarmBean.setStartTime(JsonUtil.getString(aralmJson, "alarmTime", null));
+//                    alarmBean.setType(JsonUtil.getString(aralmJson, "type", null));
                     bean.setAlarmBean(alarmBean);
                     beanList.add(bean);
                 } catch (Exception e) {
@@ -179,7 +179,8 @@ public class NotificationTask {
         String content = "";
         for (int i = 0; i < 3 && i < list.size(); i++) {
             DeviceBean tmp = list.get(i);
-            content += (tmp.getArea() + "-" + tmp.getDevName() + "：" + tmp.getAlarmBean().getMsg() + "; \r\n ");
+//            content += (tmp.getArea() + "-" + tmp.getDevName() + "：" + tmp.getAlarmBean().getMsg() + "; \r\n ");
+            content += (tmp.getArea() + "-" + tmp.getDevName() + "："  + "; \r\n ");
         }
         CharSequence contentText = content;
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)

@@ -173,4 +173,7 @@
 
     <string name="prefs_file_name">cqkj_prefs</string>
     <string name="prefs_key_intime_show_type">intime_show_type</string>
+
+    <item type="id" name="tag_first">
+    </item>
 </resources>

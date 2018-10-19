@@ -168,6 +168,12 @@ public class DevicesLoader extends AsyncTaskLoader<List<DeviceBean>> {
         dataBean.setTemp(JsonUtil.getString(tempJson, "value", null));
         dataBean.setTempStatus(ChangeUtil.str2int(JsonUtil.getString(tempJson, "status", null)));
 
+        dataBean.setPow(JsonUtil.getString(json, "pow", null));
+        dataBean.setWater(JsonUtil.getString(json, "water", null));
+        dataBean.setSmoke(JsonUtil.getString(json, "smoke", null));
+        dataBean.setDoor(JsonUtil.getString(json, "door", null));
+        dataBean.setBat(JsonUtil.getString(json, "bat", null));
+
         return dataBean;
     }
 

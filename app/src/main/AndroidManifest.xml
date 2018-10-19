@@ -49,6 +49,7 @@
         
         <activity android:name=".activites.LoginActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".activites.RegisterActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activites.ForgotPswActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".activites.NavigationActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".activites.InTimeActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".activites.AlarmActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
@@ -126,7 +127,19 @@
           <service
             android:name=".service.MessageService"
             android:enabled="true" />
-          
+
+
+        <!--<provider-->
+            <!--android:name="android.support.v4.content.FileProvider"-->
+            <!--android:authorities="com.baibutao.app.waibao.yun.android.ins"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--&lt;!&ndash; 元数据 &ndash;&gt;-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/file_paths" />-->
+        <!--</provider>-->
+
 			    
     </application>
 

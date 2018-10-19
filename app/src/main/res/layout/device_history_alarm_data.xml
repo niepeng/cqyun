@@ -19,6 +19,65 @@
 
 	<include layout="@layout/title_line_bottom" />
 
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@color/gray"
+		android:paddingTop="10dp"
+		android:paddingBottom="5dp"
+		android:paddingLeft="4dp"
+		android:paddingRight="4dp">
+
+		<TextView
+			android:id="@+id/device_history_alarm_devname"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:padding="2dip"
+			android:text="设备名称：BB"
+			android:textColor="@color/black"
+			android:textSize="16dip" />
+
+
+
+		<TextView
+			android:id="@+id/device_history_alarm_sn"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:padding="2dip"
+			android:text="SN号：ABCD"
+			android:textColor="@color/black"
+			android:textSize="16dip" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@color/gray"
+		android:paddingTop="5dp"
+		android:paddingBottom="10dp"
+		android:paddingLeft="4dp"
+		android:paddingRight="4dp" >
+
+		<TextView
+			android:id="@+id/device_history_alarm_time"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:padding="2dip"
+			android:text="时间段：2018-10-04 22:25:00 至 2018-10-04 22:25:00"
+			android:textColor="@color/black"
+			android:background="@color/gray"
+			android:textSize="13dip" />
+
+	</LinearLayout>
+
+
 	<ListView
         android:id="@+id/device_history_alarm_listview"
         android:layout_width="fill_parent"

@@ -14,6 +14,7 @@ import com.baibutao.app.waibao.yun.android.activites.common.BaseActivity;
 import com.baibutao.app.waibao.yun.android.activites.common.ThreadHelper;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceBean;
 import com.baibutao.app.waibao.yun.android.biz.bean.DeviceDataBean;
+import com.baibutao.app.waibao.yun.android.biz.bean.TmpHistoryBean;
 import com.baibutao.app.waibao.yun.android.config.Config;
 import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
 import com.baibutao.app.waibao.yun.android.remote.Request;
@@ -165,6 +166,16 @@ public class DeviceHistoryActivity extends BaseActivity {
 					Intent intent = new Intent(DeviceHistoryActivity.this, DeviceHistoryDataActivity.class);
 					Bundle bundle = new Bundle();
 					eewebApplication.setTmpList(dataList);
+
+					TmpHistoryBean tmpHistoryBean = new TmpHistoryBean();
+					tmpHistoryBean.setStartTime(startTimeTv.getText().toString());
+					tmpHistoryBean.setEndTime(endTimeTv.getText().toString());
+					tmpHistoryBean.setDistance((String)distanceSpinner.getSelectedItem());
+					tmpHistoryBean.setHumiMin(JsonUtil.getString(mainJson, "humiMin", ""));
+					tmpHistoryBean.setHumiMax(JsonUtil.getString(mainJson, "humiMax", ""));
+					tmpHistoryBean.setTempMin(JsonUtil.getString(mainJson, "tempMin", ""));
+					tmpHistoryBean.setTempMax(JsonUtil.getString(mainJson, "tempMax", ""));
+					eewebApplication.setTmpHistoryBean(tmpHistoryBean);
 //					bundle.putParcelableArrayList("dataList", (ArrayList) dataList);
 					bundle.putSerializable("deviceBean", deviceBean);
 					intent.putExtras(bundle);

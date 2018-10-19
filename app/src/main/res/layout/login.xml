@@ -23,13 +23,17 @@
     <!-- 主体部分 -->
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@null"
         android:paddingBottom="30dip"
         android:paddingTop="20dip">
 
+
         <LinearLayout
-            style="@style/app_corner_wrap"
-            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:background="@null">
@@ -55,24 +59,55 @@
                 android:onClick="handleLogin"
                 android:text="登录" />
 
-            <Button
-                android:background="@null"
-                android:id="@+id/login_register"
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_width="fill_parent"
-                android:gravity="right"
-                style="@style/login_username_style"
-                android:layout_marginBottom="20dip"
-                android:layout_marginRight="30dip"
-                android:layout_marginTop="4dip"
-                android:textSize="20dp"
-                android:textColor="@color/red"
-                android:onClick="handleRegister"
-                android:text="注册" />
+                android:layout_height="wrap_content">
 
+                <Button
+                    android:background="@null"
+                    android:id="@+id/login_register"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    style="@style/login_username_style"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginRight="30dip"
+                    android:layout_marginTop="4dip"
+                    android:textSize="20dp"
+                    android:textColor="@color/red"
+                    android:onClick="handleRegister"
+                    android:text="注册" />
 
+                <Button
+                    android:background="@null"
+                    android:id="@+id/login_forgot_psw"
+                    android:layout_width="wrap_content"
+                    style="@style/login_username_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginRight="30dip"
+                    android:layout_marginTop="4dip"
+                    android:textSize="20dp"
+                    android:textColor="@color/yun_title"
+                    android:onClick="handleForgotPsw"
+                    android:text="忘记密码？" />
+
+            </RelativeLayout>
 
         </LinearLayout>
+
     </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        style="@style/login_username_style"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="-60dip"
+        android:textSize="20dp"
+        android:textColor="@color/yun_title"
+        android:text="杭州成前科技有限公司" />
 
 
 </LinearLayout>

@@ -9,11 +9,80 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="18sp"
+                android:paddingRight="20sp"
+                android:background="@color/yun_title"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                        style="@style/alarm_total_icon">
+                    <TextView android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@color/green">
+                    </TextView>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/in_time_total_success_num_tv"
+                    style="@style/alarm_total_num"
+                    android:text="-" />
+
+
+                <LinearLayout
+                    style="@style/alarm_total_icon">
+                    <TextView android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@color/yellow">
+                    </TextView>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/in_time_total_not_connection_num_tv"
+                    style="@style/alarm_total_num"
+                    android:text="-" />
+
+
+                <LinearLayout
+                    style="@style/alarm_total_icon">
+                    <TextView android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@color/gray">
+                    </TextView>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/in_time_total_normal_tv"
+                    style="@style/alarm_total_num"
+                    android:text="-" />
+
+
+                <LinearLayout
+                    style="@style/alarm_total_icon">
+                    <TextView android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@color/red">
+                    </TextView>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/in_time_total_kaiguan_alarm_num_tv"
+                    style="@style/alarm_total_num"
+                    android:text="-" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

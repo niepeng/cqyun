@@ -110,37 +110,39 @@ public class BaseActivity extends ActivityGroup {
 
     protected Drawable getDrawableByType(AlarmBean alarmBean) {
         Resources resources = this.getResources();
-        String type = alarmBean.getType();
-        // 	// 1:温度过高;2:温度过低;3:湿度过高;4:湿度过低;5:开关报警;6:设备离线;7:传感器异常;8:传感器未连接
-        if ("1".equals(type) || "2".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.temp);
-            }
-            return resources.getDrawable(R.drawable.temp2);
-        }
+        return resources.getDrawable(R.drawable.temp2);
 
-        if ("3".equals(type) || "4".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.humi);
-            }
-            return resources.getDrawable(R.drawable.humi2);
-        }
-
-        if ("6".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.off);
-            }
-            return resources.getDrawable(R.drawable.off2);
-        }
-
-        if ("7".equals(type) || "8".equals(type)) {
-            if ("0".equals(alarmBean.getBeginEndMark())) {
-                return resources.getDrawable(R.drawable.nosensor);
-            }
-            return resources.getDrawable(R.drawable.nosensor2);
-        }
-
-        return null;
+//        String type = alarmBean.getType();
+//        // 	// 1:温度过高;2:温度过低;3:湿度过高;4:湿度过低;5:开关报警;6:设备离线;7:传感器异常;8:传感器未连接
+//        if ("1".equals(type) || "2".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.temp);
+//            }
+//            return resources.getDrawable(R.drawable.temp2);
+//        }
+//
+//        if ("3".equals(type) || "4".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.humi);
+//            }
+//            return resources.getDrawable(R.drawable.humi2);
+//        }
+//
+//        if ("6".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.off);
+//            }
+//            return resources.getDrawable(R.drawable.off2);
+//        }
+//
+//        if ("7".equals(type) || "8".equals(type)) {
+//            if ("0".equals(alarmBean.getBeginEndMark())) {
+//                return resources.getDrawable(R.drawable.nosensor);
+//            }
+//            return resources.getDrawable(R.drawable.nosensor2);
+//        }
+//
+//        return null;
     }
 
     protected ProgressDialog showProgressDialog(int message) {
