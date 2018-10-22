@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity
         eewebApplication.checkUpdateApp(this, new Handler());
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setFirstItemNavigationView() {
         mNavigationView.setCheckedItem(R.id.nav_all_equipment);
-        getSupportActionBar().setTitle(getText(R.string.menu_item_all_equipment));
+        getSupportActionBar().setTitle(getString(R.string.action_title));
     }
 
     private void setAccountView() {
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity
             }
             // TODO 区域管理
         }
-        getSupportActionBar().setTitle(item.getTitle());
+        getSupportActionBar().setTitle(getString(R.string.action_title));
         mDrawerLayout.closeDrawer(GravityCompat.START);
         setContentMain(mShowType, mSelectedArea);
         return true;

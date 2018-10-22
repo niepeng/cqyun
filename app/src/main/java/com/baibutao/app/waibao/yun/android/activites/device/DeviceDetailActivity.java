@@ -134,12 +134,12 @@ public class DeviceDetailActivity extends BaseActivity {
 
     private void setKaiguanInfo(TextView tv, String value, DeviceDataBean dataBean) {
         if(dataBean.kaiguanAlarm(value)) {
-            tv.setText("报警");
+            tv.setText("报警    ");
             tv.setTextColor(getResources().getColor(R.color.red));
             return;
         }
         if(dataBean.kaiguanNormal(value)) {
-            tv.setText("正常");
+            tv.setText("正常    ");
             tv.setTextColor(getResources().getColor(R.color.white));
             return;
         }

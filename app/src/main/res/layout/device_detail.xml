@@ -150,6 +150,7 @@
 						<TextView
 							android:id="@+id/device_detail_smoke_tv"
 							style="@style/app_title_wrap"
+							android:gravity="right"
 							android:text="未接入"
 							android:textColor="@color/gray_deep"
 							android:textSize="15dp" />

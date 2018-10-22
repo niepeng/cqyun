@@ -165,6 +165,7 @@
     <string name="grid_mode">宫格模式</string>
 
     <string name="action_settings">设置</string>
+    <string name="action_title">\t\t\t\t\t\t\t\t\t\t\t\t实时</string>
     <string name="action_add">添加</string>
 
     <!-- TODO: Remove or change this placeholder text -->

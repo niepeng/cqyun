@@ -56,6 +56,7 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private TextView areaTv;
     private TextView successNumTv;
     private TextView notConnectionNumTv;
     private TextView normalNumTv;
@@ -118,6 +119,7 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        areaTv = (TextView) view.findViewById(R.id.in_time_area_tv);
         successNumTv = (TextView) view.findViewById(R.id.in_time_total_success_num_tv);
         notConnectionNumTv = (TextView) view.findViewById(R.id.in_time_total_not_connection_num_tv);
         normalNumTv = (TextView) view.findViewById(R.id.in_time_total_normal_tv);
@@ -233,6 +235,12 @@ public class InTimeFragment extends Fragment implements LoaderManager.LoaderCall
         notConnectionNumTv.setText(String.valueOf(notConnectionNum));
         normalNumTv.setText(String.valueOf(normalNum));
         kaiguanAlarmNumTv.setText(String.valueOf(kaiguanAlarmNum));
+        if(StringUtil.isBlank(mArea)) {
+            areaTv.setText(getResources().getString(R.string.menu_item_all_equipment));
+        } else {
+            areaTv.setText(mArea);
+        }
+
     }
 
     @Override
