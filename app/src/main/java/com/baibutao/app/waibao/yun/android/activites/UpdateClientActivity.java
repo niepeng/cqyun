@@ -63,16 +63,16 @@ public class UpdateClientActivity extends BaseActivity {
 
 			installFile = File.createTempFile(genName(), ".apk");
 
-			String folder = Environment.getExternalStorageDirectory().getAbsolutePath();
-			File f = new File(folder);
-			if (!f.exists()) {
-				f.mkdir();
-			}
-			String apkPath = folder + File.separator + genName() + ".apk";
-			installFile = new File(apkPath);
-			//创建apk文件
-			installFile.createNewFile();
-			alert("installFile=" + installFile.getAbsolutePath());
+//			String folder = Environment.getExternalStorageDirectory().getAbsolutePath();
+//			File f = new File(folder);
+//			if (!f.exists()) {
+//				f.mkdir();
+//			}
+//			String apkPath = folder + File.separator + genName() + ".apk";
+//			installFile = new File(apkPath);
+//			//创建apk文件
+//			installFile.createNewFile();
+//			alert("installFile=" + installFile.getAbsolutePath());
 
 //			toastLong(installFile.getAbsolutePath());
 //			File f = Environment.getExternalStorageDirectory();//获取SD卡目录
@@ -88,14 +88,13 @@ public class UpdateClientActivity extends BaseActivity {
 	}
 
 	private void startInstall(String fileName) {
-		alert("fileName=" + fileName);
+//		alert("fileName=" + fileName);
 		File file = new File(fileName);
 		if (!file.exists()) {
-			alert("文件不存在");
+//			alert("文件不存在");
 			return;
 		}
-		alert("src=" + file.getAbsolutePath());
-
+//		alert("src=" + file.getAbsolutePath());
 
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
