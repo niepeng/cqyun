@@ -150,8 +150,13 @@ public class LoginActivity extends BaseActivity {
 				userDO.setUsername(usernameText.getText().toString());
 				userDO.setPsw(pswText.getText().toString());
 				toastShort("登录成功");
+
+				/**
+				 * 处理用户登录成功之后的事项，包括友盟统计关联到服务器
+				 */
+			    recordUserUmeng(userDO.getUsername(), eewebApplication.getUmengDeviceToken());
+
 				eewebApplication.setUserDO(userDO);
-				
 //				UserInfoHolder.saveUser(LoginActivity.this, userDO);
 				
 //				Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
@@ -166,4 +171,6 @@ public class LoginActivity extends BaseActivity {
 		}
 
 	}
+
+
 }

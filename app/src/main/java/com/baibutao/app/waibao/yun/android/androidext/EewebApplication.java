@@ -42,6 +42,15 @@ import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
 import com.baibutao.app.waibao.yun.android.util.DateUtil;
 import com.baidu.location.LocationClient;
 
+
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UTrack;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.UmengNotificationClickHandler;
+import com.umeng.message.entity.UMessage;
+
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -92,6 +101,9 @@ public class EewebApplication extends Application {
 
 	public boolean startNotification;
 
+	// 友盟推送的设备id，需要跟当前用户作关联
+	private String umengDeviceToken;
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -116,10 +128,90 @@ public class EewebApplication extends Application {
 		
 		asynchronizedInvoke = new AsynchronizedInvoke();
 		asynchronizedInvoke.init();
-		
+
+		// 友盟
+		initUmeng();
 		// 删除本地图片
 //		ImageCache.getLocalCacheManager().clearLocalCache();
 	}
+
+	private void initUmeng() {
+
+		/**
+		 * 友盟文档：https://developer.umeng.com/docs/66632/detail/98581
+		 *
+		 */
+		// 在此处调用基础组件包提供的初始化函数 相应信息可在应用管理 -> 应用信息 中找到 http://message.umeng.com/list/apps
+		// 参数一：当前上下文context；
+		// 参数二：应用申请的Appkey（需替换）；
+		// 参数三：渠道名称；
+		// 参数四：设备类型，必须参数，传参数为UMConfigure.DEVICE_TYPE_PHONE则表示手机；传参数为UMConfigure.DEVICE_TYPE_BOX则表示盒子；默认为手机；
+		// 参数五：Push推送业务的secret 填充Umeng Message Secret对应信息（需替换）
+		UMConfigure.init(this, "5c398662b465f566b5001405", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "fc5b535b0e83376e4c3692487de2499d");
+
+		//获取消息推送代理示例
+		PushAgent mPushAgent = PushAgent.getInstance(this);
+		//注册推送服务，每次调用register方法都会回调该接口
+		mPushAgent.register(new IUmengRegisterCallback() {
+
+			@Override
+			public void onSuccess(String deviceToken) {
+				//注册成功会返回deviceToken deviceToken是推送消息的唯一标志
+//				Log.i(TAG,"注册成功：deviceToken：-------->  " + deviceToken);
+				Log.e("ffffffffffff", "注册成功：deviceToken：-------->  " + deviceToken);
+				umengDeviceToken = deviceToken;
+			}
+
+			@Override
+			public void onFailure(String s, String s1) {
+				Log.e("ffffffffffff","注册失败：-------->  " + "s:" + s + ",s1:" + s1);
+			}
+		});
+//
+//		UmengMessageHandler messageHandler = new UmengMessageHandler() {
+//
+//			/**
+//			 * 自定义通知栏样式的回调方法
+//			 */
+//			@Override
+//			public Notification getNotification(Context context, UMessage msg) {
+//				switch (msg.builder_id) {
+//					case 1:
+//						Notification.Builder builder = new Notification.Builder(context);
+//						RemoteViews myNotificationView = new RemoteViews(context.getPackageName(),
+//								R.layout.notification_view);
+//						myNotificationView.setTextViewText(R.id.notification_title, msg.title);
+//						myNotificationView.setTextViewText(R.id.notification_text, msg.text);
+//						myNotificationView.setImageViewBitmap(R.id.notification_large_icon, getLargeIcon(context, msg));
+//						myNotificationView.setImageViewResource(R.id.notification_small_icon,
+//								getSmallIconId(context, msg));
+//						builder.setContent(myNotificationView)
+//								.setSmallIcon(getSmallIconId(context, msg))
+//								.setTicker(msg.ticker)
+//								.setAutoCancel(true);
+//
+//						return builder.getNotification();
+//					default:
+//						//默认为0，若填写的builder_id并不存在，也使用默认。
+//						return super.getNotification(context, msg);
+//				}
+//			}
+//		};
+//		mPushAgent.setMessageHandler(messageHandler);
+//
+//		UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler(){
+//
+//			@Override
+//			public void dealWithCustomAction(Context context, UMessage msg){
+//				Log.e(TAG,"click");
+//			}
+//
+//		};
+//
+//		mPushAgent.setNotificationClickHandler(notificationClickHandler);
+	}
+
+
 
 	private void createSharedPrefs() {
 		try{
@@ -368,5 +460,9 @@ public class EewebApplication extends Application {
 
 	public void setTmpHistoryBean(TmpHistoryBean tmpHistoryBean) {
 		this.tmpHistoryBean = tmpHistoryBean;
+	}
+
+	public String getUmengDeviceToken() {
+		return umengDeviceToken;
 	}
 }

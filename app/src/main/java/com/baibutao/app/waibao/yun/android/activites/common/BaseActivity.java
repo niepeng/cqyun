@@ -37,8 +37,14 @@ import com.baibutao.app.waibao.yun.android.androidext.EewebApplication;
 import com.baibutao.app.waibao.yun.android.biz.LoadImgDO;
 import com.baibutao.app.waibao.yun.android.biz.bean.AlarmBean;
 import com.baibutao.app.waibao.yun.android.biz.dataobject.UserDO;
+import com.baibutao.app.waibao.yun.android.config.Config;
+import com.baibutao.app.waibao.yun.android.remote.RemoteManager;
+import com.baibutao.app.waibao.yun.android.remote.Request;
+import com.baibutao.app.waibao.yun.android.remote.parser.StringResponseParser;
 import com.baibutao.app.waibao.yun.android.util.AssetsUtil;
+import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
 import com.baibutao.app.waibao.yun.android.util.DateUtil;
+import com.baibutao.app.waibao.yun.android.util.JsonUtil;
 import com.baibutao.app.waibao.yun.android.util.StringUtil;
 
 import java.util.Calendar;
@@ -106,6 +112,20 @@ public class BaseActivity extends ActivityGroup {
         }
         return netinfo.isAvailable();
     }
+
+    protected void recordUserUmeng(String username, String umengDeviceToken) {
+        RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
+        remoteManager.setResponseParser(new StringResponseParser());
+        Request request = remoteManager.createPostRequest(Config.Values.URL);
+        final Map<String, Object> map = CollectionUtil.newHashMap();
+        map.put("user", username);
+        map.put("token", umengDeviceToken);
+        request.setBody(JsonUtil.mapToJson(map));
+        request.addHeader("type", "setAndroidDevToken");
+        eewebApplication.asyInvoke(new ThreadHelper(null, request, remoteManager));
+    }
+
+
 
 
     protected Drawable getDrawableByType(AlarmBean alarmBean) {
