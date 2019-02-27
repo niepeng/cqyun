@@ -39,7 +39,21 @@ public class NotificationTask {
         this.eewebApplication = eewebApplication;
     }
 
+
+    boolean needRun = false;
+
     public void execute() {
+
+        /**
+         * 注意，这里推送信息相关的通过友盟实现了，不要这里主动请求数据
+         * 注意，这里推送信息相关的通过友盟实现了，不要这里主动请求数据
+         * 注意，这里推送信息相关的通过友盟实现了，不要这里主动请求数据
+         * 注意，这里推送信息相关的通过友盟实现了，不要这里主动请求数据
+         */
+        if(!needRun) {
+            return;
+        }
+
         try {
             // 请求服务端，获取是否需要通知的更新
 //			final RemoteManager remoteManager = RemoteManager.getFullFeatureRemoteManager();
