@@ -39,12 +39,12 @@
                 android:onClick="handleUpdatePsw"
                 android:text="@string/setup_user_manage_update_psw" />
 
-            <include layout="@drawable/line_split" />
+            <!--<include layout="@drawable/line_split" />-->
 
-		 <Button
-			 style="@style/app_row_with_arrow"
-			 android:onClick="handleSetAlarm"
-			 android:text="推送设置" />
+		 <!--<Button-->
+			 <!--style="@style/app_row_with_arrow"-->
+			 <!--android:onClick="handleSetAlarm"-->
+			 <!--android:text="推送设置" />-->
 
 		 <include layout="@drawable/line_split" />
             
