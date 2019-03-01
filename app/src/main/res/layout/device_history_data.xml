@@ -187,7 +187,7 @@
         android:id="@+id/device_history_data_char_wrap"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:layout_weight="1"
         android:background="@color/white"
         android:orientation="vertical">
@@ -197,18 +197,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
             <Button
                 android:id="@+id/device_history_data_cur_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/app_btn_submit"
+                android:background="@drawable/btn_background_left"
                 android:onClick="handleTemp"
                 android:text="温度" />
             <Button
                 android:id="@+id/device_history_data_cur_humi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/app_btn_submit"
+                android:background="@drawable/btn_background_right2"
+                android:textColor="@color/yun_title"
                 android:onClick="handleHumi"
                 android:text="湿度" />
         </LinearLayout>

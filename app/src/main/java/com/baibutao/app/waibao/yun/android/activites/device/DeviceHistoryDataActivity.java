@@ -51,6 +51,10 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 	private LinearLayout curBtnLayout;
 	private WebView curWebView;
 
+	// 温度和湿度
+	private Button tempBtn;
+	private Button humiBtn;
+
 
 	private TmpHistoryBean tmpHistoryBean;
 	private List<DeviceDataBean> dataList;
@@ -83,6 +87,9 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 		charWrapLayout = (LinearLayout) findViewById(R.id.device_history_data_char_wrap);
 		curBtnLayout = (LinearLayout) findViewById(R.id.device_history_data_cur_layout);
 		curWebView = (WebView) findViewById(R.id.device_history_data_cur_webview);
+
+		tempBtn = (Button) findViewById(R.id.device_history_data_cur_temp);
+		humiBtn = (Button) findViewById(R.id.device_history_data_cur_humi);
 
 		titleTv.setText(deviceBean.getDevName() + "\n" + deviceBean.getArea());
 		startTimeTv.setText("开始时间：" + tmpHistoryBean.getStartTime());
@@ -146,6 +153,13 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 		String xAxis = tempTuple._1();
 		String yAxis = tempTuple._2();
 		curWebView.loadUrl(String.format(loadData, xAxis, yAxis));
+
+		tempBtn.setBackgroundResource(R.drawable.btn_background_left);
+		tempBtn.setTextColor(getResources().getColor(R.color.white));
+
+		humiBtn.setBackgroundResource(R.drawable.btn_background_right2);
+		humiBtn.setTextColor(getResources().getColor(R.color.yun_title));
+
 	}
 
 	/**
@@ -159,6 +173,13 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 		String yAxis = tempTuple._2();
 		String url = String.format(loadData, xAxis, yAxis);
 		curWebView.loadUrl(url);
+
+		tempBtn.setBackgroundResource(R.drawable.btn_background_left2);
+		tempBtn.setTextColor(getResources().getColor(R.color.yun_title));
+
+		humiBtn.setBackgroundResource(R.drawable.btn_background_right);
+		humiBtn.setTextColor(getResources().getColor(R.color.white));
+
 	}
 
 	private class HistoryDataAdapter extends AbstractBaseAdapter {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	 
+	<!-- 
+	 <item android:state_pressed="true">
+		<shape android:shape="rectangle" >
+			<corners android:radius="8dip" />
+			<gradient android:startColor="@color/green_btn_pressed" android:centerColor="@color/green_btn_pressed"  android:endColor="@color/green_btn_pressed" 
+				android:angle="90" />
+			<stroke android:width="0.5dp" android:color="#996633" /> 
+			<padding android:left="10dp" android:top="10dp"	android:bottom="10dp" android:right="10dp" />
+		</shape>
+		
+	</item>
+	
+	<item>
+		<shape android:shape="rectangle" >
+			<corners android:radius="8dip" />
+			<gradient android:startColor="@color/btn_color_start"  android:endColor="@color/btn_color_end" 
+				android:angle="90" />
+			<stroke android:width="0.5dp" android:color="@color/btn_color_border" /> 
+			<padding android:left="10dp" android:top="10dp"	android:bottom="10dp" android:right="10dp" />
+		</shape>
+	</item>
+	 -->
+	 
+	  <item android:state_pressed="true">
+		<shape android:shape="rectangle" >
+			<!-- 全部圆角 <corners android:radius="8dip" />-->
+			<corners android:topLeftRadius="8dip" android:bottomLeftRadius="8dip" />
+			<gradient android:startColor="@color/yun_title_deep" android:centerColor="@color/yun_title_deep"  android:endColor="@color/yun_title_deep"
+				android:angle="90" />
+			<stroke android:width="0.5dp" android:color="@color/yun_title" /> 
+			<padding android:left="15dp" android:top="5dp"	android:bottom="5dp" android:right="15dp" />
+		</shape>
+		
+	</item>
+	
+	<item>
+		<shape android:shape="rectangle" >
+			<corners android:topLeftRadius="8dip" android:bottomLeftRadius="8dip" />
+			<gradient android:startColor="@color/yun_title"  android:endColor="@color/yun_title" 
+				android:angle="90" />
+			<stroke android:width="0.5dp" android:color="@color/yun_title_deep" /> 
+			<padding android:left="15dp" android:top="5dp"	android:bottom="5dp" android:right="15dp" />
+		</shape>
+	</item>
+	
+	
+	
+</selector> 
