@@ -1,162 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:background="@color/bg_gray_light">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_gray_light"
+    android:orientation="vertical">
 
 
-	<!-- 标题栏 -->
-	<RelativeLayout style="@style/app_title_main">
-		
-		<!-- 返回按钮 -->
-		<Button style="@style/app_title_back" android:onClick="handleBack" />
+    <!-- 标题栏 -->
+    <RelativeLayout style="@style/app_title_main">
+
+        <!-- 返回按钮 -->
+        <Button
+            style="@style/app_title_back"
+            android:onClick="handleBack" />
 
 
-		<!-- 标题 -->
-		<TextView android:id="@+id/device_history_data_title" style="@style/app_title_wrap"
-			android:layout_centerInParent="true" />
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/device_history_data_title"
+            style="@style/app_title_wrap"
+            android:layout_centerInParent="true" />
 
-	</RelativeLayout>
+        <Button
+            android:id="@+id/btn_change"
+            style="@style/app_title_right"
+            android:layout_width="80dip"
+            android:layout_height="30dip"
+            android:background="@null"
+            android:onClick="handleChange"
+            android:textSize="16dp" />
 
-	<include layout="@layout/title_line_bottom" />
+    </RelativeLayout>
 
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="1dip"
-		android:layout_marginTop="1dip"
-		android:orientation="horizontal"
-		android:paddingBottom="5dp"
-		android:paddingLeft="4dp"
-		android:paddingRight="4dp" >
+    <include layout="@layout/title_line_bottom" />
 
-		<TextView
-			android:id="@+id/device_history_data_start_time_tv"
-			android:layout_width="0dip"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textColor="@color/black"
-			android:padding="4dp"
-			android:textSize="15dp"
-			android:text="开始时间：2018-10-10 10:23"
-			/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="1dip"
-		android:layout_marginTop="1dip"
-		android:orientation="horizontal"
-		android:paddingBottom="5dp"
-		android:paddingLeft="4dp"
-		android:paddingRight="4dp" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
 
-		<TextView
-			android:id="@+id/device_history_data_end_time_tv"
-			android:layout_width="0dip"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textColor="@color/black"
-			android:padding="4dp"
-			android:textSize="15dp"
-			android:text="结束时间：2018-10-10 10:23     间隔：1分钟"
-			/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="1dip"
-		android:layout_marginTop="1dip"
-		android:orientation="horizontal"
-		android:paddingBottom="5dp"
-		android:paddingLeft="4dp"
-		android:paddingRight="4dp" >
+        <TextView
+            android:id="@+id/device_history_data_start_time_tv"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="开始时间：2018-10-10 10:23"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+    </LinearLayout>
 
-		<TextView
-			android:id="@+id/device_history_data_max_tv"
-			android:layout_width="0dip"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textColor="@color/black"
-			android:padding="4dp"
-			android:textSize="15dp"
-			android:text="最高温度：xx    最高湿度：xxx"
-			/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="1dip"
-		android:layout_marginTop="1dip"
-		android:orientation="horizontal"
-		android:paddingBottom="5dp"
-		android:paddingLeft="4dp"
-		android:paddingRight="4dp" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
 
-		<TextView
-			android:id="@+id/device_history_data_min_tv"
-			android:layout_width="0dip"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textColor="@color/black"
-			android:padding="4dp"
-			android:textSize="15dp"
-			android:text="最低温度：xx    最低湿度：37.23%"
-			/>
-	</LinearLayout>
+        <TextView
+            android:id="@+id/device_history_data_end_time_tv"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="结束时间：2018-10-10 10:23     间隔：1分钟"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
 
+        <TextView
+            android:id="@+id/device_history_data_max_tv"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="最高温度：xx    最高湿度：xxx"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+    </LinearLayout>
 
-		<ImageView android:layout_width="fill_parent" android:layout_marginTop="5dp"
-			android:layout_height="1dp" android:src="@color/gray_deep" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginTop="1dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
 
-		<LinearLayout
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:layout_marginTop="5dip"
-			android:layout_marginBottom="5dip"
-			android:paddingBottom="5dp"
-			android:paddingLeft="4dp"
-			android:paddingRight="4dp" >
-
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:padding="2dip"
-				android:text="温度(℃)"
-				android:textColor="@color/black"
-				android:textSize="15dip" />
+        <TextView
+            android:id="@+id/device_history_data_min_tv"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="最低温度：xx    最低湿度：37.23%"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+    </LinearLayout>
 
 
-
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:padding="2dip"
-				android:text="湿度(%RH)"
-				android:textColor="@color/black"
-				android:textSize="15dip" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:src="@color/gray_deep" />
 
 
+    <!-- 列表中的表头 -->
+    <LinearLayout
+        android:id="@+id/device_history_data_list_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dip"
+        android:layout_marginTop="5dip"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
 
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:padding="2dip"
-				android:text="时间                        "
-				android:textColor="@color/black"
-				android:textSize="14dip" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dip"
+            android:text="温度(℃)"
+            android:textColor="@color/black"
+            android:textSize="15dip" />
 
-		</LinearLayout>
 
-		<ImageView android:layout_width="fill_parent"
-			android:layout_height="1dp" android:src="@color/gray_deep" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dip"
+            android:text="湿度(%RH)"
+            android:textColor="@color/black"
+            android:textSize="15dip" />
 
-	<ListView
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dip"
+            android:text="时间                        "
+            android:textColor="@color/black"
+            android:textSize="14dip" />
+
+    </LinearLayout>
+
+
+    <ListView
         android:id="@+id/device_history_listview"
+        android:background="@color/white"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_marginTop="0dip"
@@ -166,5 +182,45 @@
         android:dividerHeight="0.2dp"
         android:fastScrollEnabled="false"
         android:footerDividersEnabled="false" />
+
+    <LinearLayout
+        android:id="@+id/device_history_data_char_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="20dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <!-- 曲线上面的按钮 -->
+        <LinearLayout
+            android:id="@+id/device_history_data_cur_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+            <Button
+                android:id="@+id/device_history_data_cur_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="handleTemp"
+                android:text="温度" />
+            <Button
+                android:id="@+id/device_history_data_cur_humi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="handleHumi"
+                android:text="湿度" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:src="@color/gray_deep" />
+        <WebView
+            android:id="@+id/device_history_data_cur_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/device_history_data_cur_layout" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Android使用Echarts示例</title>
+
+
+</head>
+
+<body>
+<div id="main" style="width: 100%; height: 350px;"></div>
+<script src="./echarts.min.js"></script>
+<script type="text/javascript">
+window.addEventListener("resize",function(){
+        option.chart.resize();
+});
+    //初始化路径
+    var myChart;
+     /**require.config({
+            paths: {
+                echarts: './'
+            }
+        });**/
+    //  通用属性定义
+    var options = {
+                title : {
+                    text : "Echart测试"
+                },
+                tooltip : {
+                    show : false
+                },
+                toolbox : {
+                    show : false
+                },
+            };
+
+
+        function doCreatChart(type, deviceTypeName, xArray, yJson){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts'
+            },
+            tooltip: {},
+            legend: {
+                data:[]
+            },
+            xAxis: {
+                // data: ["书写","语文1","英语","政治2","物理2","化学2"]
+                data: xArray
+            },
+            yAxis: {},
+            series: [{
+                name: deviceTypeName,
+                type: type,
+                data: yJson
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        }
+
+    doCreatChart('line','温度',['a', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55]);
+    // doCreatChart('bar','温度',['a', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55]);
+    // doCreatChart('pie','温度',['a', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55]);
+    </script>
+</body>
+
+</html>
