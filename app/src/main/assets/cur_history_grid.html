@@ -35,19 +35,31 @@ window.addEventListener("resize",function(){
             };
 
 
-        function doCreatChart(type, deviceTypeName, xArray, yJson, colorJson){
+        function doCreatChart(type, deviceTypeName, xArray, yJson, colorJson,unit){
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
+
 
         // 指定图表的配置项和数据
         var option = {
              title: {
                  text: deviceTypeName + '曲线数据'
             },
-            // },
-            tooltip: {trigger: 'axis'},
+
+            tooltip : {
+                trigger: 'axis',
+                formatter:function(params)
+                {
+                   var relVal = params[0].name;
+                   for (var i = 0, l = params.length; i < l; i++) {
+                        relVal += '<br/>' + params[i].seriesName + ' : ' + params[i].value+ unit;
+                    }
+                   return relVal;
+                }
+            },
+
             // legend: {
-            //     data:[]
+            //     data:[deviceTypeName]
             // },
              grid: {
                       left: '3%',
@@ -62,7 +74,8 @@ window.addEventListener("resize",function(){
                 data: xArray
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                axisLabel:{formatter:'{value}' + unit}
             },
             series: [{
                 name: deviceTypeName,
@@ -77,7 +90,7 @@ window.addEventListener("resize",function(){
 
         }
 
-    // doCreatChart('line','温度',['a11', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55], ['#c23531']);
+    // doCreatChart('line','温度',['a11', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55], ['#c23531'], '℃');
     // doCreatChart('bar','温度',['a', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55]);
     // doCreatChart('pie','温度',['a', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55]);
     </script>

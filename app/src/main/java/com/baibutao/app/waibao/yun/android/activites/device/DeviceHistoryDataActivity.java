@@ -148,7 +148,7 @@ public class DeviceHistoryDataActivity extends BaseActivity {
      */
 	public void handleTemp(View v) {
 //		curWebView.loadUrl("javascript:doCreatChart('line','温度',['a1', 'b', 'c','d','e11','series'], [89.1,78,77,66,44,55], ['#c23531']);");
-		String loadData = "javascript:doCreatChart('line','温度',%s, %s, ['#c23531']);";
+		String loadData = "javascript:doCreatChart('line','温度',%s, %s, ['#2f4554'], '℃');";
 		Tuple.Tuple2<String, String> tempTuple = assembleData(dataList, "temp");
 		String xAxis = tempTuple._1();
 		String yAxis = tempTuple._2();
@@ -167,7 +167,9 @@ public class DeviceHistoryDataActivity extends BaseActivity {
 	 */
 	public void handleHumi(View v) {
 //		curWebView.loadUrl("javascript:doCreatChart('line','湿度',['a2', 'b2', 'c2','d2','e11','series'], [89.2,78,77,66,44,55], ['#2f4554']);");
-		String loadData = "javascript:doCreatChart('line','湿度',%s, %s, ['#2f4554']);";
+
+		// 湿度单位需要使用%%，因为format的时候需要转移，实际输出为一个%
+		String loadData = "javascript:doCreatChart('line','湿度',%s, %s, ['#c23531'],'%%');";
 		Tuple.Tuple2<String, String> tempTuple = assembleData(dataList, "humi");
 		String xAxis = tempTuple._1();
 		String yAxis = tempTuple._2();
