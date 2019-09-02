@@ -39,6 +39,9 @@ public class DeviceBean implements Serializable {
 	
 	// 曲线,固定暂时没有使用
 	private String curve = "allLast";
+
+	// 无线节点SN
+	private String loarSn;
 	
 	// -------------- extend attribute --------------------
 	
@@ -189,5 +192,13 @@ public class DeviceBean implements Serializable {
 
 	public void setBeepStatus(String beepStatus) {
 		this.beepStatus = beepStatus;
+	}
+
+	public String getLoarSn() {
+		return loarSn;
+	}
+
+	public void setLoarSn(String loarSn) {
+		this.loarSn = loarSn;
 	}
 }

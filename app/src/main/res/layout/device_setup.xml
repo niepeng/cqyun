@@ -178,6 +178,48 @@
     </RelativeLayout>
     <include layout="@drawable/line_split" />
 
+
+    <!-- 无线节点SN 设置 -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="handleSetupLoraSn"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="无线节点SN"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/device_setup_lora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_deep"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+    <include layout="@drawable/line_split" />
+
     
      <!-- 上传间隔配置行 -->
     <RelativeLayout
@@ -303,6 +345,7 @@
     </RelativeLayout>
 
     <include layout="@drawable/line_split" />
+
 
     <!-- 提交按钮 -->
 	<LinearLayout android:orientation="horizontal"

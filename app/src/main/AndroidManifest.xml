@@ -69,6 +69,7 @@
        <activity android:name=".activites.device.DeviceSetupActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DevicePermissionManageActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceSetupUpdateNameActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
+       <activity android:name=".activites.device.DeviceSetupUpdateLoarSnActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceSetupUpdateAreaActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceSetupUpdateDistanceTimeActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustPan"></activity>
        <activity android:name=".activites.device.DeviceSetupUpdateExtendActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize"></activity>

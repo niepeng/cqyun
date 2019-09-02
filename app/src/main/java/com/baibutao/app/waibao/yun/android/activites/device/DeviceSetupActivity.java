@@ -36,10 +36,12 @@ public class DeviceSetupActivity extends BaseActivity {
 	private TextView nameTv;
 	private TextView areaTv;
 	private TextView distaceTimeTv;
+	private TextView loraTv;
 	private TextView beepStatusTv;
 
 	private DeviceBean deviceBean;
 	private Future<Response> responseFuture;
+	private Future<Response> loarResponseFuture;
 	private Future<Response> delResponseFuture;
 	
 	@Override
@@ -53,6 +55,7 @@ public class DeviceSetupActivity extends BaseActivity {
 		snTv = (TextView) findViewById(R.id.device_setup_sn);
 		nameTv = (TextView) findViewById(R.id.devcie_setup_name);
 		areaTv = (TextView) findViewById(R.id.device_setup_area);
+		loraTv = (TextView) findViewById(R.id.device_setup_lora);
 		distaceTimeTv = (TextView) findViewById(R.id.device_setup_time);
 		beepStatusTv = (TextView) findViewById(R.id.device_setup_beep_status);
 
@@ -70,6 +73,23 @@ public class DeviceSetupActivity extends BaseActivity {
 		ProgressDialog progressDialog = showProgressDialog(R.string.app_read_data);
 		progressDialog.setOnDismissListener(new LoadData());
 		responseFuture = eewebApplication.asyInvoke(new ThreadHelper(progressDialog, request, remoteManager));
+
+		loarResponseFuture = getLoarData(deviceBean.getSnaddr());
+	}
+
+	private Future<Response> getLoarData(String snaddr) {
+		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
+		remoteManager.setResponseParser(new StringResponseParser());
+		Request request = remoteManager.createPostRequest(Config.Values.URL);
+		final Map<String, Object> map = CollectionUtil.newHashMap();
+		map.put("snaddr", snaddr);
+		map.put("user", eewebApplication.getUserDO().getUsername());
+		request.setBody(JsonUtil.mapToJson(map));
+		request.addHeader("type", "getDeviceSet");
+
+		ProgressDialog progressDialog = showProgressDialog(R.string.app_read_data);
+		progressDialog.setOnDismissListener(new LoarLoadData());
+		return eewebApplication.asyInvoke(new ThreadHelper(progressDialog, request, remoteManager));
 	}
 
 	private void initData() {
@@ -78,6 +98,11 @@ public class DeviceSetupActivity extends BaseActivity {
 		areaTv.setText(deviceBean.getArea());
 		distaceTimeTv.setText(deviceBean.getDevGap());
 		beepStatusTv.setText(deviceBean.isBeepOpen() ? "   开" : "   关");
+		if(deviceBean.getLoarSn() != null) {
+			loraTv.setText(deviceBean.getLoarSn());
+		} else {
+			loraTv.setText("---");
+		}
 	}
 
 	public void handleBack(View v) {
@@ -123,6 +148,14 @@ public class DeviceSetupActivity extends BaseActivity {
 		startActivity(intent);
 	}
 
+	//  无线节点SN
+	public void handleSetupLoraSn(View v) {
+		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateLoarSnActivity.class);
+		intent.putExtra("deviceBean", deviceBean);
+		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
+	}
+
+
 	// 上传间隔
 	public void handleSetupDistanceTime(View v) {
 		if(!deviceBean.hasAuth()) {
@@ -152,6 +185,7 @@ public class DeviceSetupActivity extends BaseActivity {
 		intent.putExtra("deviceBean", deviceBean);
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
 	}
+
 
 	
 	@Override
@@ -223,6 +257,38 @@ public class DeviceSetupActivity extends BaseActivity {
 		}
 
 	}
+
+	private class LoarLoadData implements OnDismissListener {
+
+		@Override
+		public void onDismiss(DialogInterface dialog) {
+			if (loarResponseFuture == null) {
+				return;
+			}
+
+			try {
+
+				Response response = loarResponseFuture.get();
+				if (!response.isDataSuccess()) {
+					return;
+				}
+
+				JSONObject jsonObject = JsonUtil.getJsonObject(response.getModel());
+				JSONObject data = JsonUtil.getJSONObject(jsonObject, "array");
+				deviceBean.setLoarSn(JsonUtil.getString(data, "nodeId", null));
+				runOnUiThread(new Runnable() {
+					public void run() {
+						loraTv.setText(deviceBean.getLoarSn());
+					}
+				});
+			} catch (Exception e) {
+				DeviceSetupActivity.this.logError(e.getMessage(), e);
+			}
+
+		}
+
+	}
+
 	
 	private class DeleteData implements OnDismissListener {
 		
