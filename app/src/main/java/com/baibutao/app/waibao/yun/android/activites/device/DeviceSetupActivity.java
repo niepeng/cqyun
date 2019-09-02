@@ -133,7 +133,6 @@ public class DeviceSetupActivity extends BaseActivity {
 		Intent intent = new Intent(DeviceSetupActivity.this, DeviceSetupUpdateAreaActivity.class);
 		intent.putExtra("deviceBean", deviceBean);
 		startActivityForResult(intent, ACTIVITY_RESULT_CODE);
-	
 	}
 
 	// 阈值设置
