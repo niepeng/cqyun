@@ -144,7 +144,13 @@
         <item>20分钟</item>
         <item>25分钟</item>
         <item>30分钟</item>
-        <item>60分钟</item>
+        <item>1小时</item>
+        <item>2小时</item>
+        <item>3小时</item>
+        <item>4小时</item>
+        <item>6小时</item>
+        <item>12小时</item>
+        <item>24小时</item>
     </string-array>
 
 

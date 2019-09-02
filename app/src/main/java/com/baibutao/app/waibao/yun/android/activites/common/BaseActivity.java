@@ -178,7 +178,7 @@ public class BaseActivity extends ActivityGroup {
         defaultDisplay.getMetrics(outMetrics);
         int width = outMetrics.widthPixels;
         View menuView = LayoutInflater.from(this).inflate(R.layout.show_popup_window, null);
-        final PopupWindow mPopupWindow = new PopupWindow(menuView, (int) (width * 0.8), LinearLayout.LayoutParams.WRAP_CONTENT);
+        final PopupWindow mPopupWindow = new PopupWindow(menuView, (int) (width * 0.9), LinearLayout.LayoutParams.WRAP_CONTENT);
         ScreenInfo screenInfoDate = new ScreenInfo(this);
         wheelMainDate = new WheelMain(menuView, true);
         wheelMainDate.screenheight = screenInfoDate.getHeight();

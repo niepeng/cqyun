@@ -23,6 +23,7 @@ import com.baibutao.app.waibao.yun.android.remote.parser.StringResponseParser;
 import com.baibutao.app.waibao.yun.android.util.CollectionUtil;
 import com.baibutao.app.waibao.yun.android.util.DateUtil;
 import com.baibutao.app.waibao.yun.android.util.JsonUtil;
+import com.baibutao.app.waibao.yun.android.util.StringUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -107,7 +108,15 @@ public class DeviceHistoryActivity extends BaseActivity {
 		}
 
 		String distance = (String)distanceSpinner.getSelectedItem();
-		distance = distance.substring(0,distance.indexOf("分钟"));
+		if(distance.indexOf("分钟") > 0) {
+			distance = distance.substring(0,distance.indexOf("分钟"));
+		} else if(distance.indexOf("小时") > 0) {
+			distance = String.valueOf(Integer.parseInt(distance.substring(0,distance.indexOf("小时"))) * 60);
+		} else {
+			toastLong("请先选择 查询时间间隔");
+			return;
+		}
+
 
 		RemoteManager remoteManager = RemoteManager.getRawRemoteManager();
 		remoteManager.setResponseParser(new StringResponseParser());
