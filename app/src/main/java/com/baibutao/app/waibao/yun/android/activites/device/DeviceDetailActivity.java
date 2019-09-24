@@ -99,7 +99,8 @@ public class DeviceDetailActivity extends BaseActivity {
     public void initData() {
         titleTv.setText(deviceBean.getDevName() + "\n" + deviceBean.getArea());
         DeviceDataBean dataBean = deviceBean.getDataBean();
-        if (dataBean != null && dataBean.isSuccess()) {
+
+        if (dataBean != null && (dataBean.isSuccess() || dataBean.isKaiguanAlarm())) {
             tempTv.setText(dataBean.getTemp());
             humiTv.setText(dataBean.getHumi());
             statusTv.setText(dataBean.showStatus());
@@ -133,6 +134,9 @@ public class DeviceDetailActivity extends BaseActivity {
     }
 
     private void setKaiguanInfo(TextView tv, String value, DeviceDataBean dataBean) {
+        if(dataBean == null) {
+            return;
+        }
         if(dataBean.kaiguanAlarm(value)) {
             tv.setText("报警    ");
             tv.setTextColor(getResources().getColor(R.color.red));
