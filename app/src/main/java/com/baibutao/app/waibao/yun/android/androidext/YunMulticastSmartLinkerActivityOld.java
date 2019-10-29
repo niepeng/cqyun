@@ -50,7 +50,7 @@ import java.util.Map;
 import java.util.concurrent.Future;
 
 
-public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity2 {
+public class YunMulticastSmartLinkerActivityOld extends AbstractSmartLinkerActivity {
 
     private EewebApplication eewebApplication;
     private Future<Response> responseFuture;
@@ -63,7 +63,7 @@ public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity
 
 
 
-    public YunMulticastSmartLinkerActivity() {
+    public YunMulticastSmartLinkerActivityOld() {
     }
 
 
@@ -75,37 +75,36 @@ public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity
 //        circleProgressbarLayout = (LinearLayout) findViewById(R.id.circleProgressbarLayout);
 //        mCircleBar = (CircleProgressView) findViewById(R.id.circleProgressbar);
 
-
         this.mStartButton.setOnClickListener(new android.view.View.OnClickListener() {
             public void onClick(View v) {
-                String psw = YunMulticastSmartLinkerActivity.this.mPasswordEditText.getText().toString().trim();
+                String psw = YunMulticastSmartLinkerActivityOld.this.mPasswordEditText.getText().toString().trim();
                 if(StringUtil.isBlank(psw)) {
                     toastShort("密码不能为空");
                     return;
                 }
 
-                dialog = new Dialog(YunMulticastSmartLinkerActivity.this, R.style.dialog_countdown);
-                String sid = YunMulticastSmartLinkerActivity.this.mSsidEditText.getText().toString();
-                LayoutInflater inflater = YunMulticastSmartLinkerActivity.this.getLayoutInflater();
+                dialog = new Dialog(YunMulticastSmartLinkerActivityOld.this, R.style.dialog_countdown);
+                String sid = YunMulticastSmartLinkerActivityOld.this.mSsidEditText.getText().toString();
+                LayoutInflater inflater = YunMulticastSmartLinkerActivityOld.this.getLayoutInflater();
                 circleProgressbarLayout = (LinearLayout)inflater.inflate(R.layout.layout_countdown, null);
                 mCircleBar =  (CircleProgressView)circleProgressbarLayout.findViewById(R.id.circleProgressbar);
                 dialog.setContentView(circleProgressbarLayout);
                 dialog.setCancelable(false);
                 dialog.show();
 
-//                if(!YunMulticastSmartLinkerActivity.this.mIsConncting) {
-                    try {
-                        YunMulticastSmartLinkerActivity.this.mSmartLinker.setOnSmartLinkListener(YunMulticastSmartLinkerActivity.this);
-                        YunMulticastSmartLinkerActivity.this.mSmartLinker.start(YunMulticastSmartLinkerActivity.this.getApplicationContext(), YunMulticastSmartLinkerActivity.this.mPasswordEditText.getText().toString().trim(), new String[]{YunMulticastSmartLinkerActivity.this.mSsidEditText.getText().toString().trim()});
-//                        YunMulticastSmartLinkerActivity.this.mIsConncting = true;
-//                        YunMulticastSmartLinkerActivity.this.mWaitingDialog.show();
+//                if(!YunMulticastSmartLinkerActivityOld.this.mIsConncting) {
+                try {
+                    YunMulticastSmartLinkerActivityOld.this.mSmartLinker.setOnSmartLinkListener(YunMulticastSmartLinkerActivityOld.this);
+                    YunMulticastSmartLinkerActivityOld.this.mSmartLinker.start(YunMulticastSmartLinkerActivityOld.this.getApplicationContext(), YunMulticastSmartLinkerActivityOld.this.mPasswordEditText.getText().toString().trim(), new String[]{YunMulticastSmartLinkerActivityOld.this.mSsidEditText.getText().toString().trim()});
+//                        YunMulticastSmartLinkerActivityOld.this.mIsConncting = true;
+//                        YunMulticastSmartLinkerActivityOld.this.mWaitingDialog.show();
 
-                        mCircleBar.setProgressAndText(100, second + "秒");
+                    mCircleBar.setProgressAndText(100, second + "秒");
 //                        circleProgressbarLayout.setVisibility(View.VISIBLE);
-                        startChangeCircle();
-                    } catch (Exception var3) {
-                        var3.printStackTrace();
-                    }
+                    startChangeCircle();
+                } catch (Exception var3) {
+                    var3.printStackTrace();
+                }
 //                }
 
             }
@@ -150,7 +149,7 @@ public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity
         Log.e(TAG, "onLinkedsub"+ module.getMac());
         this.mViewHandler.post(new Runnable() {
             public void run() {
-                  addDevice(module.getMac());
+                addDevice(module.getMac());
 //                alert(module.getMac());
 //                toastShort(module.getMac()+ "...ip=" + module.getModuleIP());
 //                Toast.makeText(YunMulticastSmartLinkerActivity.this.getApplicationContext(), YunMulticastSmartLinkerActivity.this.getString(R1.string("hiflying_smartlinker_new_module_found"), new Object[]{module.getMac(), module.getModuleIP()}), 0).show();
@@ -165,13 +164,13 @@ public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity
             public void run() {
                 dialog.dismiss();
 //                Toast.makeText(YunMulticastSmartLinkerActivity.this.getApplicationContext(), YunMulticastSmartLinkerActivity.this.getString(R1.string("hiflying_smartlinker_completed")), 0).show();
-                YunMulticastSmartLinkerActivity.this.mWaitingDialog.dismiss();
+                YunMulticastSmartLinkerActivityOld.this.mWaitingDialog.dismiss();
 //                YunMulticastSmartLinkerActivity.this.mIsConncting = false;
-                Intent intent = new Intent(YunMulticastSmartLinkerActivity.this, DeviceAddResultListActivity.class);
+                Intent intent = new Intent(YunMulticastSmartLinkerActivityOld.this, DeviceAddResultListActivity.class);
                 intent.putStringArrayListExtra("snList", snList);
 //                startActivityForResult(intent, ACTIVITY_RESULT_CODE);
                 startActivityForResult(intent,ACTIVITY_RESULT_CODE);
-                YunMulticastSmartLinkerActivity.this.finish();
+                YunMulticastSmartLinkerActivityOld.this.finish();
 
             }
         });
@@ -235,6 +234,7 @@ public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity
         }
     }
 
+
     private class UpData implements DialogInterface.OnDismissListener {
         @Override
         public void onDismiss(DialogInterface dialog) {
@@ -270,7 +270,5 @@ public class YunMulticastSmartLinkerActivity extends AbstractSmartLinkerActivity
         }
 
     }
-
-
 
 }

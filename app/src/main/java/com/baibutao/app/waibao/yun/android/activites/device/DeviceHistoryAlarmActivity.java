@@ -60,7 +60,7 @@ public class DeviceHistoryAlarmActivity extends BaseActivity {
 		endTimeTv = (TextView) findViewById(R.id.device_history_alarm_end_time);
 
 		Date now = new Date();
-		startTimeTv.setText(DateUtil.format(DateUtil.changeDay(now, -1),DateUtil.DEFAULT_DATE_FMT));
+		startTimeTv.setText(DateUtil.format(DateUtil.changeDay(now, -7),DateUtil.DEFAULT_DATE_FMT));
 		endTimeTv.setText(DateUtil.format(now, DateUtil.DEFAULT_DATE_FMT));
 
 	}
